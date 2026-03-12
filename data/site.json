@@ -1,0 +1,32 @@
+{
+  "name": "Кафемашини",
+  "businessName": "Swiss Coffee",
+  "tagline": "Кафе машини – втора употреба от Швейцария",
+  "phone": "+359 894 807 755",
+  "phoneDisplay": "0894 807 755",
+  "email": "office@kafemashini.ch",
+  "address": {
+    "city": "София",
+    "district": "ж.к. Банишора",
+    "street": "ул. Сливен 23",
+    "detail": "Магазин 3"
+  },
+  "hours": "Понеделник – Петък, 10:00 – 17:00",
+  "url": "https://kafemashini.ch",
+  "warranty": "6 месеца",
+  "copyright": "2018",
+  "navigation": [
+    { "label": "Начало", "href": "/" },
+    { "label": "Продукти", "href": "/produkti.html" },
+    { "label": "Гаранция", "href": "/garantsiya.html" },
+    { "label": "За нас", "href": "/about.html" },
+    { "label": "Сервиз", "href": "/serviz-na-kafe-mashini.html" },
+    { "label": "История", "href": "/istoria_na_kafe_mashinite.html" },
+    { "label": "Контакти", "href": "/contact.html" }
+  ],
+  "legalLinks": [
+    { "label": "Условия за ползване", "href": "/uslovia" },
+    { "label": "Защита на личните данни", "href": "/zashtita-na-lichnite-danni" },
+    { "label": "Бисквитки", "href": "/biskvitki" }
+  ]
+}

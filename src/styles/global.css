@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors — Koffie-inspired palette */
+  --color-primary: #1B4332;
+  --color-primary-light: #2D6A4F;
+  --color-primary-dark: #0F2B1F;
+  --color-cream: #FDF8F0;
+  --color-cream-dark: #F5ECDA;
+  --color-accent: #C4922A;
+  --color-accent-light: #D4A94A;
+  --color-surface: #FFFFFF;
+  --color-text: #1A1A1A;
+  --color-muted: #6B6B6B;
+  --color-border: #E5E5E5;
+
+  /* Fonts */
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+
+/* Google Fonts import */
+@layer base {
+  @font-face {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 400 900;
+    font-display: swap;
+    src: url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
+  }
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.2;
+}
