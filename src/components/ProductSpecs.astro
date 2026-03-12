@@ -1,0 +1,24 @@
+---
+interface Props {
+  specs: Record<string, string>;
+}
+
+const { specs } = Astro.props;
+const entries = Object.entries(specs);
+---
+
+{entries.length > 0 && (
+  <div class="mt-8">
+    <h2 class="font-heading text-xl font-bold mb-4">Технически характеристики</h2>
+    <table class="w-full text-sm">
+      <tbody>
+        {entries.map(([key, value], i) => (
+          <tr class={i % 2 === 0 ? 'bg-cream/50' : 'bg-white'}>
+            <td class="px-4 py-2.5 font-medium text-text/80 w-1/3">{key}</td>
+            <td class="px-4 py-2.5">{value}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+)}

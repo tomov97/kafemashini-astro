@@ -1,0 +1,21 @@
+---
+import ProductCard from './ProductCard.astro';
+import type { Product } from '../utils/products';
+
+interface Props {
+  products: Product[];
+}
+
+const { products } = Astro.props;
+---
+
+{products.length > 0 && (
+  <section class="mt-12">
+    <h2 class="font-heading text-2xl font-bold mb-6">Подобни продукти</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {products.map(product => (
+        <ProductCard product={product} />
+      ))}
+    </div>
+  </section>
+)}

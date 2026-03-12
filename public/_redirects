@@ -1,0 +1,5 @@
+/wp-admin/*     /   302
+/wp-login.php   /   302
+/moyat-profil   /   301
+/cart           /   301
+/checkout       /   301

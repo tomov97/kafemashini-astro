@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { site } from '../utils/products';
+---
+
+<BaseLayout
+  title="Контакти | Кафемашини"
+  description="Свържете се с нас за кафе машини втора употреба. Телефон: 0894 807 755. Адрес: София, ул. Сливен 23. Работно време: Пон-Пет 10:00-17:00."
+>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <Breadcrumbs items={[{ label: 'Начало', href: '/' }, { label: 'Контакти' }]} />
+    <h1 class="font-heading text-3xl md:text-4xl font-bold mb-8">Контакти</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Contact Info -->
+      <div class="space-y-6">
+        <div class="bg-cream rounded-xl p-6">
+          <h2 class="font-heading text-xl font-bold mb-4">Адрес</h2>
+          <p class="text-text/80">{site.address.city}, {site.address.district}</p>
+          <p class="text-text/80">{site.address.street}, {site.address.detail}</p>
+        </div>
+
+        <div class="bg-cream rounded-xl p-6">
+          <h2 class="font-heading text-xl font-bold mb-4">Телефон</h2>
+          <a href={`tel:${site.phone}`} class="text-2xl font-bold text-primary hover:text-accent transition-colors">
+            {site.phoneDisplay}
+          </a>
+        </div>
+
+        <div class="bg-cream rounded-xl p-6">
+          <h2 class="font-heading text-xl font-bold mb-4">E-mail</h2>
+          <a href={`mailto:${site.email}`} class="text-lg text-primary hover:text-accent transition-colors">
+            {site.email}
+          </a>
+        </div>
+
+        <div class="bg-cream rounded-xl p-6">
+          <h2 class="font-heading text-xl font-bold mb-4">Работно време</h2>
+          <p class="text-text/80">{site.hours}</p>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="flex flex-col justify-center">
+        <div class="bg-primary text-cream rounded-xl p-8 text-center">
+          <h2 class="font-heading text-2xl font-bold text-white mb-4">Обадете ни се</h2>
+          <p class="text-cream/80 mb-6">Ще Ви помогнем да изберете перфектната кафе машина за Вашите нужди.</p>
+          <a
+            href={`tel:${site.phone}`}
+            class="inline-flex items-center gap-2 bg-accent text-white px-8 py-4 rounded-full font-medium hover:bg-accent-light transition-colors text-lg"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+            </svg>
+            {site.phoneDisplay}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,36 @@
+---
+import { formatBGN, formatEUR } from '../utils/currency';
+
+interface Props {
+  price: number | null;
+  priceEur: number | null;
+  originalPrice?: number | null;
+  size?: 'sm' | 'md' | 'lg';
+}
+
+const { price, priceEur, originalPrice = null, size = 'md' } = Astro.props;
+
+const sizeClasses = {
+  sm: 'text-sm',
+  md: 'text-lg',
+  lg: 'text-2xl',
+};
+---
+
+<div class="flex flex-wrap items-baseline gap-2">
+  {price !== null ? (
+    <>
+      {originalPrice && (
+        <span class="line-through text-muted text-sm">{formatBGN(originalPrice)}</span>
+      )}
+      <span class={`font-bold text-primary ${sizeClasses[size]}`}>
+        {formatBGN(price)}
+      </span>
+      {priceEur !== null && (
+        <span class="text-muted text-sm">/ {formatEUR(priceEur)}</span>
+      )}
+    </>
+  ) : (
+    <span class="text-muted italic">По запитване</span>
+  )}
+</div>

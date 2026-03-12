@@ -1,0 +1,36 @@
+---
+import { brands, getProductsByBrand } from '../utils/products';
+
+interface Props {
+  currentBrand?: string;
+}
+
+const { currentBrand } = Astro.props;
+---
+
+<aside class="w-full lg:w-64 shrink-0">
+  <div class="bg-white rounded-xl border border-border/50 p-4">
+    <h3 class="font-heading font-bold text-lg mb-3 text-primary">Марки</h3>
+    <ul class="space-y-1">
+      {brands.map(brand => {
+        const count = getProductsByBrand(brand.slug).length;
+        const isActive = brand.slug === currentBrand;
+        return (
+          <li>
+            <a
+              href={`/kafe-mashini/${brand.slug}`}
+              class={`flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-all ${
+                isActive
+                  ? 'bg-primary text-white font-medium'
+                  : 'text-text hover:bg-cream hover:text-primary'
+              }`}
+            >
+              <span>{brand.displayName}</span>
+              <span class={`text-xs ${isActive ? 'text-cream/80' : 'text-muted'}`}>({count})</span>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</aside>

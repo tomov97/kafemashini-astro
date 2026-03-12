@@ -1,17 +1,119 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProductCard from '../components/ProductCard.astro';
+import { site, brands, products } from '../utils/products';
 
+const featured = products.filter(p => p.inStock && p.price).slice(0, 8);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title="Кафемашини – втора употреба от Швейцария | Swiss Coffee"
+  description="Автоматични кафе машини втора употреба от Швейцария. Марки SAECO, DeLonghi, Gaggia, Jura и други. 6 месеца гаранция. Доставка в цялата страна."
+  ogType="website"
+>
+  <!-- Hero -->
+  <section class="bg-primary text-cream py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="max-w-3xl">
+        <p class="text-accent font-medium mb-4 tracking-wide uppercase text-sm">Swiss Coffee</p>
+        <h1 class="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+          {site.tagline}
+        </h1>
+        <p class="text-cream/80 text-lg mb-8 max-w-xl">
+          Внос на автоматични кафе машини от Швейцария. Всяка машина е професионално обслужена и идва с {site.warranty} гаранция.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="/produkti.html" class="inline-flex items-center bg-accent text-white px-8 py-3.5 rounded-full font-medium hover:bg-accent-light transition-colors text-lg">
+            Разгледай продуктите
+          </a>
+          <a href={`tel:${site.phone}`} class="inline-flex items-center gap-2 border-2 border-cream/30 text-cream px-8 py-3.5 rounded-full font-medium hover:bg-cream/10 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+            </svg>
+            {site.phoneDisplay}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Brands -->
+  <section class="bg-cream py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-10">
+        <p class="text-accent font-medium mb-2 tracking-wide uppercase text-sm">Нашите марки</p>
+        <h2 class="font-heading text-3xl md:text-4xl font-bold">Избери по марка</h2>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        {brands.map(brand => (
+          <a href={`/kafe-mashini/${brand.slug}`} class="bg-white rounded-xl p-4 text-center hover:shadow-md transition-all border border-border/50 group">
+            <span class="block font-heading font-bold text-lg text-text group-hover:text-primary transition-colors">{brand.displayName}</span>
+            <span class="text-xs text-muted">{brand.productCount} модела</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-10">
+        <p class="text-accent font-medium mb-2 tracking-wide uppercase text-sm">Каталог</p>
+        <h2 class="font-heading text-3xl md:text-4xl font-bold">Избрани кафе машини</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {featured.map(product => (
+          <ProductCard product={product} />
+        ))}
+      </div>
+      <div class="text-center mt-8">
+        <a href="/produkti.html" class="inline-flex items-center gap-2 bg-primary text-white px-8 py-3.5 rounded-full font-medium hover:bg-primary-light transition-colors">
+          Виж всички продукти
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Us -->
+  <section class="bg-primary text-cream py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-6">Защо да ни изберете?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+          <div>
+            <div class="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+            </div>
+            <h3 class="font-heading text-xl font-bold text-white mb-2">{site.warranty} гаранция</h3>
+            <p class="text-cream/70 text-sm">Всяка машина преминава през пълен сервизен преглед преди продажба.</p>
+          </div>
+          <div>
+            <div class="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" /></svg>
+            </div>
+            <h3 class="font-heading text-xl font-bold text-white mb-2">Внос от Швейцария</h3>
+            <p class="text-cream/70 text-sm">Директен внос на качествени кафе машини от швейцарския пазар.</p>
+          </div>
+          <div>
+            <div class="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+            </div>
+            <h3 class="font-heading text-xl font-bold text-white mb-2">Професионален сервиз</h3>
+            <p class="text-cream/70 text-sm">Собствен сервиз за поддръжка и ремонт на всички марки кафе машини.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": site.name,
+    "url": site.url,
+  })} />
+</BaseLayout>
