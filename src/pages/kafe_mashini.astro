@@ -1,24 +1,26 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
-import ProductGrid from '../components/ProductGrid.astro';
-import BrandSidebar from '../components/BrandSidebar.astro';
+import PaginatedProductGrid from '../components/PaginatedProductGrid.astro';
+import BrandNav from '../components/BrandNav.astro';
 import { products } from '../utils/products';
 ---
 
 <BaseLayout
   title="Кафе машини – втора употреба от Швейцария | Кафемашини"
-  description="Автоматични кафе машини втора употреба от Швейцария. Голям избор от марки с 6 месеца гаранция."
+  description="Автоматични кафе машини втора употреба от Швейцария. Голям избор от марки с 12 месеца гаранция."
+  bodyClass="!bg-cream"
 >
-  <div class="max-w-7xl mx-auto px-4 py-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 pb-8">
     <Breadcrumbs items={[{ label: 'Начало', href: '/' }, { label: 'Кафе машини' }]} />
-    <div class="flex flex-col lg:flex-row gap-8">
-      <BrandSidebar />
-      <div class="flex-1">
-        <h1 class="font-heading text-3xl md:text-4xl font-bold mb-6">Кафе машини</h1>
-        <p class="text-text/70 mb-8">Автоматични кафе машини с вградена кафемелачка. Внос от Швейцария, {products.length} модела на склад.</p>
-        <ProductGrid products={products} />
-      </div>
+    <div class="mb-8 mt-2">
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-text mb-3">
+        <span class="block text-xs font-semibold tracking-widest uppercase text-primary/50 mb-2">Каталог</span>
+        Кафе машини
+      </h1>
+      <div class="h-px w-10 bg-primary/30 rounded-full"></div>
     </div>
+    <BrandNav />
+    <PaginatedProductGrid products={products} />
   </div>
 </BaseLayout>

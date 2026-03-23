@@ -15,13 +15,17 @@
 - **Language**: Bulgarian (lang="bg", og:locale="bg_BG")
 
 ## URL rules — CRITICAL
-Every URL from the old WordPress site MUST be preserved exactly:
-- Products: `/produkt/{slug}` (72 pages)
-- Brand categories: `/kafe-mashini/{brand}` (12 pages)
+Active pages:
+- Products: `/produkt/{slug}` (54 pages — Saeco, DeLonghi only)
+- Brand categories: `/kafe-mashini/{brand}` (4 pages — delonghi, saeco, jura, philips)
 - Info pages with .html: `/about.html`, `/contact.html`, `/garantsiya.html`, `/serviz-na-kafe-mashini.html`, `/istoria_na_kafe_mashinite.html`, `/kafe_mashini.html`, `/produkti.html`
 - Info pages without .html: `/biskvitki`, `/cookie-policy`, `/uslovia`, `/zashtita-na-lichnite-danni`
 - Nested: `/produkti/instruktsii-za-upotreba`
 - See `docs/url-map.md` for the complete canonical URL list
+
+Removed brands (301 redirects in `public/_redirects`):
+- 10 brand pages → `/kafe_mashini.html` (bosch, gaggia, koenig, krups, rotel, satrap, siemens, solis, turmix, drugi-kafe-mashini)
+- 18 product pages → `/produkti.html`
 
 Build uses `format: 'file'` so `.astro` -> `.html`. Cloudflare auto-serves
 `/biskvitki.html` at `/biskvitki` (extensionless URL matching).
@@ -36,9 +40,13 @@ Build uses `format: 'file'` so `.astro` -> `.html`. Cloudflare auto-serves
 
 ## Style conventions
 - Tailwind utility classes, no custom CSS unless unavoidable
-- Design tokens defined in tailwind.config.mjs (see colors, fonts)
-- Koffie-inspired: deep green/teal (#1B4332) + cream (#FDF8F0) + gold accent (#C4922A)
-- Serif headings (Playfair Display), sans-serif body (Inter)
+- Design tokens defined in `src/styles/global.css` `@theme` block
+- Colors: primary green (#284d47), button teal (#589e94), button hover = primary green
+- No gold/accent color — emphasis uses dark green (`text-highlight`)
+- All fonts sans-serif: Inter (Cyrillic-compatible), no serif fonts
+- Text on dark backgrounds: white. Text on light backgrounds: black
+- Occasional dark green text for emphasis/highlights only
+- Light background sections use `bg-cream` (#fefbf0); `bg-gray-50` for secondary light sections (reviews, FAQ)
 - Mobile-first responsive design
 
 ## Code conventions

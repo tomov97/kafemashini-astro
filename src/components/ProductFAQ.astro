@@ -1,0 +1,83 @@
+---
+import { site } from '../utils/products';
+
+interface Props {
+  brand: string;
+  brandName: string;
+}
+
+const { brand, brandName } = Astro.props;
+
+const universalFaqs = [
+  {
+    q: 'Каква е гаранцията?',
+    a: `Всяка кафе машина идва с 12 месеца гаранция. Гаранцията покрива ремонт с нови оригинални части. Повече информация на страницата <a href="/garantsiya.html" class="text-highlight hover:underline">Гаранция</a>.`,
+  },
+  {
+    q: 'Как да поръчам?',
+    a: `Обадете се на <a href="tel:${site.phone}" class="text-highlight hover:underline">${site.phoneDisplay}</a> или ни пишете на <a href="mailto:${site.email}" class="text-highlight hover:underline">${site.email}</a>. Ще ви консултираме, ще уточним детайлите и ще организираме доставката.`,
+  },
+  {
+    q: 'Доставяте ли в цялата страна?',
+    a: 'Да, доставяме в цялата страна с куриер. Можете също да вземете машината лично от нашия магазин в София, ж.к. Банишора.',
+  },
+  {
+    q: 'В какво състояние са машините?',
+    a: 'Всяка машина е внесена от Швейцария и е преминала пълна профилактика — смяна на уплътнения, смазване на механизмите, проверка на мелачката, декалциране и цялостно почистване. Използваме само нови оригинални части.',
+  },
+  {
+    q: 'Мога ли да видя машината на живо?',
+    a: `Да, заповядайте в нашия магазин на адрес ${site.address.street}, ${site.address.detail}, ${site.address.district}, ${site.address.city}. Работно време: ${site.hours}.`,
+  },
+];
+
+const brandFaqs: Record<string, Array<{q: string, a: string}>> = {
+  saeco: [
+    { q: `Какви модели ${brandName} предлагате?`, a: `Предлагаме широка гама автоматични кафе машини ${brandName} — от компактни модели за дома до професионални за офиса. Всички са внос от Швейцария с пълна профилактика. Разгледайте <a href="/kafe-mashini/saeco" class="text-highlight hover:underline">всички модели ${brandName}</a>.` },
+  ],
+  delonghi: [
+    { q: `Какви модели ${brandName} предлагате?`, a: `Предлагаме различни автоматични кафе машини ${brandName} — Magnifica, Perfecta, PrimaDonna и други серии. Всички са внос от Швейцария с пълна профилактика. Разгледайте <a href="/kafe-mashini/delonghi" class="text-highlight hover:underline">всички модели ${brandName}</a>.` },
+  ],
+  jura: [
+    { q: `Какви модели ${brandName} предлагате?`, a: `Предлагаме автоматични кафе машини ${brandName} — швейцарска марка, известна с качеството си. Разгледайте <a href="/kafe-mashini/jura" class="text-highlight hover:underline">всички модели ${brandName}</a>.` },
+  ],
+  philips: [
+    { q: `Какви модели ${brandName} предлагате?`, a: `Предлагаме автоматични кафе машини ${brandName}. Разгледайте <a href="/kafe-mashini/philips" class="text-highlight hover:underline">всички модели ${brandName}</a>.` },
+  ],
+};
+
+const faqs = [...(brandFaqs[brand] || []), ...universalFaqs];
+---
+
+<section class="bg-cream py-12 mt-12 -mx-4 sm:-mx-6 px-4 sm:px-6">
+  <div class="max-w-3xl mx-auto">
+    <p class="text-highlight font-medium mb-2 tracking-wide uppercase text-sm text-center">Въпроси и отговори</p>
+    <h2 class="text-2xl md:text-3xl font-bold text-center mb-8">Често задавани въпроси</h2>
+    <div class="space-y-3">
+      {faqs.map(faq => (
+        <details class="bg-white rounded-2xl px-6 py-5 shadow-sm group">
+          <summary class="font-semibold cursor-pointer list-none flex justify-between items-center gap-4">
+            {faq.q}
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0 text-highlight transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </summary>
+          <p class="mt-3 text-text/70 leading-relaxed" set:html={faq.a} />
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.a.replace(/<[^>]*>/g, ''),
+    },
+  })),
+})} />

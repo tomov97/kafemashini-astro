@@ -1,7 +1,19 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm create:*)"
+      "Bash(npm create:*)",
+      "Bash(grep -r \"primarySlugs\\\\|brand\" /c/Users/tomov/.gemini/antigravity/scratch/claude-website-migration/src/pages/produkt/[slug].astro)",
+      "WebFetch(domain:www.delonghi.com)",
+      "WebFetch(domain:www.philips.com)",
+      "Bash(grep -r \"Philips\\\\|DeLonghi\\\\|spec.*scrape\\\\|retailer\" C:Userstomov.geminiantigravityscratchclaude-website-migration --include=*.md --include=*.txt --include=*.mjs --include=*.js)",
+      "WebSearch",
+      "WebFetch(domain:versus.com)",
+      "WebFetch(domain:productz.com)",
+      "WebFetch(domain:www.bean2cup.org)",
+      "Bash(node tools/merge-enriched-specs.mjs --dry-run)",
+      "Bash(node tools/merge-enriched-specs.mjs)",
+      "Bash(node -e \":*)",
+      "Bash(npm run:*)"
     ]
   }
 }

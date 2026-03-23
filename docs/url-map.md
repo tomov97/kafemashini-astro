@@ -10,29 +10,16 @@ Source of truth for URL verification. Every URL below MUST return HTTP 200 on th
 |-----|------|
 | `/` | Homepage |
 
-## Product Pages (72)
+## Product Pages (54)
 
 | URL | Product Name |
 |-----|-------------|
-| `/produkt/gaggia-platinum-swing-up` | Gaggia Platinum Swing Up |
-| `/produkt/rotel-conforta-digital` | Rotel Conforta Digital |
 | `/produkt/saeco-idea` | Saeco Idea |
-| `/produkt/fust-primotecq` | Fust Primotecq |
-| `/produkt/krups-xp-7240` | Krups XP 7240 |
-| `/produkt/turmix-tx-550` | Turmix TX 550 |
-| `/produkt/koenig-arte-2000` | Koenig Arte 2000 |
-| `/produkt/turmix-tx-650` | Turmix TX 650 |
-| `/produkt/caggia-accademia` | Caggia Accademia |
 | `/produkt/delonghi-magnifica-rapid` | DeLonghi Magnifica Rapid |
 | `/produkt/saeco-royal-digital-plus` | Saeco Royal Digital Plus |
 | `/produkt/delonghi-esam-4000` | DeLonghi ESAM 4000 |
-| `/produkt/turmix-just-touch` | Turmix Just Touch |
-| `/produkt/siemens-surpresso-s40` | Siemens Surpresso S40 |
-| `/produkt/siemens-surpresso-compact` | Siemens Surpresso Compact |
-| `/produkt/satrap-excelento` | Satrap Excelento |
 | `/produkt/delonghi-esam-04-350-cappuccino` | DeLonghi ESAM 04.350 Cappuccino |
 | `/produkt/saeco-primea-cappuccino-touch` | Saeco Primea Cappuccino Touch |
-| `/produkt/gaggia-titanium` | Gaggia Titanium |
 | `/produkt/saeco-minuto-hd8761` | Saeco Minuto HD8761 |
 | `/produkt/saeco-magic` | Saeco Magic |
 | `/produkt/saeco-incanto-sirius` | Saeco Incanto Sirius |
@@ -43,16 +30,12 @@ Source of truth for URL verification. Every URL below MUST return HTTP 200 on th
 | `/produkt/delonghi-esam-4400` | DeLonghi ESAM 4400 |
 | `/produkt/delonghi-perfecta-graphic-touch-esam-5600` | DeLonghi Perfecta Graphic Touch ESAM 5600 |
 | `/produkt/saeco-incanto-digital` | Saeco Incanto Digital |
-| `/produkt/satrap-va-70` | Satrap VA 70 |
 | `/produkt/saeco-minuto-hd8661` | Saeco Minuto HD8661 |
 | `/produkt/saeco-royal-gran-crema` | Saeco Royal Gran Crema |
 | `/produkt/saeco-incanto-s-class-rondo` | Saeco Incanto S-Class Rondo |
 | `/produkt/saeco-incanto-classic` | Saeco Incanto Classic |
 | `/produkt/saeco-talea-giro` | Saeco Talea Giro |
 | `/produkt/saeco-xelsis` | Saeco Xelsis |
-| `/produkt/solis-palazzo` | Solis Palazzo |
-| `/produkt/produkt-bosch-benvenuto-b30` | Bosch Benvenuto B30 |
-| `/produkt/gaggia-brera` | Gaggia Brera |
 | `/produkt/delonghi-esam-5500-cappuccino` | DeLonghi ESAM 5500 Cappuccino |
 | `/produkt/delonghi-ecam-22-360-b` | DeLonghi ECAM 22.360.B |
 | `/produkt/saeco-intuita` | Saeco Intuita |
@@ -68,7 +51,6 @@ Source of truth for URL verification. Every URL below MUST return HTTP 200 on th
 | `/produkt/delonghi-magnifica-esam-3300` | DeLonghi Magnifica ESAM 3300 |
 | `/produkt/delonghi-intensa-esam-23420` | DeLonghi Intensa ESAM 23420 |
 | `/produkt/saeco-odea-giro-plus` | Saeco Odea Giro Plus |
-| `/produkt/gaggia-platinum` | Gaggia Platinum |
 | `/produkt/saeco-odea-giro` | Saeco Odea Giro |
 | `/produkt/saeco-odea-go` | Saeco Odea Go |
 | `/produkt/saeco-odea-go-black-edition` | Saeco Odea Go Black Edition |
@@ -87,22 +69,14 @@ Source of truth for URL verification. Every URL below MUST return HTTP 200 on th
 | `/produkt/delonghi-ecam-25-120` | DeLonghi ECAM 25.120 |
 | `/produkt/saeco-intelia` | Saeco Intelia |
 
-## Brand Category Pages (12)
+## Brand Category Pages (4)
 
 | URL | Brand |
 |-----|-------|
-| `/kafe-mashini/bosch` | BOSCH |
 | `/kafe-mashini/delonghi` | DeLonghi |
-| `/kafe-mashini/gaggia` | Gaggia |
-| `/kafe-mashini/koenig` | KOENIG |
-| `/kafe-mashini/krups` | KRUPS |
-| `/kafe-mashini/rotel` | ROTEL |
 | `/kafe-mashini/saeco` | SAECO |
-| `/kafe-mashini/satrap` | SATRAP |
-| `/kafe-mashini/siemens` | SIEMENS |
-| `/kafe-mashini/solis` | SOLIS |
-| `/kafe-mashini/turmix` | TURMIX |
-| `/kafe-mashini/drugi-kafe-mashini` | Други кафе машини |
+| `/kafe-mashini/jura` | Jura |
+| `/kafe-mashini/philips` | Philips |
 
 ## Info Pages with .html Extension (7)
 
@@ -133,6 +107,50 @@ Source of truth for URL verification. Every URL below MUST return HTTP 200 on th
 
 ---
 
-**Total: 97 URLs** (1 homepage + 72 products + 12 categories + 7 .html info + 4 extensionless info + 1 nested)
+**Total: 71 URLs** (1 homepage + 54 products + 4 categories + 7 .html info + 4 extensionless info + 1 nested)
 
 Plus `404.html` custom error page (not in sitemap).
+
+---
+
+## Removed URLs (301 redirects)
+
+These URLs existed on the old WordPress site and must 301-redirect on the new site.
+
+### Removed Brand Category Pages → `/kafe_mashini.html`
+
+| Old URL | Redirect Target |
+|---------|----------------|
+| `/kafe-mashini/bosch` | `/kafe_mashini.html` |
+| `/kafe-mashini/gaggia` | `/kafe_mashini.html` |
+| `/kafe-mashini/koenig` | `/kafe_mashini.html` |
+| `/kafe-mashini/krups` | `/kafe_mashini.html` |
+| `/kafe-mashini/rotel` | `/kafe_mashini.html` |
+| `/kafe-mashini/satrap` | `/kafe_mashini.html` |
+| `/kafe-mashini/siemens` | `/kafe_mashini.html` |
+| `/kafe-mashini/solis` | `/kafe_mashini.html` |
+| `/kafe-mashini/turmix` | `/kafe_mashini.html` |
+| `/kafe-mashini/drugi-kafe-mashini` | `/kafe_mashini.html` |
+
+### Removed Product Pages → `/produkti.html`
+
+| Old URL | Redirect Target |
+|---------|----------------|
+| `/produkt/gaggia-platinum-swing-up` | `/produkti.html` |
+| `/produkt/rotel-conforta-digital` | `/produkti.html` |
+| `/produkt/fust-primotecq` | `/produkti.html` |
+| `/produkt/krups-xp-7240` | `/produkti.html` |
+| `/produkt/turmix-tx-550` | `/produkti.html` |
+| `/produkt/koenig-arte-2000` | `/produkti.html` |
+| `/produkt/turmix-tx-650` | `/produkti.html` |
+| `/produkt/caggia-accademia` | `/produkti.html` |
+| `/produkt/turmix-just-touch` | `/produkti.html` |
+| `/produkt/siemens-surpresso-s40` | `/produkti.html` |
+| `/produkt/siemens-surpresso-compact` | `/produkti.html` |
+| `/produkt/satrap-excelento` | `/produkti.html` |
+| `/produkt/gaggia-titanium` | `/produkti.html` |
+| `/produkt/satrap-va-70` | `/produkti.html` |
+| `/produkt/solis-palazzo` | `/produkti.html` |
+| `/produkt/produkt-bosch-benvenuto-b30` | `/produkti.html` |
+| `/produkt/gaggia-brera` | `/produkti.html` |
+| `/produkt/gaggia-platinum` | `/produkti.html` |

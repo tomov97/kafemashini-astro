@@ -3,3 +3,35 @@
 /moyat-profil   /   301
 /cart           /   301
 /checkout       /   301
+
+# Removed brand pages -> general brands page
+/kafe-mashini/bosch                /kafe_mashini.html  301
+/kafe-mashini/gaggia               /kafe_mashini.html  301
+/kafe-mashini/koenig               /kafe_mashini.html  301
+/kafe-mashini/krups                /kafe_mashini.html  301
+/kafe-mashini/rotel                /kafe_mashini.html  301
+/kafe-mashini/satrap               /kafe_mashini.html  301
+/kafe-mashini/siemens              /kafe_mashini.html  301
+/kafe-mashini/solis                /kafe_mashini.html  301
+/kafe-mashini/turmix               /kafe_mashini.html  301
+/kafe-mashini/drugi-kafe-mashini   /kafe_mashini.html  301
+
+# Removed product pages -> general products page
+/produkt/gaggia-platinum-swing-up       /produkti.html  301
+/produkt/rotel-conforta-digital         /produkti.html  301
+/produkt/fust-primotecq                 /produkti.html  301
+/produkt/krups-xp-7240                  /produkti.html  301
+/produkt/turmix-tx-550                  /produkti.html  301
+/produkt/koenig-arte-2000              /produkti.html  301
+/produkt/turmix-tx-650                 /produkti.html  301
+/produkt/caggia-accademia              /produkti.html  301
+/produkt/turmix-just-touch             /produkti.html  301
+/produkt/siemens-surpresso-s40         /produkti.html  301
+/produkt/siemens-surpresso-compact     /produkti.html  301
+/produkt/satrap-excelento              /produkti.html  301
+/produkt/gaggia-titanium               /produkti.html  301
+/produkt/satrap-va-70                  /produkti.html  301
+/produkt/solis-palazzo                 /produkti.html  301
+/produkt/produkt-bosch-benvenuto-b30   /produkti.html  301
+/produkt/gaggia-brera                  /produkti.html  301
+/produkt/gaggia-platinum               /produkti.html  301

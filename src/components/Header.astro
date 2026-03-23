@@ -1,46 +1,51 @@
 ---
 import { site } from '../utils/products';
+
+const currentPath = Astro.url.pathname;
 ---
 
-<header class="bg-primary text-white">
-  <!-- Top bar with phone -->
-  <div class="bg-primary-dark py-2">
-    <div class="max-w-7xl mx-auto px-4 flex justify-end items-center text-sm">
-      <a href={`tel:${site.phone}`} class="flex items-center gap-2 text-cream hover:text-accent transition-colors">
+<header class="header-wrap">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    <nav class="header-bar">
+      <!-- Logo -->
+      <a href="/" class="flex items-center flex-shrink-0">
+        <img src="/images/logo-opt.webp" alt={site.name} class="h-7 w-auto brightness-0 invert" />
+      </a>
+
+      <!-- Desktop nav -->
+      <ul class="hidden lg:flex items-center gap-1">
+        {site.navigation.map(item => {
+          const isProducts = item.href === '/produkti.html';
+          const isActive = item.href === '/'
+            ? currentPath === '/'
+            : isProducts
+              ? currentPath.startsWith('/produkti') || currentPath.startsWith('/kafe-mashini') || currentPath.startsWith('/produkt') || currentPath.startsWith('/kafe_mashini')
+              : currentPath.startsWith(item.href);
+          return (
+            <li>
+              <a
+                href={item.href}
+                class:list={['hdr-link', { 'hdr-active': isActive }]}
+              >
+                {item.label}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+
+      <!-- Phone CTA -->
+      <a href={`tel:${site.phone}`} class="hidden lg:inline-flex hdr-cta">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
           <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
         </svg>
         {site.phoneDisplay}
       </a>
-    </div>
-  </div>
-
-  <!-- Main nav -->
-  <nav class="max-w-7xl mx-auto px-4 py-4">
-    <div class="flex items-center justify-between">
-      <!-- Logo -->
-      <a href="/" class="flex items-center gap-3">
-        <span class="font-heading text-2xl md:text-3xl font-bold text-cream">{site.name}</span>
-      </a>
-
-      <!-- Desktop nav -->
-      <ul class="hidden md:flex items-center gap-1">
-        {site.navigation.map(item => (
-          <li>
-            <a
-              href={item.href}
-              class="px-4 py-2 rounded-full text-sm font-medium text-cream/90 hover:text-white hover:bg-primary-light transition-all"
-            >
-              {item.label}
-            </a>
-          </li>
-        ))}
-      </ul>
 
       <!-- Mobile hamburger -->
       <button
         id="mobile-menu-btn"
-        class="md:hidden p-2 text-cream hover:text-white"
+        class="lg:hidden p-2 text-white/80 hover:text-white"
         aria-label="Отвори менюто"
         aria-expanded="false"
       >
@@ -48,36 +53,137 @@ import { site } from '../utils/products';
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>
-    </div>
+    </nav>
 
     <!-- Mobile menu -->
-    <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-primary-light pt-4">
-      <ul class="flex flex-col gap-2">
-        {site.navigation.map(item => (
-          <li>
-            <a
-              href={item.href}
-              class="block px-4 py-2 rounded-lg text-cream/90 hover:text-white hover:bg-primary-light transition-all"
-            >
-              {item.label}
-            </a>
-          </li>
-        ))}
+    <div id="mobile-menu" class="hidden lg:hidden mobile-menu">
+      <ul class="flex flex-col gap-1 py-3">
+        {site.navigation.map(item => {
+          const isProducts = item.href === '/produkti.html';
+          const isActive = item.href === '/'
+            ? currentPath === '/'
+            : isProducts
+              ? currentPath.startsWith('/produkti') || currentPath.startsWith('/kafe-mashini') || currentPath.startsWith('/produkt') || currentPath.startsWith('/kafe_mashini')
+              : currentPath.startsWith(item.href);
+          return (
+            <li>
+              <a
+                href={item.href}
+                class:list={['mobile-link', { 'mobile-active': isActive }]}
+              >
+                {item.label}
+              </a>
+            </li>
+          );
+        })}
       </ul>
-      <div class="mt-4 px-4">
-        <a
-          href={`tel:${site.phone}`}
-          class="inline-flex items-center gap-2 bg-accent text-white px-6 py-3 rounded-full font-medium hover:bg-accent-light transition-colors"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-          </svg>
-          Обадете се: {site.phoneDisplay}
-        </a>
-      </div>
     </div>
-  </nav>
+  </div>
 </header>
+
+<style>
+  .header-wrap {
+    padding: 1rem 0;
+  }
+
+  .header-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(180deg, #3a6b63 0%, #284d47 40%, #1f3d38 100%);
+    border-radius: 9999px;
+    padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+    gap: 1rem;
+    box-shadow:
+      0 1px 0 0 rgba(255, 255, 255, 0.15) inset,
+      0 -1px 0 0 rgba(0, 0, 0, 0.2) inset,
+      0 8px 24px rgba(40, 77, 71, 0.35),
+      0 2px 6px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .hdr-link {
+    display: block;
+    padding: 0.55rem 1.2rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.65);
+    text-decoration: none;
+    border-radius: 9999px;
+    transition: color 0.15s, background 0.15s;
+    white-space: nowrap;
+  }
+
+  .hdr-link:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .hdr-active {
+    color: #284d47;
+    background: linear-gradient(180deg, #ffffff 0%, #e8eeec 100%);
+    font-weight: 600;
+    box-shadow:
+      0 1px 0 0 rgba(255, 255, 255, 0.9) inset,
+      0 2px 8px rgba(0, 0, 0, 0.12);
+  }
+
+  .hdr-active:hover {
+    color: #284d47;
+    background: linear-gradient(180deg, #ffffff 0%, #e8eeec 100%);
+  }
+
+  .hdr-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.55rem 1.4rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(180deg, #6db3a8 0%, #589e94 40%, #4a8d83 100%);
+    border-radius: 9999px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.15s;
+    box-shadow:
+      0 1px 0 0 rgba(255, 255, 255, 0.25) inset,
+      0 2px 6px rgba(0, 0, 0, 0.12);
+  }
+
+  .hdr-cta:hover {
+    background: linear-gradient(180deg, #7abfb5 0%, #6db3a8 40%, #589e94 100%);
+  }
+
+  .mobile-menu {
+    background: #284d47;
+    border-radius: 1rem;
+    margin-top: 0.5rem;
+    padding: 0 0.75rem;
+  }
+
+  .mobile-link {
+    display: block;
+    padding: 0.7rem 1rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.65);
+    text-decoration: none;
+    border-radius: 0.5rem;
+    transition: color 0.15s, background 0.15s;
+  }
+
+  .mobile-link:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .mobile-active {
+    color: white;
+    background: rgba(255, 255, 255, 0.15);
+    font-weight: 600;
+  }
+</style>
 
 <script>
   const btn = document.getElementById('mobile-menu-btn');

@@ -4,18 +4,31 @@ import type { Product } from '../utils/products';
 
 interface Props {
   products: Product[];
+  brandName?: string;
+  brandSlug?: string;
 }
 
-const { products } = Astro.props;
+const { products, brandName, brandSlug } = Astro.props;
+const heading = brandName ? `Подобни модели ${brandName}` : 'Подобни продукти';
 ---
 
 {products.length > 0 && (
   <section class="mt-12">
-    <h2 class="font-heading text-2xl font-bold mb-6">Подобни продукти</h2>
+    <h2 class="text-2xl font-bold mb-6">{heading}</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       {products.map(product => (
         <ProductCard product={product} />
       ))}
     </div>
+    {brandSlug && (
+      <div class="text-center mt-8">
+        <a href={`/kafe-mashini/${brandSlug}`} class="inline-flex items-center gap-2 text-highlight font-medium hover:underline">
+          Виж всички {brandName}
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </a>
+      </div>
+    )}
   </section>
 )}

@@ -1,8 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import ProductGrid from '../../components/ProductGrid.astro';
-import BrandSidebar from '../../components/BrandSidebar.astro';
+import PaginatedProductGrid from '../../components/PaginatedProductGrid.astro';
+import BrandNav from '../../components/BrandNav.astro';
 import { brands, getProductsByBrand } from '../../utils/products';
 
 export function getStaticPaths() {
@@ -23,31 +23,26 @@ const breadcrumbs = [
 
 <BaseLayout
   title={brand.metaTitle || `Кафе машини ${brand.displayName} – втора употреба | Кафемашини`}
-  description={brand.metaDescription || `Кафе машини ${brand.displayName} втора употреба от Швейцария. ${brandProducts.length} модела на склад. 6 месеца гаранция.`}
+  description={brand.metaDescription || `Кафе машини ${brand.displayName} втора употреба от Швейцария. ${brandProducts.length} модела на склад. 12 месеца гаранция.`}
+  bodyClass="!bg-cream"
 >
-  <div class="max-w-7xl mx-auto px-4 py-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 pb-8">
     <Breadcrumbs items={breadcrumbs} />
 
-    <div class="flex flex-col lg:flex-row gap-8">
-      <BrandSidebar currentBrand={brandSlug} />
-
-      <div class="flex-1">
-        <h1 class="font-heading text-3xl md:text-4xl font-bold mb-4">
-          Кафе машини {brand.displayName}
-        </h1>
-
-        {brand.description && (
-          <div class="prose prose-sm max-w-none text-text/80 mb-8">
-            <p>{brand.description}</p>
-          </div>
-        )}
-
-        {brandProducts.length > 0 ? (
-          <ProductGrid products={brandProducts} />
-        ) : (
-          <p class="text-muted text-center py-12">Няма налични продукти от тази марка в момента.</p>
-        )}
-      </div>
+    <div class="mb-5 mt-2">
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-text mb-2">
+        <span class="block text-xs font-semibold tracking-widest uppercase text-primary/50 mb-2">Кафе машини</span>
+        {brand.displayName}
+      </h1>
+      <p class="text-sm text-muted">{brandProducts.length} обслужени кафе машини {brand.displayName} от Швейцария с 12 месеца гаранция.</p>
     </div>
+
+    <BrandNav currentBrand={brandSlug} />
+
+    {brandProducts.length > 0 ? (
+      <PaginatedProductGrid products={brandProducts} />
+    ) : (
+      <p class="text-muted text-center py-12">Няма налични продукти от тази марка в момента.</p>
+    )}
   </div>
 </BaseLayout>

@@ -271,7 +271,7 @@ async function scrapeProduct(url) {
     currency: 'BGN',
     inStock,
     onSale,
-    warranty: '6 месеца',
+    warranty: '12 месеца',
     description,
     specs,
     images,

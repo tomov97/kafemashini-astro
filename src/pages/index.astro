@@ -1,76 +1,447 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductCard from '../components/ProductCard.astro';
-import { site, brands, products } from '../utils/products';
+import { site, brands, products, getProductsByBrand } from '../utils/products';
 
 const featured = products.filter(p => p.inStock && p.price).slice(0, 8);
+// build.format:'file' makes Astro.url.pathname return '/index' for the homepage, not '/'.
+// Since this file IS the homepage, we hardcode '/' as the current path.
+const currentPath = '/';
+
+// Brand tabs for the products section pill bar
+const brandTabs = [
+  { slug: 'delonghi', label: 'DeLonghi' },
+  { slug: 'saeco',    label: 'Saeco'    },
+  { slug: 'philips',  label: 'Philips'  },
+  { slug: 'jura',     label: 'Jura'     },
+];
+
+// Pre-compute top 6 products per brand for client-side switching
+const brandProductsMap: Record<string, { slug: string; name: string; brandDisplayName: string; price: number | null; priceEur: number | null; images: { src: string; alt: string; isMain: boolean }[] }[]> = {};
+for (const tab of brandTabs) {
+  const all = getProductsByBrand(tab.slug).filter(p => p.inStock);
+  brandProductsMap[tab.slug] = all.slice(0, 6).map(p => ({
+    slug: p.slug,
+    name: p.name,
+    brandDisplayName: p.brandDisplayName,
+    price: p.price,
+    priceEur: p.priceEur,
+    images: p.images.map(img => ({ src: img.src, alt: img.alt || '', isMain: img.isMain })),
+  }));
+}
+const defaultBrand = 'delonghi';
+const defaultProducts = brandProductsMap[defaultBrand] ?? [];
 ---
 
 <BaseLayout
   title="Кафемашини – втора употреба от Швейцария | Swiss Coffee"
-  description="Автоматични кафе машини втора употреба от Швейцария. Марки SAECO, DeLonghi, Gaggia, Jura и други. 6 месеца гаранция. Доставка в цялата страна."
+  description="Автоматични кафе машини втора употреба от Швейцария. Марки SAECO, DeLonghi, Jura и Philips. 12 месеца гаранция. Доставка в цялата страна."
   ogType="website"
+  hideHeader={true}
 >
-  <!-- Hero -->
-  <section class="bg-primary text-cream py-16 md:py-24">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="max-w-3xl">
-        <p class="text-accent font-medium mb-4 tracking-wide uppercase text-sm">Swiss Coffee</p>
-        <h1 class="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-          {site.tagline}
+  <!-- Hero — integrated header + photo card grid -->
+  <section class="bg-cream" style="position: relative; overflow: hidden;">
+    <!-- Decorative background brush stroke (anchored via grid) -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 sm:px-6 hero-grid">
+
+      <!-- Row 1, Col 1: Logo -->
+      <div class="hero-logo">
+        <a href="/" class="inline-flex items-center">
+          <img src="/images/logo-opt.webp" alt={site.name} class="h-8 md:h-10 w-auto" />
+        </a>
+      </div>
+
+      <!-- Row 1, Col 2: Nav (floats above card) -->
+      <div class="hero-nav">
+        <ul class="hidden lg:flex items-center gap-1 bg-white rounded-full px-2 py-1.5 nav-pill-container">
+          {site.navigation.map(item => {
+            const isActive = item.href === '/' ? currentPath === '/' : currentPath.startsWith(item.href);
+            return (
+              <li>
+                <a
+                  href={item.href}
+                  class={`nav-pill px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 block ${
+                    isActive
+                      ? 'nav-pill-active text-white'
+                      : 'text-text/70 hover:text-white nav-pill-hover'
+                  }`}
+                >
+                  {item.label}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+        <!-- Mobile hamburger -->
+        <button
+          id="mobile-menu-btn"
+          class="lg:hidden p-2 text-text/80 hover:text-text"
+          aria-label="Отвори менюто"
+          aria-expanded="false"
+        >
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile menu (spans full width) -->
+      <div id="mobile-menu" class="hidden lg:hidden hero-mobile-menu border-t border-border/30 pt-4 pb-4">
+        <ul class="flex flex-col gap-1">
+          {site.navigation.map(item => {
+            const isActive = item.href === '/' ? currentPath === '/' : currentPath.startsWith(item.href);
+            return (
+              <li>
+                <a
+                  href={item.href}
+                  class={`block px-4 py-2.5 rounded-lg font-medium transition-all ${
+                    isActive
+                      ? 'bg-primary text-white'
+                      : 'text-text/80 hover:text-white hover:bg-btn'
+                  }`}
+                >
+                  {item.label}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+
+      <!-- Row 2, Col 1: Hero text -->
+      <div class="hero-text flex flex-col justify-center gsap-fade-up">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
+          <span class="text-highlight">Продажба и сервиз на кафе машини</span>
         </h1>
-        <p class="text-cream/80 text-lg mb-8 max-w-xl">
-          Внос на автоматични кафе машини от Швейцария. Всяка машина е професионално обслужена и идва с {site.warranty} гаранция.
+        <p class="text-text/70 text-lg mb-2 leading-relaxed max-w-md">
+          Продажба на напълно обслужени кафе машини от Швейцария и професионален ремонт и поддръжка в България.
         </p>
-        <div class="flex flex-wrap gap-4">
-          <a href="/produkti.html" class="inline-flex items-center bg-accent text-white px-8 py-3.5 rounded-full font-medium hover:bg-accent-light transition-colors text-lg">
-            Разгледай продуктите
+        <div class="text-text text-sm mb-8 leading-snug">
+          <p>• 12 месеца гаранция</p>
+          <p>• 18+ години на пазара</p>
+          <p>• 15 000 обслужени клиенти</p>
+        </div>
+        <div class="flex gap-3">
+          <a href="/produkti.html" class="hero-btn hero-btn-inverted inline-flex items-center px-5 sm:px-8 py-3 sm:py-3.5 rounded-full font-semibold text-sm sm:text-base whitespace-nowrap">
+            Кафе Машини
           </a>
-          <a href={`tel:${site.phone}`} class="inline-flex items-center gap-2 border-2 border-cream/30 text-cream px-8 py-3.5 rounded-full font-medium hover:bg-cream/10 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-            </svg>
-            {site.phoneDisplay}
+          <a href="/serviz-na-kafe-mashini.html" class="hero-btn hero-btn-inverted inline-flex items-center px-5 sm:px-8 py-3 sm:py-3.5 rounded-full font-semibold text-sm sm:text-base whitespace-nowrap">
+            Нашият Сервиз
           </a>
+        </div>
+      </div>
+
+      <!-- Row 1+2, Col 2: Photo card (spans both rows) -->
+      <div class="hero-card gsap-fade-up" style="--delay: 0.15s">
+        <div class="hero-photo-card">
+          <img
+            src="/images/hero-header-opt.webp"
+            alt="Автоматична кафе машина в модерна кухня"
+            class="w-full h-full object-cover"
+            style="object-position: 40% center"
+            fetchpriority="high"
+            loading="eager"
+          />
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Why Us — green section right below hero -->
+  <section class="bg-primary py-16 gsap-section">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-12 gsap-fade-up">Защо клиентите ни се доверяват?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+          <!-- Card 1 -->
+          <div class="gsap-fade-up h-full">
+            <div class="why-card h-full">
+              <div class="why-card-icon">
+                <!-- Star / award — experience -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold text-text mb-5">18+ години опит</h3>
+              <p class="text-text/60 text-base leading-relaxed">Над 18 години професионален сервиз, ремонт и продажба на кафе машини в България.</p>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="gsap-fade-up h-full" style="--delay: 0.1s">
+            <div class="why-card h-full">
+              <div class="why-card-icon">
+                <!-- People / customers icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold text-text mb-5">15 000+ обслужени клиенти</h3>
+              <p class="text-text/60 text-base leading-relaxed">Над 15 000 клиенти ни се довериха за сервиз, поддръжка и покупка на кафе машини.</p>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="gsap-fade-up h-full" style="--delay: 0.2s">
+            <div class="why-card h-full">
+              <div class="why-card-icon">
+                <!-- Shield / warranty icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold text-text mb-5">12 месеца гаранция</h3>
+              <p class="text-text/60 text-base leading-relaxed">12 месеца гаранция на напълно обслужени рециклирани кафе машини, внесени от Швейцария.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Our Services -->
+        <h2 class="text-3xl md:text-4xl font-bold text-white text-center mt-16 mb-12 gsap-fade-up">Нашите услуги</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+          <!-- Card: Coffee Machines -->
+          <div class="gsap-fade-up h-full">
+            <div class="svc-card svc-card-green h-full">
+              <!-- Abstract illustration -->
+              <div class="svc-illustration">
+                <!-- Outer ring -->
+                <div class="svc-ring svc-ring-outer svc-ring-green"></div>
+                <!-- Middle ring -->
+                <div class="svc-ring svc-ring-mid svc-ring-green-mid"></div>
+                <!-- Center icon disc -->
+                <div class="svc-center svc-center-green">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-9" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 6h10a2 2 0 012 2v8a2 2 0 01-2 2H5a1 1 0 01-1-1V7a1 1 0 011-1z" />
+                    <path d="M17 9h1.5a2 2 0 010 4H17" />
+                    <path d="M8 6V4.5a1 1 0 011-1h2a1 1 0 011 1V6" />
+                    <line x1="4" y1="18" x2="17" y2="18" />
+                    <path d="M7 21h6" />
+                    <line x1="10" y1="18" x2="10" y2="21" />
+                  </svg>
+                </div>
+                <!-- Floating decorative elements -->
+                <div class="svc-float svc-float-1 svc-float-green">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                </div>
+                <div class="svc-float svc-float-2 svc-float-green">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg>
+                </div>
+                <div class="svc-float svc-float-3 svc-float-green">CH</div>
+              </div>
+              <!-- Text content -->
+              <h3 class="text-2xl font-bold text-text mb-3">Кафе машини</h3>
+              <p class="text-text/60 text-sm leading-relaxed mb-5">Напълно обслужени автоматични кафе машини от Швейцария с гаранция.</p>
+              <ul class="space-y-2 mb-7">
+                <li class="flex items-center gap-2.5">
+                  <svg class="h-4.5 w-4.5 text-btn flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                  <span class="text-text/80 font-medium text-sm">Обслужени преди продажба</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <svg class="h-4.5 w-4.5 text-btn flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                  <span class="text-text/80 font-medium text-sm">1 година гаранция</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <svg class="h-4.5 w-4.5 text-btn flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                  <span class="text-text/80 font-medium text-sm">Подбрани модели за дом и офис</span>
+                </li>
+              </ul>
+              <a href="/produkti.html" class="hero-btn service-btn-green inline-flex items-center gap-2 text-white px-6 py-3 rounded-full font-semibold text-sm whitespace-nowrap">
+                Разгледай машините
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Card: Service -->
+          <div class="gsap-fade-up h-full" style="--delay: 0.1s">
+            <div class="svc-card svc-card-warm h-full">
+              <!-- Abstract illustration -->
+              <div class="svc-illustration">
+                <!-- Outer ring -->
+                <div class="svc-ring svc-ring-outer svc-ring-warm"></div>
+                <!-- Middle ring -->
+                <div class="svc-ring svc-ring-mid svc-ring-warm-mid"></div>
+                <!-- Center icon disc -->
+                <div class="svc-center svc-center-warm">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-9" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" />
+                  </svg>
+                </div>
+                <!-- Floating decorative elements -->
+                <div class="svc-float svc-float-1 svc-float-warm">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><circle cx="12" cy="12" r="3" /></svg>
+                </div>
+                <div class="svc-float svc-float-2 svc-float-warm">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4" /></svg>
+                </div>
+                <div class="svc-float svc-float-3 svc-float-warm">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                </div>
+              </div>
+              <!-- Text content -->
+              <h3 class="text-2xl font-bold text-text mb-3">Сервиз</h3>
+              <p class="text-text/60 text-sm leading-relaxed mb-5">Професионален ремонт и поддръжка на кафе машини с нови части и доказан опит.</p>
+              <ul class="space-y-2 mb-7">
+                <li class="flex items-center gap-2.5">
+                  <svg class="h-4.5 w-4.5 text-amber-700 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                  <span class="text-text/80 font-medium text-sm">Диагностика и ремонт</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <svg class="h-4.5 w-4.5 text-amber-700 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                  <span class="text-text/80 font-medium text-sm">Само нови части</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <svg class="h-4.5 w-4.5 text-amber-700 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                  <span class="text-text/80 font-medium text-sm">Сервиз на водещи марки</span>
+                </li>
+              </ul>
+              <a href="/serviz-na-kafe-mashini.html" class="hero-btn service-btn-warm inline-flex items-center gap-2 text-white px-6 py-3 rounded-full font-semibold text-sm whitespace-nowrap">
+                Научи за сервиза
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+              </a>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Brands -->
-  <section class="bg-cream py-16">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="text-center mb-10">
-        <p class="text-accent font-medium mb-2 tracking-wide uppercase text-sm">Нашите марки</p>
-        <h2 class="font-heading text-3xl md:text-4xl font-bold">Избери по марка</h2>
+  <!-- Products Section -->
+  <section class="bg-cream py-16 gsap-section">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+      <!-- Heading -->
+      <div class="text-center mb-3 gsap-fade-up">
+        <h2 class="text-3xl md:text-4xl font-bold">Нашите Кафе Машини</h2>
       </div>
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-        {brands.map(brand => (
-          <a href={`/kafe-mashini/${brand.slug}`} class="bg-white rounded-xl p-4 text-center hover:shadow-md transition-all border border-border/50 group">
-            <span class="block font-heading font-bold text-lg text-text group-hover:text-primary transition-colors">{brand.displayName}</span>
-            <span class="text-xs text-muted">{brand.productCount} модела</span>
+
+      <!-- SEO copy -->
+      <p class="text-center text-text/60 max-w-lg mx-auto mb-8 text-sm leading-relaxed gsap-fade-up">
+        Обслужени автоматични кафе машини от водещи марки - DeLonghi, Saeco, Jura и Philips. Всяка сервизирана, почистена и готова за употреба с 12 месеца гаранция.
+      </p>
+
+      <!-- Brand pill bar -->
+      <div class="flex sm:justify-center mb-10 gsap-fade-up overflow-x-auto pill-scroll-wrapper">
+        <div class="nav-pill-container bg-white/80 backdrop-blur-sm rounded-full px-2 py-1.5 flex gap-1">
+          {brandTabs.map((tab, i) => (
+            <button
+              data-brand={tab.slug}
+              class={`brand-pill${i === 0 ? ' nav-pill-active' : ' nav-pill-hover'}`}
+            >
+              {tab.label}
+            </button>
+          ))}
+          <a href="/produkti.html" class="brand-pill nav-pill-hover">
+            Всички
+            <svg xmlns="http://www.w3.org/2000/svg" class="inline-block ml-1 h-3 w-3 -mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
           </a>
-        ))}
+        </div>
       </div>
+
+      <!-- Product grid (SSR default + client-side switching) -->
+      <div id="brand-products" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {defaultProducts.map((product, i) => {
+          const img = product.images.find(img => img.isMain) || product.images[0];
+          return (
+            <a
+              href={`/produkt/${product.slug}`}
+              class="group flex flex-col bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-black/5 hover:-translate-y-1 gsap-fade-up"
+              style={`--delay: ${i * 0.05}s`}
+            >
+              <div class="relative aspect-square overflow-hidden rounded-3xl m-1 bg-gradient-to-br from-[#2a2a2a] to-[#4a5568]">
+                {img ? (
+                  <img
+                    src={img.src}
+                    alt={img.alt || `${product.name} кафе машина`}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div class="w-full h-full flex items-center justify-center text-white/30">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                )}
+              </div>
+              <div class="flex flex-col flex-1 px-4 pt-3 pb-4">
+                <h3 class="font-bold text-text group-hover:text-primary transition-colors line-clamp-2 leading-snug mb-1">{product.name}</h3>
+                <p class="text-sm text-muted mb-3">{product.brandDisplayName}</p>
+                <div class="flex items-center justify-between mt-auto">
+                  {product.price ? (
+                    <p class="font-bold text-text">{product.price} лв. {product.priceEur ? <span class="text-sm font-normal text-muted">/ {product.priceEur.toFixed(0)} €</span> : ''}</p>
+                  ) : (
+                    <p class="text-sm text-muted italic">По запитване</p>
+                  )}
+                  <span class="bg-primary text-white text-xs font-semibold px-4 py-2 rounded-full group-hover:bg-btn transition-colors duration-200">Разгледай</span>
+                </div>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center mt-10 gsap-fade-up">
+        <a id="brand-cta" href="/kafe-mashini/delonghi" class="hero-btn hero-btn-primary inline-flex items-center gap-2 text-white px-8 py-3.5 rounded-full font-medium">
+          <span id="brand-cta-text">Всички машини DeLonghi</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </a>
+      </div>
+
     </div>
   </section>
 
-  <!-- Featured Products -->
-  <section class="py-16">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="text-center mb-10">
-        <p class="text-accent font-medium mb-2 tracking-wide uppercase text-sm">Каталог</p>
-        <h2 class="font-heading text-3xl md:text-4xl font-bold">Избрани кафе машини</h2>
+  <!-- Google Reviews / Social Proof -->
+  <section class="bg-primary py-16 gsap-section">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <p class="text-btn font-medium mb-2 tracking-wide uppercase text-sm text-center gsap-fade-up">Отзиви от клиенти</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 gsap-fade-up text-white">Какво казват клиентите за нас</h2>
+      <!-- Aggregate rating -->
+      <div class="flex items-center justify-center gap-3 mb-12 gsap-fade-up">
+        <span class="text-5xl font-bold text-white">4.6</span>
+        <div>
+          <div class="flex gap-1 text-yellow-400 text-2xl">★★★★★</div>
+          <p class="text-white/60 text-sm">Над 140 реални отзива</p>
+        </div>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {featured.map(product => (
-          <ProductCard product={product} />
+      <!-- Review cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 gsap-fade-up">
+        {[
+          { name: 'Мария П.', text: 'Изключително коректно, надеждно и бързо обслужване! Отлична препоръка за професионално мнение и сервиз!', date: 'март 2026' },
+          { name: 'Йордан Й.', text: 'Качествени и бързи услуги. Предлага страхотни проверени кафе машини. Горещо препоръчвам сервиза', date: 'февруари 2026' },
+          { name: 'Лозан К.', text: 'Най-добрия сервиз на който съм попадал. Силно препоръчвам!', date: 'февруари 2026' },
+        ].map(r => (
+          <div class="bg-white rounded-2xl p-6 shadow-sm relative flex flex-col">
+            <!-- Google icon -->
+            <svg class="absolute top-5 right-5 w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+            <div class="flex gap-1 text-yellow-400 mb-3">★★★★★</div>
+            <p class="text-text/80 leading-relaxed mb-4 flex-1">"{r.text}"</p>
+            <div class="flex items-center justify-between text-sm mt-auto">
+              <span class="font-semibold">{r.name}</span>
+              <span class="text-text/40">{r.date}</span>
+            </div>
+          </div>
         ))}
       </div>
-      <div class="text-center mt-8">
-        <a href="/produkti.html" class="inline-flex items-center gap-2 bg-primary text-white px-8 py-3.5 rounded-full font-medium hover:bg-primary-light transition-colors">
-          Виж всички продукти
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+      <div class="text-center mt-10 gsap-fade-up">
+        <a href="https://www.google.com/maps/place/%D0%9F%D1%80%D0%BE%D0%B4%D0%B0%D0%B6%D0%B1%D0%B0+%D0%B8+%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D0%B7+%D0%BD%D0%B0+%D0%BA%D0%B0%D1%84%D0%B5+%D0%BC%D0%B0%D1%88%D0%B8%D0%BD%D0%B8+%D0%B2%D1%82%D0%BE%D1%80%D0%B0+%D1%80%D1%8A%D0%BA%D0%B0/@42.7086601,23.3051406,17z/data=!3m1!4b1!4m6!3m5!1s0x40aa85574b94a6cf:0xdcf9df985d5e88bf!8m2!3d42.7086601!4d23.3077155!16s%2Fg%2F11clgpd823?entry=ttu&g_ep=EgoyMDI2MDMxMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-white font-semibold hover:underline">
+          Вижте всички отзиви в Google
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
           </svg>
         </a>
@@ -78,37 +449,760 @@ const featured = products.filter(p => p.inStock && p.price).slice(0, 8);
     </div>
   </section>
 
-  <!-- Why Us -->
-  <section class="bg-primary text-cream py-16">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="max-w-3xl mx-auto text-center">
-        <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-6">Защо да ни изберете?</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-          <div>
-            <div class="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
-            </div>
-            <h3 class="font-heading text-xl font-bold text-white mb-2">{site.warranty} гаранция</h3>
-            <p class="text-cream/70 text-sm">Всяка машина преминава през пълен сервизен преглед преди продажба.</p>
-          </div>
-          <div>
-            <div class="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" /></svg>
-            </div>
-            <h3 class="font-heading text-xl font-bold text-white mb-2">Внос от Швейцария</h3>
-            <p class="text-cream/70 text-sm">Директен внос на качествени кафе машини от швейцарския пазар.</p>
-          </div>
-          <div>
-            <div class="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-            </div>
-            <h3 class="font-heading text-xl font-bold text-white mb-2">Професионален сервиз</h3>
-            <p class="text-cream/70 text-sm">Собствен сервиз за поддръжка и ремонт на всички марки кафе машини.</p>
-          </div>
-        </div>
+  <!-- FAQ -->
+  <section class="bg-cream py-16 gsap-section">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <p class="text-highlight font-medium mb-2 tracking-wide uppercase text-sm text-center gsap-fade-up">Въпроси и отговори</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 gsap-fade-up">Често задавани въпроси</h2>
+      <!-- PLACEHOLDER: replace with real FAQ content, add FAQPage schema to BaseLayout or here -->
+      <div class="space-y-4 gsap-fade-up">
+        {[
+          { q: 'Каква гаранция имат машините?', a: '12 месеца гаранция на всяка продадена машина. Гаранцията покрива технически дефекти и се обслужва в нашия сервиз в София.' },
+          { q: 'Как се извършва доставката?', a: 'Изпращаме с куриер в цялата страна. Може и да вземете лично от магазина ни на ул. Сливен 23, ж.к. Банишора, Магазин 3, София.' },
+          { q: 'Правите ли сервиз на машини, закупени от другаде?', a: 'Да, обслужваме кафе машини независимо откъде са закупени. Свържете се с нас за консултация.' },
+          { q: 'Каква е разликата между нова и втора употреба машина?', a: 'Нашите машини са обслужени, почистени и тествани. При нас получавате качеството на марка машина на много по-достъпна цена и с реална гаранция.' },
+          { q: 'Мога ли да изпробвам машината преди покупка?', a: 'Да, заповядайте в магазина ни на ул. Сливен 23, ж.к. Банишора, София. Можете да видите машините на живо и да получите консултация от нашия екип.' },
+        ].map(faq => (
+          <details class="bg-white rounded-2xl px-6 py-5 shadow-sm group">
+            <summary class="font-semibold cursor-pointer list-none flex justify-between items-center gap-4">
+              {faq.q}
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0 text-highlight transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </summary>
+            <p class="mt-3 text-text/70 leading-relaxed">{faq.a}</p>
+          </details>
+        ))}
       </div>
     </div>
   </section>
+
+  <!-- CTA + Map Section -->
+  <section class="bg-primary py-16 gsap-section">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+
+        <!-- Left column: copy + contact details -->
+        <div class="gsap-fade-up text-white">
+          <p class="text-white/60 font-medium mb-3 tracking-wide uppercase text-sm">Намерете ни</p>
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-5 leading-tight">
+            Елате при нас или се обадете
+          </h2>
+          <p class="text-white/75 text-lg leading-relaxed mb-3">
+            Магазинът ни е в София, ж.к. Банишора — може да дойдете, да видите машините на живо и да получите безплатна консултация.
+          </p>
+          <p class="text-white/75 leading-relaxed mb-3">
+            Всички машини са внесени от Швейцария, напълно обслужени и тествани, с 12 месеца гаранция.
+          </p>
+          <p class="text-white/75 leading-relaxed mb-8">
+            Работим от понеделник до петък — обадете се и ще отговорим в рамките на деня.
+          </p>
+
+          <!-- Contact details -->
+          <div class="space-y-3 mb-8">
+            <div class="flex items-center gap-3 text-white/80">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0 text-btn" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span class="text-sm">{site.hours}</span>
+            </div>
+            <div class="flex items-center gap-3 text-white/80">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0 text-btn" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <span class="text-sm">{site.address.city}, {site.address.district}, {site.address.street}, {site.address.detail}</span>
+            </div>
+          </div>
+
+          <!-- CTAs -->
+          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            <a
+              href={`tel:${site.phone}`}
+              class="hero-btn hero-btn-inverted inline-flex items-center gap-3 font-bold px-8 py-4 rounded-full text-lg"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 7V5z" />
+              </svg>
+              {site.phoneDisplay}
+            </a>
+            <a
+              href="/contact.html"
+              class="inline-flex items-center gap-2 text-white/80 font-semibold hover:text-white transition-colors underline underline-offset-4 text-sm"
+            >
+              Или пишете ни
+            </a>
+          </div>
+        </div>
+
+        <!-- Right column: Google Maps embed -->
+        <div class="gsap-fade-up">
+          <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl" style="height: 420px;">
+            <iframe
+              src="https://maps.google.com/maps?q=ул.+Сливен+23,+ж.к.+Банишора,+София,+България&output=embed&hl=bg&z=16"
+              width="100%"
+              height="100%"
+              style="border: 0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Местоположение на Swiss Coffee — ул. Сливен 23, ж.к. Банишора, София"
+            ></iframe>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /*
+     * Hero CSS Grid:
+     *   col 1 (left ~45%): logo (row 1) + text (row 2)
+     *   col 2 (right ~55%): card spans BOTH rows, nav floats on top
+     *
+     * The card starts at the very top of the grid (row 1),
+     * the nav sits in the same cell but at higher z-index,
+     * giving the "nav floats above the card" effect.
+     */
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr;
+      padding-top: 16px;
+      padding-bottom: 24px;
+    }
+
+    /* Desktop: 2-column grid — only at lg+ to avoid squishing on small laptops */
+    @media (min-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 44% 56%;
+        grid-template-rows: auto 1fr;
+        gap: 0 40px;
+        padding-top: 16px;
+        padding-bottom: 10px;
+      }
+    }
+
+    @media (min-width: 1280px) {
+      .hero-grid {
+        gap: 0 56px;
+        padding-top: 16px;
+        padding-bottom: 12px;
+      }
+    }
+
+    /* Logo: row 1, col 1 — vertically centered with nav */
+    .hero-logo {
+      grid-row: 1;
+      grid-column: 1;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 20px 0 10px 0;
+    }
+
+    /* Nav: absolutely positioned to match products page header position */
+    .hero-nav {
+      grid-row: 1;
+      grid-column: 1;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0;
+      z-index: 5;
+    }
+
+    @media (min-width: 1024px) {
+      .hero-nav {
+        position: absolute;
+        top: 20px;
+        left: 0;
+        right: 0;
+        grid-column: 2;
+        justify-content: center;
+        padding: 0 24px;
+      }
+    }
+
+    /* Mobile menu: spans full width below row 1 */
+    .hero-mobile-menu {
+      grid-row: 2;
+      grid-column: 1 / -1;
+    }
+
+    /* Text: row 2, col 1 */
+    .hero-text {
+      grid-row: 3;
+      grid-column: 1;
+      padding: 24px 0;
+    }
+
+    @media (min-width: 1024px) {
+      .hero-text {
+        grid-row: 2;
+        grid-column: 1;
+        padding: 0;
+      }
+    }
+
+    /* Card: spans rows 1+2, col 2 on desktop */
+    .hero-card {
+      grid-row: 4;
+      grid-column: 1;
+    }
+
+    @media (min-width: 1024px) {
+      .hero-card {
+        grid-row: 1 / 3;
+        grid-column: 2;
+        display: flex;
+        flex-direction: column;
+        padding-top: 0;
+      }
+    }
+
+    .hero-photo-card {
+      border-radius: 24px;
+      overflow: hidden;
+      height: 360px;
+      box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.15),
+        0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    @media (min-width: 1024px) {
+      .hero-photo-card {
+        height: auto;
+        aspect-ratio: 3 / 4;
+        max-height: calc(100vh - 36px);
+      }
+    }
+
+    /* Nav pill styles (duplicated from Header for the integrated hero nav) */
+    .nav-pill-container {
+      box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.08),
+        0 1px 2px rgba(0, 0, 0, 0.04),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    }
+
+    .nav-pill-active {
+      background: linear-gradient(180deg, #356b63 0%, #284d47 60%, #1f3d38 100%);
+      box-shadow:
+        0 3px 8px rgba(40, 77, 71, 0.45),
+        0 1px 3px rgba(40, 77, 71, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    }
+
+    .nav-pill-hover:hover {
+      background: linear-gradient(180deg, #6db5ab 0%, #589e94 60%, #457e76 100%);
+      box-shadow:
+        0 3px 8px rgba(88, 158, 148, 0.4),
+        0 1px 3px rgba(88, 158, 148, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    /* Keep hero content above decorations */
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Fade-up animation — initial hidden state */
+    .gsap-fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1.1s ease, transform 1.1s ease;
+      transition-delay: var(--delay, 0s);
+      will-change: transform, opacity;
+    }
+
+    .gsap-fade-up.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Section fade-in — initial state */
+    .gsap-section {
+      opacity: 0.4;
+      transition: opacity 0.9s ease;
+    }
+
+    .gsap-section.is-visible {
+      opacity: 1;
+    }
+
+    /* Hero CTA buttons — 3D glossy effect */
+    .hero-btn {
+      transition: all 0.2s ease;
+    }
+
+    .hero-btn-primary {
+      background: linear-gradient(180deg, #356b63 0%, #284d47 60%, #1f3d38 100%);
+      box-shadow:
+        0 3px 10px rgba(40, 77, 71, 0.4),
+        0 1px 3px rgba(40, 77, 71, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    }
+    .hero-btn-primary:hover {
+      background: linear-gradient(180deg, #6db5ab 0%, #589e94 60%, #457e76 100%);
+      box-shadow:
+        0 5px 14px rgba(88, 158, 148, 0.45),
+        0 2px 5px rgba(88, 158, 148, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+      transform: translateY(-1px);
+    }
+
+    .hero-btn-dark {
+      background: linear-gradient(180deg, #356b63 0%, #284d47 60%, #1f3d38 100%);
+      box-shadow:
+        0 3px 10px rgba(40, 77, 71, 0.4),
+        0 1px 3px rgba(40, 77, 71, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    }
+    .hero-btn-dark:hover {
+      background: linear-gradient(180deg, #6db5ab 0%, #589e94 60%, #457e76 100%);
+      box-shadow:
+        0 5px 14px rgba(88, 158, 148, 0.45),
+        0 2px 5px rgba(88, 158, 148, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+      transform: translateY(-1px);
+    }
+
+    .hero-btn-inverted {
+      background: linear-gradient(180deg, #356b63 0%, #284d47 60%, #1f3d38 100%);
+      color: white;
+      box-shadow:
+        0 3px 10px rgba(40, 77, 71, 0.4),
+        0 1px 3px rgba(40, 77, 71, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    }
+    .hero-btn-inverted:hover {
+      background: linear-gradient(180deg, #6db5ab 0%, #589e94 60%, #457e76 100%);
+      color: white;
+      box-shadow:
+        0 5px 14px rgba(88, 158, 148, 0.45),
+        0 2px 5px rgba(88, 158, 148, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+      transform: translateY(-1px);
+    }
+
+    .hero-btn-secondary {
+      background: linear-gradient(180deg, #356b63 0%, #284d47 60%, #1f3d38 100%);
+      box-shadow:
+        0 4px 12px rgba(40, 77, 71, 0.45),
+        0 2px 4px rgba(40, 77, 71, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    }
+    .hero-btn-secondary:hover {
+      background: linear-gradient(180deg, #3d7a71 0%, #2f5a53 60%, #253f3a 100%);
+      box-shadow:
+        0 6px 16px rgba(40, 77, 71, 0.5),
+        0 2px 6px rgba(40, 77, 71, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.12);
+      transform: translateY(-1px);
+    }
+
+    /* Why Us floating cards */
+    .why-card {
+      background: linear-gradient(168deg, #fefcf3 0%, #f9f4e5 100%);
+      border-radius: 22px;
+      padding: 40px 32px 52px;
+      box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.6),
+        0 12px 40px rgba(0, 0, 0, 0.18),
+        0 4px 12px rgba(0, 0, 0, 0.10),
+        0 1px 3px rgba(0, 0, 0, 0.08),
+        inset 0 2px 0 rgba(255, 255, 255, 0.95),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.03);
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      cursor: default;
+    }
+    .why-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.6),
+        0 30px 70px rgba(0, 0, 0, 0.22),
+        0 12px 28px rgba(0, 0, 0, 0.14),
+        0 4px 10px rgba(0, 0, 0, 0.10),
+        inset 0 2px 0 rgba(255, 255, 255, 0.95),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.03);
+    }
+    .why-card-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: linear-gradient(180deg, #6db5ab 0%, #589e94 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+      box-shadow:
+        0 6px 16px rgba(88, 158, 148, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    }
+
+    /* Service cards — vertical layout with abstract illustrations */
+    .svc-card {
+      border-radius: 22px;
+      padding: 40px 32px 36px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+    .svc-card:hover {
+      transform: translateY(-8px) scale(1.015);
+    }
+    .svc-card-green {
+      background: linear-gradient(168deg, #ffffff 0%, #f5faf9 50%, #edf5f3 100%);
+      box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.14),
+        0 4px 12px rgba(0, 0, 0, 0.08),
+        inset 0 2px 0 rgba(255, 255, 255, 0.95),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.02);
+    }
+    .svc-card-green:hover {
+      box-shadow:
+        0 28px 64px rgba(0, 0, 0, 0.18),
+        0 10px 24px rgba(0, 0, 0, 0.11),
+        inset 0 2px 0 rgba(255, 255, 255, 0.95),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.02);
+    }
+    .svc-card-warm {
+      background: linear-gradient(168deg, #ffffff 0%, #faf7f2 50%, #f3ede3 100%);
+      box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.14),
+        0 4px 12px rgba(0, 0, 0, 0.08),
+        inset 0 2px 0 rgba(255, 255, 255, 0.95),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.02);
+    }
+    .svc-card-warm:hover {
+      box-shadow:
+        0 28px 64px rgba(0, 0, 0, 0.18),
+        0 10px 24px rgba(0, 0, 0, 0.11),
+        inset 0 2px 0 rgba(255, 255, 255, 0.95),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.02);
+    }
+
+    /* Abstract illustration container */
+    .svc-illustration {
+      position: relative;
+      width: 180px;
+      height: 180px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Concentric rings */
+    .svc-ring {
+      position: absolute;
+      border-radius: 50%;
+    }
+    .svc-ring-outer {
+      width: 170px;
+      height: 170px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .svc-ring-mid {
+      width: 130px;
+      height: 130px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .svc-ring-green {
+      background: radial-gradient(circle, transparent 60%, rgba(88, 158, 148, 0.06) 70%, rgba(88, 158, 148, 0.1) 100%);
+      border: 1.5px solid rgba(88, 158, 148, 0.1);
+    }
+    .svc-ring-green-mid {
+      background: radial-gradient(circle, transparent 55%, rgba(88, 158, 148, 0.08) 100%);
+      border: 1.5px dashed rgba(88, 158, 148, 0.15);
+    }
+    .svc-ring-warm {
+      background: radial-gradient(circle, transparent 60%, rgba(139, 115, 85, 0.06) 70%, rgba(139, 115, 85, 0.1) 100%);
+      border: 1.5px solid rgba(139, 115, 85, 0.1);
+    }
+    .svc-ring-warm-mid {
+      background: radial-gradient(circle, transparent 55%, rgba(139, 115, 85, 0.08) 100%);
+      border: 1.5px dashed rgba(139, 115, 85, 0.15);
+    }
+
+    /* Center icon disc */
+    .svc-center {
+      position: relative;
+      z-index: 2;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .svc-center-green {
+      background: linear-gradient(135deg, #6db5ab 0%, #589e94 50%, #457e76 100%);
+      box-shadow:
+        0 8px 24px rgba(88, 158, 148, 0.45),
+        0 2px 6px rgba(88, 158, 148, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+    .svc-center-warm {
+      background: linear-gradient(135deg, #b8a485 0%, #8B7355 50%, #6B5B45 100%);
+      box-shadow:
+        0 8px 24px rgba(139, 115, 85, 0.45),
+        0 2px 6px rgba(139, 115, 85, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+
+    /* Floating decorative elements */
+    .svc-float {
+      position: absolute;
+      z-index: 3;
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+    .svc-float svg {
+      width: 100%;
+      height: 100%;
+    }
+    .svc-float-1 {
+      top: 10px;
+      right: 12px;
+      animation: svc-bob 4s ease-in-out infinite;
+    }
+    .svc-float-2 {
+      bottom: 18px;
+      left: 8px;
+      animation: svc-bob 4s ease-in-out 1.3s infinite;
+    }
+    .svc-float-3 {
+      top: 22px;
+      left: 16px;
+      animation: svc-bob 4s ease-in-out 2.6s infinite;
+    }
+    .svc-float-green {
+      background: rgba(88, 158, 148, 0.1);
+      color: #589e94;
+      box-shadow: 0 2px 8px rgba(88, 158, 148, 0.15);
+    }
+    .svc-float-warm {
+      background: rgba(139, 115, 85, 0.1);
+      color: #8B7355;
+      box-shadow: 0 2px 8px rgba(139, 115, 85, 0.15);
+    }
+    @keyframes svc-bob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    .service-btn-green {
+      background: linear-gradient(180deg, #356b63 0%, #284d47 60%, #1f3d38 100%);
+      box-shadow:
+        0 3px 10px rgba(40, 77, 71, 0.4),
+        0 1px 3px rgba(40, 77, 71, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    }
+    .service-btn-green:hover {
+      background: linear-gradient(180deg, #6db5ab 0%, #589e94 60%, #457e76 100%);
+      box-shadow:
+        0 5px 14px rgba(88, 158, 148, 0.45),
+        0 2px 5px rgba(88, 158, 148, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+      transform: translateY(-1px);
+    }
+    .service-btn-warm {
+      background: linear-gradient(180deg, #356b63 0%, #284d47 60%, #1f3d38 100%);
+      box-shadow:
+        0 3px 10px rgba(40, 77, 71, 0.4),
+        0 1px 3px rgba(40, 77, 71, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    }
+    .service-btn-warm:hover {
+      background: linear-gradient(180deg, #6db5ab 0%, #589e94 60%, #457e76 100%);
+      box-shadow:
+        0 5px 14px rgba(88, 158, 148, 0.45),
+        0 2px 5px rgba(88, 158, 148, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+      transform: translateY(-1px);
+    }
+
+    /* Brand pill bar */
+    .brand-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 22px;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #284d47;
+      transition: all 0.15s ease;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .brand-pill.nav-pill-active {
+      background: linear-gradient(180deg, #356b63 0%, #284d47 60%, #1f3d38 100%);
+      box-shadow:
+        0 3px 8px rgba(40, 77, 71, 0.45),
+        0 1px 3px rgba(40, 77, 71, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+      color: white;
+    }
+    .brand-pill.nav-pill-hover:hover {
+      background: linear-gradient(180deg, #6db5ab 0%, #589e94 60%, #457e76 100%);
+      box-shadow:
+        0 3px 8px rgba(88, 158, 148, 0.4),
+        0 1px 3px rgba(88, 158, 148, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+      color: white;
+    }
+
+    /* Scrollable pill bar on mobile */
+    .pill-scroll-wrapper {
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .pill-scroll-wrapper::-webkit-scrollbar {
+      display: none;
+    }
+
+    @media (max-width: 639px) {
+      .brand-pill {
+        padding: 6px 14px;
+        font-size: 0.8rem;
+      }
+    }
+
+  </style>
+
+  <!-- Mobile menu toggle -->
+  <script>
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    btn?.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      menu?.classList.toggle('hidden');
+    });
+  </script>
+
+  <!-- Brand pill switching -->
+  <script define:vars={{ brandProductsMap, brandTabs }}>
+    const grid = document.getElementById('brand-products');
+    const pills = document.querySelectorAll('.brand-pill[data-brand]');
+
+    function formatPrice(price, priceEur) {
+      if (!price) return '<p class="text-sm text-muted italic">По запитване</p>';
+      const eur = priceEur ? ` <span class="text-sm font-normal text-muted">/ ${Math.round(priceEur)} €</span>` : '';
+      return `<p class="font-bold text-text">${price} лв.${eur}</p>`;
+    }
+
+    function renderProducts(brandSlug) {
+      const items = brandProductsMap[brandSlug] ?? [];
+      if (!grid) return;
+      grid.innerHTML = items.map((p, i) => {
+        const img = p.images.find(x => x.isMain) || p.images[0];
+        const imgHtml = img
+          ? `<img src="${img.src}" alt="${img.alt || p.name + ' кафе машина'}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />`
+          : `<div class="w-full h-full flex items-center justify-center" style="color:rgba(255,255,255,0.3)"><svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg></div>`;
+        return `<a href="/produkt/${p.slug}" class="group flex flex-col bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-black/5 hover:-translate-y-1">
+          <div class="relative aspect-square overflow-hidden rounded-3xl m-1" style="background:linear-gradient(135deg,#2a2a2a,#4a5568)">${imgHtml}</div>
+          <div style="display:flex;flex-direction:column;flex:1;padding:0.75rem 1rem 1rem">
+            <h3 class="font-bold line-clamp-2 leading-snug mb-1" style="color:#1A1A1A">${p.name}</h3>
+            <p class="text-sm text-muted mb-3">${p.brandDisplayName}</p>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-top:auto">
+              ${formatPrice(p.price, p.priceEur)}
+              <span style="background:#284d47;color:white;font-size:0.75rem;font-weight:600;padding:0.5rem 1rem;border-radius:9999px;transition:background 0.2s" onmouseover="this.style.background='#589e94'" onmouseout="this.style.background='#284d47'">Разгледай</span>
+            </div>
+          </div>
+        </a>`;
+      }).join('');
+    }
+
+    const cta = document.getElementById('brand-cta');
+    const ctaText = document.getElementById('brand-cta-text');
+
+    function updateCta(brandSlug) {
+      const tab = brandTabs.find(t => t.slug === brandSlug);
+      if (!cta || !ctaText || !tab) return;
+      cta.href = `/kafe-mashini/${brandSlug}`;
+      ctaText.textContent = `Всички машини ${tab.label}`;
+    }
+
+    pills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        const brand = pill.getAttribute('data-brand');
+        pills.forEach(p => {
+          p.classList.remove('nav-pill-active');
+          p.classList.add('nav-pill-hover');
+        });
+        pill.classList.add('nav-pill-active');
+        pill.classList.remove('nav-pill-hover');
+        renderProducts(brand);
+        updateCta(brand);
+      });
+    });
+  </script>
+
+  <!-- Scroll animations via IntersectionObserver -->
+  <script>
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          sectionObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
+
+    document.querySelectorAll('.gsap-fade-up').forEach(el => fadeObserver.observe(el));
+    document.querySelectorAll('.gsap-section').forEach(el => sectionObserver.observe(el));
+  </script>
 
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",

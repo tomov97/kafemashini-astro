@@ -1,24 +1,32 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
-import ProductGrid from '../components/ProductGrid.astro';
-import BrandSidebar from '../components/BrandSidebar.astro';
-import { products } from '../utils/products';
+import PaginatedProductGrid from '../components/PaginatedProductGrid.astro';
+import BrandNav from '../components/BrandNav.astro';
+import { products, getProductsByBrand } from '../utils/products';
+
+const priorityBrands = ['delonghi', 'saeco'];
+const sortedProducts = [
+  ...priorityBrands.flatMap(brand => getProductsByBrand(brand)),
+  ...products.filter(p => !priorityBrands.includes(p.brand)),
+];
 ---
 
 <BaseLayout
   title="Продукти – Кафе машини втора употреба | Кафемашини"
-  description="Всички кафе машини втора употреба от Швейцария. SAECO, DeLonghi, Gaggia, Siemens и други марки. 6 месеца гаранция."
+  description="Всички кафе машини втора употреба от Швейцария. SAECO, DeLonghi, Jura и Philips. 12 месеца гаранция."
+  bodyClass="!bg-cream"
 >
-  <div class="max-w-7xl mx-auto px-4 py-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 pb-8">
     <Breadcrumbs items={[{ label: 'Начало', href: '/' }, { label: 'Продукти' }]} />
-    <div class="flex flex-col lg:flex-row gap-8">
-      <BrandSidebar />
-      <div class="flex-1">
-        <h1 class="font-heading text-3xl md:text-4xl font-bold mb-6">Всички продукти</h1>
-        <p class="text-text/70 mb-8">Разгледайте нашата пълна колекция от {products.length} кафе машини втора употреба от Швейцария.</p>
-        <ProductGrid products={products} />
-      </div>
+    <div class="mb-5 mt-2">
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-text mb-2">
+        <span class="block text-xs font-semibold tracking-widest uppercase text-primary/50 mb-2">Каталог</span>
+        Всички продукти
+      </h1>
+      <p class="text-sm text-muted">{sortedProducts.length} продукта</p>
     </div>
+    <BrandNav />
+    <PaginatedProductGrid products={sortedProducts} />
   </div>
 </BaseLayout>

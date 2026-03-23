@@ -1,21 +1,10 @@
 [
   {
-    "slug": "bosch",
-    "displayName": "BOSCH",
-    "description": "",
-    "metaTitle": "Кафе машини втора употреба BOSCH",
-    "metaDescription": "Най-добрите цени за кафемашини втора употреба BOSCH. Директен внос. Швейцарско качество.",
-    "productCount": 1,
-    "productSlugs": [
-      "produkt-bosch-benvenuto-b30"
-    ]
-  },
-  {
     "slug": "delonghi",
     "displayName": "DeLonghi",
     "description": "",
-    "metaTitle": "DeLonghi Архиви | Кафемашини",
-    "metaDescription": "",
+    "metaTitle": "Кафе машини DeLonghi – втора употреба от Швейцария | Кафемашини",
+    "metaDescription": "20 обслужени кафе машини DeLonghi от Швейцария. Magnifica, PrimaDonna, Perfecta и други. Пълна профилактика и 12 месеца гаранция.",
     "productCount": 20,
     "productSlugs": [
       "delonghi-esam-4400",
@@ -41,59 +30,11 @@
     ]
   },
   {
-    "slug": "gaggia",
-    "displayName": "Gaggia",
-    "description": "",
-    "metaTitle": "Gaggia Архиви | Кафемашини",
-    "metaDescription": "",
-    "productCount": 5,
-    "productSlugs": [
-      "caggia-accademia",
-      "gaggia-brera",
-      "gaggia-platinum",
-      "gaggia-platinum-swing-up",
-      "gaggia-titanium"
-    ]
-  },
-  {
-    "slug": "koenig",
-    "displayName": "KOENIG",
-    "description": "",
-    "metaTitle": "KOENIG Архиви | Кафемашини",
-    "metaDescription": "",
-    "productCount": 1,
-    "productSlugs": [
-      "koenig-arte-2000"
-    ]
-  },
-  {
-    "slug": "krups",
-    "displayName": "KRUPS",
-    "description": "",
-    "metaTitle": "KRUPS Архиви | Кафемашини",
-    "metaDescription": "",
-    "productCount": 1,
-    "productSlugs": [
-      "krups-xp-7240"
-    ]
-  },
-  {
-    "slug": "rotel",
-    "displayName": "ROTEL",
-    "description": "",
-    "metaTitle": "ROTEL Архиви | Кафемашини",
-    "metaDescription": "",
-    "productCount": 1,
-    "productSlugs": [
-      "rotel-conforta-digital"
-    ]
-  },
-  {
     "slug": "saeco",
     "displayName": "SAECO",
-    "description": "Saeco International Group е производител на серия от висококачествени продукти. Тяхна цел е предоставяне на хората на по-добър, по-приятен и по-лесен начин на живот. Това е водеща компания , която проектира, произвежда и продава кафе машини за битова и професионална употреба.Както и автоматични автомати за топли напитки, студени напитки и закуски. Вече повече от 20 години, фирмата произвежда напълно автоматични кафе машини.\nОт Saeco винаги отговарят гъвкаво на всички потребителски нужди. Като вземат новаторски решения в проектирането, производството, продажбата и следпродажбеното обслужване на кафе машини.\nДнес Saeco играе водеща роля в развитието на новаторски и интелигентни продукти. Те опростяват живота на хората и добавят специално докосване до ежедневието.\nОснована в Италия през 1981 г., фирмата Saeco се е развивала успешно през годините.  Превръща се в група от компании със силна международна ориентация и присъствие на водещите пазари в света. Към момента, това са 16 дъщерни компании в Европа, САЩ, Латинска Америка, Австралия, Азия, а търговската мрежа обхваща повече от 60 страни.",
-    "metaTitle": "Кафе машини SAECO - втора употреба и сервиз",
-    "metaDescription": "Предлагаме кафе машини втора употреба SAECO, внос от Швейцария. Марката SAECO е водеща в областта на автоматичните кафемашини. Цени без конкуренция.",
+    "description": "",
+    "metaTitle": "Кафе машини SAECO – втора употреба и сервиз | Кафемашини",
+    "metaDescription": "34 обслужени кафе машини SAECO от Швейцария. Внос, пълна профилактика и 12 месеца гаранция. Intelia, Royal, Odea, Minuto и други модели.",
     "productCount": 34,
     "productSlugs": [
       "saeco-syntia",
@@ -133,62 +74,21 @@
     ]
   },
   {
-    "slug": "satrap",
-    "displayName": "SATRAP",
+    "slug": "jura",
+    "displayName": "Jura",
     "description": "",
-    "metaTitle": "SATRAP Архиви | Кафемашини",
-    "metaDescription": "",
-    "productCount": 2,
-    "productSlugs": [
-      "satrap-excelento",
-      "satrap-va-70"
-    ]
+    "metaTitle": "Кафе машини Jura – втора употреба от Швейцария",
+    "metaDescription": "Кафе машини втора употреба Jura, внос от Швейцария. Швейцарско качество с 12 месеца гаранция.",
+    "productCount": 0,
+    "productSlugs": []
   },
   {
-    "slug": "siemens",
-    "displayName": "SIEMENS",
+    "slug": "philips",
+    "displayName": "Philips",
     "description": "",
-    "metaTitle": "SIEMENS Архиви | Кафемашини",
-    "metaDescription": "",
-    "productCount": 2,
-    "productSlugs": [
-      "siemens-surpresso-compact",
-      "siemens-surpresso-s40"
-    ]
-  },
-  {
-    "slug": "solis",
-    "displayName": "SOLIS",
-    "description": "",
-    "metaTitle": "SOLIS Архиви | Кафемашини",
-    "metaDescription": "",
-    "productCount": 1,
-    "productSlugs": [
-      "solis-palazzo"
-    ]
-  },
-  {
-    "slug": "turmix",
-    "displayName": "TURMIX",
-    "description": "",
-    "metaTitle": "TURMIX Архиви | Кафемашини",
-    "metaDescription": "",
-    "productCount": 3,
-    "productSlugs": [
-      "turmix-just-touch",
-      "turmix-tx-550",
-      "turmix-tx-650"
-    ]
-  },
-  {
-    "slug": "drugi-kafe-mashini",
-    "displayName": "ДРУГИ КАФЕ МАШИНИ",
-    "description": "",
-    "metaTitle": "ДРУГИ КАФЕ МАШИНИ Архиви | Кафемашини",
-    "metaDescription": "",
-    "productCount": 1,
-    "productSlugs": [
-      "fust-primotecq"
-    ]
+    "metaTitle": "Кафе машини Philips – втора употреба от Швейцария",
+    "metaDescription": "Кафе машини втора употреба Philips, внос от Швейцария. 12 месеца гаранция и пълен сервиз.",
+    "productCount": 0,
+    "productSlugs": []
   }
 ]

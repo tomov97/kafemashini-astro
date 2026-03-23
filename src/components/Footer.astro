@@ -2,37 +2,56 @@
 import { site, brands } from '../utils/products';
 ---
 
-<footer class="bg-primary text-cream">
-  <div class="max-w-7xl mx-auto px-4 py-12">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- Company info -->
-      <div>
-        <h3 class="font-heading text-xl font-bold text-white mb-4">{site.name}</h3>
-        <p class="text-cream/80 mb-4">{site.tagline}</p>
-        <div class="space-y-2 text-sm text-cream/80">
-          <p>
-            <a href={`tel:${site.phone}`} class="hover:text-accent transition-colors">
-              {site.phoneDisplay}
-            </a>
-          </p>
-          <p>
-            <a href={`mailto:${site.email}`} class="hover:text-accent transition-colors">
-              {site.email}
-            </a>
-          </p>
-          <p>{site.address.city}, {site.address.district}</p>
-          <p>{site.address.street}, {site.address.detail}</p>
-          <p>{site.hours}</p>
+<footer class="bg-primary-dark text-white">
+  <!-- Main footer content -->
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 pt-10 pb-6">
+
+    <!-- Top: Logo centered -->
+    <div class="flex justify-center mb-8">
+      <a href="/">
+        <img src="/images/logo-opt.webp" alt={site.name} class="h-7 w-auto brightness-0 invert" />
+      </a>
+    </div>
+
+    <!-- Middle: 3 columns, contact info | brands | pages -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-center md:text-left">
+
+      <!-- Contact info — stacked with small icons -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-2 justify-center md:justify-start">
+          <svg class="w-4 h-4 text-white/40 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+          </svg>
+          <a href={`tel:${site.phone}`} class="py-1.5 text-white/70 hover:text-white transition-colors">{site.phoneDisplay}</a>
+        </div>
+        <div class="flex items-center gap-2 justify-center md:justify-start">
+          <svg class="w-4 h-4 text-white/40 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+          </svg>
+          <a href={`mailto:${site.email}`} class="py-1.5 text-white/70 hover:text-white transition-colors">{site.email}</a>
+        </div>
+        <div class="flex items-start gap-2 justify-center md:justify-start">
+          <svg class="w-4 h-4 text-white/40 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+          </svg>
+          <span class="text-white/70">{site.address.street}, {site.address.detail}<br />{site.address.district}, {site.address.city}</span>
+        </div>
+        <div class="flex items-center gap-2 justify-center md:justify-start">
+          <svg class="w-4 h-4 text-white/40 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span class="text-white/60">{site.hours}</span>
         </div>
       </div>
 
-      <!-- Brands -->
-      <div>
-        <h3 class="font-heading text-xl font-bold text-white mb-4">Марки</h3>
-        <ul class="grid grid-cols-2 gap-x-4 gap-y-1 text-sm">
+      <!-- Brands — inline row -->
+      <div class="flex flex-col items-center md:items-start">
+        <h3 class="text-xs font-semibold text-white/40 uppercase tracking-wider mb-3">Марки</h3>
+        <ul class="flex flex-wrap gap-x-4 gap-y-0">
           {brands.map(brand => (
             <li>
-              <a href={`/kafe-mashini/${brand.slug}`} class="text-cream/80 hover:text-accent transition-colors">
+              <a href={`/kafe-mashini/${brand.slug}`} class="py-1.5 inline-block text-white/70 hover:text-white transition-colors">
                 {brand.displayName}
               </a>
             </li>
@@ -40,32 +59,32 @@ import { site, brands } from '../utils/products';
         </ul>
       </div>
 
-      <!-- Navigation + Legal -->
-      <div>
-        <h3 class="font-heading text-xl font-bold text-white mb-4">Навигация</h3>
-        <ul class="space-y-1 text-sm mb-6">
+      <!-- Pages — compact two-column -->
+      <div class="flex flex-col items-center md:items-start">
+        <h3 class="text-xs font-semibold text-white/40 uppercase tracking-wider mb-3">Страници</h3>
+        <ul class="grid grid-cols-2 gap-x-6 gap-y-0">
           {site.navigation.map(item => (
             <li>
-              <a href={item.href} class="text-cream/80 hover:text-accent transition-colors">
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-        <ul class="space-y-1 text-sm border-t border-primary-light pt-4">
-          {site.legalLinks.map(item => (
-            <li>
-              <a href={item.href} class="text-cream/60 hover:text-accent transition-colors">
+              <a href={item.href} class="py-1.5 inline-block text-white/70 hover:text-white transition-colors">
                 {item.label}
               </a>
             </li>
           ))}
         </ul>
       </div>
-    </div>
 
-    <div class="mt-8 pt-8 border-t border-primary-light text-center text-sm text-cream/50">
-      &copy; {site.copyright}–{new Date().getFullYear()} {site.businessName}. Всички права запазени.
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="border-t border-white/10">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-2 text-xs text-white/35">
+      <span>&copy; 2026 Swiss Coffe. Всички права запазени.</span>
+      <div class="flex gap-4">
+        {site.legalLinks.map(item => (
+          <a href={item.href} class="py-1.5 inline-block hover:text-white/60 transition-colors">{item.label}</a>
+        ))}
+      </div>
     </div>
   </div>
 </footer>

@@ -13,16 +13,14 @@
   },
   "hours": "Понеделник – Петък, 10:00 – 17:00",
   "url": "https://kafemashini.ch",
-  "warranty": "6 месеца",
+  "warranty": "12 месеца",
   "copyright": "2018",
   "navigation": [
     { "label": "Начало", "href": "/" },
     { "label": "Продукти", "href": "/produkti.html" },
-    { "label": "Гаранция", "href": "/garantsiya.html" },
-    { "label": "За нас", "href": "/about.html" },
     { "label": "Сервиз", "href": "/serviz-na-kafe-mashini.html" },
-    { "label": "История", "href": "/istoria_na_kafe_mashinite.html" },
-    { "label": "Контакти", "href": "/contact.html" }
+    { "label": "Контакти", "href": "/contact.html" },
+    { "label": "Блог", "href": "/blog" }
   ],
   "legalLinks": [
     { "label": "Условия за ползване", "href": "/uslovia" },
