@@ -1,5 +1,6 @@
 ---
 import { site } from '../utils/products';
+import ViberIcon from './ViberIcon.astro';
 
 interface Props {
   specs: Record<string, string>;
@@ -8,31 +9,34 @@ interface Props {
 const { specs } = Astro.props;
 const entries = Object.entries(specs);
 
-// Tier 2 — shown prominently in main table
-const tier2Keys = [
-  'Мощност', 'Тегло', 'Макс. височина на чашата', 'Брой програми за напитки',
-  'Дисплей', 'Двойно кафе', 'Тип мелачка', 'Степени на смилане',
-  // Also include Tier 1 keys in the table for completeness
-  'Размери (ШxДxВ)', 'Размери', 'Воден резервоар', 'Контейнер за кафе',
-  'Налягане', 'Работа с мляно кафе',
+// Keys to always exclude from the table
+const excludedKeys = ['Тип мелачка', 'Степени на смилане', 'Дисплей'];
+
+// Preferred display order — Контейнер за отпадъци included in main
+const orderedKeys = [
+  'Мощност', 'Налягане', 'Воден резервоар', 'Контейнер за кафе',
+  'Контейнер за отпадъци', 'Размери (ШxДxВ)', 'Размери', 'Тегло',
+  'Работа с мляно кафе', 'Двойно кафе', 'Макс. височина на чашата',
+  'Брой програми за напитки',
 ];
 
-// Tier 3 — expandable details
-const tier3Keys = [
-  'Контейнер за отпадъци', 'Програма за декалциране', 'Регулируема едрина',
-  'Напрежение', 'Честота', 'Кана за мляко',
+const filtered = entries.filter(([key]) =>
+  !excludedKeys.some(ex => key.startsWith(ex))
+);
+
+// Sort by preferred order, then append any remaining keys not in the list
+const ordered = [
+  ...orderedKeys.flatMap(ok => filtered.filter(([k]) => k.startsWith(ok))),
+  ...filtered.filter(([k]) => !orderedKeys.some(ok => k.startsWith(ok))),
 ];
 
-const tier2Entries = entries.filter(([key]) =>
-  tier2Keys.some(t => key.startsWith(t))
-);
-const tier3Entries = entries.filter(([key]) =>
-  tier3Keys.some(t => key.startsWith(t))
-);
-// Anything not in tier2 or tier3 goes into tier2 as well
-const categorizedKeys = new Set([...tier2Entries, ...tier3Entries].map(([k]) => k));
-const uncategorized = entries.filter(([key]) => !categorizedKeys.has(key));
-const mainEntries = [...tier2Entries, ...uncategorized];
+// Deduplicate (in case a key matched multiple orderedKeys prefixes)
+const seen = new Set<string>();
+const displayEntries = ordered.filter(([k]) => {
+  if (seen.has(k)) return false;
+  seen.add(k);
+  return true;
+}).slice(0, 10);
 ---
 
 <section class="mt-10">
@@ -41,45 +45,31 @@ const mainEntries = [...tier2Entries, ...uncategorized];
     <div class="rounded-xl overflow-hidden border border-border bg-white shadow-sm">
       <table class="w-full text-sm">
         <tbody>
-          {mainEntries.map(([key, value], i) => (
-            <tr class={i < mainEntries.length - 1 || tier3Entries.length > 0 ? 'border-b border-border/50' : ''}>
+          {displayEntries.map(([key, value], i) => (
+            <tr class={i < displayEntries.length - 1 ? 'border-b border-border/50' : ''}>
               <td class="px-4 py-3 font-medium text-primary w-2/5">{key}</td>
               <td class="px-4 py-3 text-text/80">{value}</td>
             </tr>
           ))}
         </tbody>
       </table>
-
-      {tier3Entries.length > 0 && (
-        <details class="border-t border-border/50">
-          <summary class="px-4 py-3 text-sm font-medium text-muted cursor-pointer hover:text-primary transition-colors flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform details-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-            </svg>
-            Допълнителни характеристики
-          </summary>
-          <table class="w-full text-sm">
-            <tbody>
-              {tier3Entries.map(([key, value], i) => (
-                <tr class={i < tier3Entries.length - 1 ? 'border-b border-border/50' : ''}>
-                  <td class="px-4 py-3 font-medium text-primary w-2/5">{key}</td>
-                  <td class="px-4 py-3 text-text/80">{value}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </details>
-      )}
     </div>
   ) : (
     <div class="bg-white rounded-xl p-6 text-center border border-border/50">
       <p class="text-text/60 text-sm mb-2">Подробни спецификации за този модел ще бъдат добавени скоро.</p>
-      <a href={`tel:${site.phone}`} class="text-sm text-highlight hover:underline inline-flex items-center gap-1.5">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-        </svg>
-        Обадете ни се за повече информация: {site.phoneDisplay}
-      </a>
+      <div class="flex items-center justify-center gap-3 flex-wrap">
+        <a href={`tel:${site.phone}`} class="text-sm text-highlight hover:underline inline-flex items-center gap-1.5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+          </svg>
+          {site.phoneDisplay}
+        </a>
+        <span class="text-text/30">|</span>
+        <a href={site.viber} class="text-sm text-[#7360F2] hover:underline inline-flex items-center gap-1.5">
+          <ViberIcon class="h-4 w-4" />
+          Viber
+        </a>
+      </div>
     </div>
   )}
 </section>

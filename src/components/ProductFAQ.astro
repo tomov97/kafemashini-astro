@@ -1,52 +1,24 @@
 ---
 import { site } from '../utils/products';
 
-interface Props {
-  brand: string;
-  brandName: string;
-}
-
-const { brand, brandName } = Astro.props;
-
-const universalFaqs = [
+const faqs = [
+  {
+    q: 'В какво състояние са машините?',
+    a: 'Машините са втора употреба. По корпуса може да има козметични следи от употреба. Механично всяка машина преминава пълна профилактика при нас — смяна на уплътнения, смазване на механизмите, проверка на мелачката, декалциране и почистване с нови оригинални части.',
+  },
   {
     q: 'Каква е гаранцията?',
-    a: `Всяка кафе машина идва с 12 месеца гаранция. Гаранцията покрива ремонт с нови оригинални части. Повече информация на страницата <a href="/garantsiya.html" class="text-highlight hover:underline">Гаранция</a>.`,
+    a: `Всяка машина идва с 12 месеца гаранция, покриваща механични неизправности при нормална употреба. Повреди вследствие на неправилна употреба не се покриват. Повече информация на страницата <a href="/garantsiya.html" class="text-highlight hover:underline">Гаранция</a>.`,
   },
   {
     q: 'Как да поръчам?',
-    a: `Обадете се на <a href="tel:${site.phone}" class="text-highlight hover:underline">${site.phoneDisplay}</a> или ни пишете на <a href="mailto:${site.email}" class="text-highlight hover:underline">${site.email}</a>. Ще ви консултираме, ще уточним детайлите и ще организираме доставката.`,
+    a: `Обадете се на <a href="tel:${site.phone}" class="text-highlight hover:underline">${site.phoneDisplay}</a> или ни пишете във <a href="${site.viber}" class="text-[#7360F2] hover:underline font-medium">Viber</a>. Ще ви консултираме, ще уточним детайлите и ще организираме доставката.`,
   },
   {
     q: 'Доставяте ли в цялата страна?',
     a: 'Да, доставяме в цялата страна с куриер. Можете също да вземете машината лично от нашия магазин в София, ж.к. Банишора.',
   },
-  {
-    q: 'В какво състояние са машините?',
-    a: 'Всяка машина е внесена от Швейцария и е преминала пълна профилактика — смяна на уплътнения, смазване на механизмите, проверка на мелачката, декалциране и цялостно почистване. Използваме само нови оригинални части.',
-  },
-  {
-    q: 'Мога ли да видя машината на живо?',
-    a: `Да, заповядайте в нашия магазин на адрес ${site.address.street}, ${site.address.detail}, ${site.address.district}, ${site.address.city}. Работно време: ${site.hours}.`,
-  },
 ];
-
-const brandFaqs: Record<string, Array<{q: string, a: string}>> = {
-  saeco: [
-    { q: `Какви модели ${brandName} предлагате?`, a: `Предлагаме широка гама автоматични кафе машини ${brandName} — от компактни модели за дома до професионални за офиса. Всички са внос от Швейцария с пълна профилактика. Разгледайте <a href="/kafe-mashini/saeco" class="text-highlight hover:underline">всички модели ${brandName}</a>.` },
-  ],
-  delonghi: [
-    { q: `Какви модели ${brandName} предлагате?`, a: `Предлагаме различни автоматични кафе машини ${brandName} — Magnifica, Perfecta, PrimaDonna и други серии. Всички са внос от Швейцария с пълна профилактика. Разгледайте <a href="/kafe-mashini/delonghi" class="text-highlight hover:underline">всички модели ${brandName}</a>.` },
-  ],
-  jura: [
-    { q: `Какви модели ${brandName} предлагате?`, a: `Предлагаме автоматични кафе машини ${brandName} — швейцарска марка, известна с качеството си. Разгледайте <a href="/kafe-mashini/jura" class="text-highlight hover:underline">всички модели ${brandName}</a>.` },
-  ],
-  philips: [
-    { q: `Какви модели ${brandName} предлагате?`, a: `Предлагаме автоматични кафе машини ${brandName}. Разгледайте <a href="/kafe-mashini/philips" class="text-highlight hover:underline">всички модели ${brandName}</a>.` },
-  ],
-};
-
-const faqs = [...(brandFaqs[brand] || []), ...universalFaqs];
 ---
 
 <section class="bg-cream py-12 mt-12 -mx-4 sm:-mx-6 px-4 sm:px-6">

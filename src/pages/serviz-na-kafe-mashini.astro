@@ -1,37 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
+import ViberIcon from '../components/ViberIcon.astro';
 import { site } from '../utils/products';
 
-const faqs = [
-  { q: 'Колко време отнема ремонтът?', a: 'До 10 работни дни от момента на оставяне на машината в сервиза.' },
-  { q: 'Какви части използвате?', a: 'Само чисто нови оригинални части. Не работим с рециклирани или алтернативни части.' },
-  { q: 'Поправяте ли машини с ръкохватка?', a: 'Ремонтираме автоматични кафемашини. За машини с ръкохватка правим изключение за марките Saeco и DeLonghi.' },
-  { q: 'Поправяте ли машини, закупени от другаде?', a: 'Да, обслужваме кафемашини независимо откъде са закупени.' },
-  { q: 'Какво включва профилактиката?', a: 'Смяна на уплътнения, смазване на всички механизми, проверка на мелачката, декалциране и цялостно почистване.' },
-];
-
-import reviewsData from '../../data/reviews.json';
-const reviews = reviewsData;
-
 const serviceBrands = [
-  { name: 'Saeco', slug: 'saeco', desc: 'Ремонт и профилактика на всички автоматични модели Saeco.' },
-  { name: 'DeLonghi', slug: 'delonghi', desc: 'Ремонт и профилактика на всички автоматични модели DeLonghi.' },
-  { name: 'Jura', slug: 'jura', desc: 'Ремонт и профилактика на всички автоматични модели Jura.' },
-  { name: 'Philips', slug: 'philips', desc: 'Ремонт и профилактика на всички автоматични модели Philips.' },
+  { name: 'Saeco', slug: 'saeco', desc: 'Ремонт и профилактика на всички автоматични модели Saeco.', accent: '#e63946' },
+  { name: 'DeLonghi', slug: 'delonghi', desc: 'Ремонт и профилактика на всички автоматични модели DeLonghi.', accent: '#284d47' },
+  { name: 'Jura', slug: 'jura', desc: 'Ремонт и профилактика на всички автоматични модели Jura.', accent: '#1a1a1a' },
+  { name: 'Philips', slug: 'philips', desc: 'Ремонт и профилактика на всички автоматични модели Philips.', accent: '#0050a0' },
 ];
 
 const steps = [
-  { num: '1', title: 'Обадете се', desc: 'Свържете се с нас по телефон или имейл. Ще ви дадем първоначална консултация.' },
+  { num: '1', title: 'Обадете се', desc: 'Свържете се с нас по телефон или Viber. Ще ви дадем първоначална консултация.' },
   { num: '2', title: 'Изпратете или донесете', desc: `Донесете лично на ${site.address.street}, ${site.address.district}, ${site.address.city} или изпратете с куриер.` },
   { num: '3', title: 'Диагностика и ремонт', desc: 'Установяваме проблема, отстраняваме го с нови части и правим пълна профилактика.' },
   { num: '4', title: 'Вземете я обратно', desc: 'Обаждаме ви се, когато машината е готова. Идвате лично или я изпращаме с куриер.' },
-];
-
-const stats = [
-  { value: '18+', label: 'години опит' },
-  { value: '10 000+', label: 'ремонтирани машини' },
-  { value: '100%', label: 'нови оригинални части' },
 ];
 ---
 
@@ -42,25 +26,25 @@ const stats = [
 >
 
   <!-- Section 1: Hero -->
-  <section class="bg-cream pt-6 pb-16">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <Breadcrumbs items={[{ label: 'Начало', href: '/' }, { label: 'Сервиз на кафемашини' }]} />
+  <section class="bg-primary pt-6 pb-10 sm:pb-14 gsap-section">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <Breadcrumbs items={[{ label: 'Начало', href: '/' }, { label: 'Сервиз на кафемашини' }]} dark={false} />
 
-      <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 items-center mt-2">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 sm:gap-10 items-center mt-4">
         <!-- Left: headline + subtitle -->
-        <div class="lg:col-span-3 lg:pr-8">
-          <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">Сервиз на кафемашини</h1>
-          <p class="text-lg text-text/70 leading-relaxed">
-            Над 18 години поправяме и обслужваме автоматични кафемашини в София. Работим само с чисто нови оригинални части — без компромиси. Всяка машина преминава пълна профилактика, защото знаем, че половинчат ремонт не е ремонт.
+        <div class="lg:col-span-3 lg:pr-8 gsap-fade-up">
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4 sm:mb-6 text-white">Сервиз на кафемашини</h1>
+          <p class="text-sm sm:text-base lg:text-lg text-white/70 leading-relaxed">
+            Над 18 години ремонтираме и обслужваме автоматични кафемашини в София. Само нови оригинални части — без компромиси.
           </p>
         </div>
 
         <!-- Right: CTA card -->
-        <div class="lg:col-span-2">
-          <div class="bg-primary rounded-2xl p-8 text-white">
-            <p class="text-white/60 text-sm font-medium uppercase tracking-wide mb-4">Свържете се с нас</p>
-            <a href={`tel:${site.phone}`} class="flex items-center gap-3 text-2xl font-bold mb-5 hover:text-btn transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <div class="lg:col-span-2 gsap-fade-up" style="--delay: 0.1s">
+          <div class="bg-white/10 border border-white/15 rounded-2xl p-5 sm:p-6 text-white backdrop-blur-sm">
+            <p class="text-white/60 text-sm font-medium uppercase tracking-wide mb-3">Свържете се с нас</p>
+            <a href={`tel:${site.phone}`} class="inline-flex items-center gap-3 bg-btn hover:bg-btn-hover text-white font-bold text-lg sm:text-xl px-4 py-2.5 rounded-xl mb-4 transition-colors w-full justify-center sm:justify-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 7V5z" />
               </svg>
               {site.phoneDisplay}
@@ -80,10 +64,8 @@ const stats = [
                 <span>{site.address.street}, {site.address.detail}, {site.address.district}, {site.address.city}</span>
               </div>
               <div class="flex items-center gap-2.5">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 flex-shrink-0 text-btn" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-                <a href={`mailto:${site.email}`} class="hover:text-white transition-colors">{site.email}</a>
+                <ViberIcon class="h-4 w-4 flex-shrink-0 text-btn" />
+                <a href={site.viber} class="hover:text-white transition-colors">Пишете ни във Viber</a>
               </div>
             </div>
           </div>
@@ -92,50 +74,72 @@ const stats = [
     </div>
   </section>
 
-  <!-- Section 2: Trust Stats Bar -->
-  <section class="bg-primary py-12">
+  <!-- Section 2: What We Do -->
+  <section class="bg-cream py-10 sm:py-16 gsap-section">
     <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center text-white">
-        {stats.map(stat => (
-          <div>
-            <p class="text-4xl md:text-5xl font-bold">{stat.value}</p>
-            <p class="text-sm text-white/60 mt-1">{stat.label}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 3: What We Do -->
-  <section class="bg-cream py-16">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Какво включва нашият сервиз</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12 gsap-fade-up">Какво включва нашият сервиз</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
 
         <!-- Card 1: Diagnostics & Repair -->
-        <div class="bg-white rounded-2xl p-8 shadow-sm">
-          <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center mb-5">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm gsap-fade-up">
+          <div class="bg-primary px-5 sm:px-6 py-4 sm:py-5 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" />
+              </svg>
+            </div>
+            <h3 class="text-base sm:text-lg font-bold text-white">Диагностика и ремонт</h3>
           </div>
-          <h3 class="text-xl font-bold mb-3">Диагностика и ремонт</h3>
-          <p class="text-text/70 leading-relaxed">
-            Донесете кафемашината в нашия сервиз или я изпратете с куриер. Извършваме прецизна диагностика, установяваме всички дефекти и ги отстраняваме с чисто нови оригинални части. Срок за ремонт — до 10 работни дни.
-          </p>
+          <div class="px-5 sm:px-6 py-4 sm:py-5">
+            <p class="text-sm sm:text-base text-text/70 leading-relaxed mb-4">
+              Установяваме всички дефекти и ги отстраняваме само с нови оригинални части.
+            </p>
+            <ul class="space-y-2.5">
+              <li class="flex items-center gap-2.5 text-xs sm:text-sm text-text/80">
+                <svg class="h-3.5 w-3.5 text-btn flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                Готово до 10 работни дни
+              </li>
+              <li class="flex items-center gap-2.5 text-xs sm:text-sm text-text/80">
+                <svg class="h-3.5 w-3.5 text-btn flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                Предаване лично или с куриер
+              </li>
+              <li class="flex items-center gap-2.5 text-xs sm:text-sm text-text/80">
+                <svg class="h-3.5 w-3.5 text-btn flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                Гаранция на извършения ремонт
+              </li>
+            </ul>
+          </div>
         </div>
 
         <!-- Card 2: Full Maintenance -->
-        <div class="bg-white rounded-2xl p-8 shadow-sm">
-          <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center mb-5">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-            </svg>
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm gsap-fade-up" style="--delay: 0.08s">
+          <div class="bg-primary px-5 sm:px-6 py-4 sm:py-5 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+            <h3 class="text-base sm:text-lg font-bold text-white">Пълна профилактика</h3>
           </div>
-          <h3 class="text-xl font-bold mb-3">Пълна профилактика</h3>
-          <p class="text-text/70 leading-relaxed">
-            Не спираме до ремонта. Всяка машина преминава пълна профилактика — смяна на уплътнения, смазване, проверка на мелачката, декалциране и цялостно почистване. Връщаме я в състояние, близко до фабрично.
-          </p>
+          <div class="px-5 sm:px-6 py-4 sm:py-5">
+            <p class="text-sm sm:text-base text-text/70 leading-relaxed mb-4">
+              Всяка машина получава пълна профилактика — стандартно, не като опция.
+            </p>
+            <ul class="space-y-2.5">
+              <li class="flex items-center gap-2.5 text-xs sm:text-sm text-text/80">
+                <svg class="h-3.5 w-3.5 text-btn flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                Проверка на мелачката
+              </li>
+              <li class="flex items-center gap-2.5 text-xs sm:text-sm text-text/80">
+                <svg class="h-3.5 w-3.5 text-btn flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                Декалциране и цялостно почистване
+              </li>
+              <li class="flex items-center gap-2.5 text-xs sm:text-sm text-text/80">
+                <svg class="h-3.5 w-3.5 text-btn flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                Смяна на уплътнения и износени части
+              </li>
+            </ul>
+          </div>
         </div>
 
       </div>
@@ -143,21 +147,20 @@ const stats = [
   </section>
 
   <!-- Section 4: Process Steps -->
-  <section class="bg-white py-16">
+  <section class="bg-primary py-10 sm:py-16 gsap-section">
     <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Как протича ремонтът</h2>
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12 gsap-fade-up text-white">Как протича ремонтът</h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-4">
         {steps.map((step, i) => (
-          <div class="flex flex-col items-center text-center relative">
-            {/* Connector line on desktop */}
+          <div class="flex flex-col items-center text-center relative gsap-fade-up" style={`--delay: ${i * 0.08}s`}>
             {i < steps.length - 1 && (
-              <div class="hidden md:block absolute top-6 left-[calc(50%+28px)] right-[calc(-50%+28px)] border-t-2 border-dashed border-primary/20"></div>
+              <div class="hidden md:block absolute top-6 left-[calc(50%+28px)] right-[calc(-50%+28px)] border-t-2 border-dashed border-white/30"></div>
             )}
-            <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg relative z-10">
+            <div class="w-12 h-12 rounded-full bg-cream text-primary flex items-center justify-center font-bold text-lg relative z-10">
               {step.num}
             </div>
-            <h3 class="font-bold mt-4 mb-2">{step.title}</h3>
-            <p class="text-sm text-text/60 leading-relaxed">{step.desc}</p>
+            <h3 class="font-bold text-sm sm:text-base mt-3 mb-1.5 text-white">{step.title}</h3>
+            <p class="text-xs sm:text-sm text-white/60 leading-relaxed">{step.desc}</p>
           </div>
         ))}
       </div>
@@ -165,152 +168,50 @@ const stats = [
   </section>
 
   <!-- Section 5: Brands We Service -->
-  <section class="bg-cream py-16">
+  <section class="bg-cream py-10 sm:py-16 gsap-section">
     <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Марки, които обслужваме</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-        {serviceBrands.map(brand => (
-          <a href={`/kafe-mashini/${brand.slug}`} class="bg-white rounded-2xl p-6 shadow-sm text-center hover:shadow-md hover:-translate-y-1 transition-all duration-300">
-            <h3 class="text-xl font-bold mb-2">{brand.name}</h3>
-            <p class="text-sm text-text/60 leading-relaxed">{brand.desc}</p>
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12 gsap-fade-up">Марки, които обслужваме</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+        {serviceBrands.map((brand, i) => (
+          <a href={`/kafe-mashini/${brand.slug}`} class="bg-white rounded-2xl overflow-hidden shadow-sm text-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300 gsap-fade-up" style={`--delay: ${i * 0.06}s`}>
+            <div class="h-1" style={`background-color: ${brand.accent}`}></div>
+            <div class="p-5 sm:p-6">
+              <h3 class="text-lg sm:text-xl font-bold mb-1.5">{brand.name}</h3>
+              <p class="text-xs sm:text-sm text-text/60 leading-relaxed mb-2">{brand.desc}</p>
+              <span class="text-xs font-semibold text-btn">Вижте модели →</span>
+            </div>
           </a>
         ))}
       </div>
-      <p class="text-center text-sm text-text/50 mt-8">
+      <p class="text-center text-xs sm:text-sm text-text/50 mt-6 sm:mt-8 gsap-fade-up">
         Обслужваме автоматични кафемашини. Не извършваме ремонт на машини с ръкохватка, с изключение на Saeco и DeLonghi.
       </p>
     </div>
   </section>
 
-  <!-- Section 6: Google Reviews -->
-  <section class="bg-primary py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <p class="text-btn font-medium mb-2 tracking-wide uppercase text-sm text-center">Отзиви от клиенти</p>
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-white">Какво казват клиентите за нас</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {reviews.map(r => (
-          <div class="bg-white rounded-2xl p-6 shadow-sm relative flex flex-col">
-            <svg class="absolute top-5 right-5 w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+  <!-- Closing CTA -->
+  <section class="bg-primary py-8 gsap-section">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 gsap-fade-up">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
+        <p class="text-white/70 text-sm">Обадете се — ще се погрижим за машината ви.</p>
+        <div class="flex gap-3">
+          <a
+            href={`tel:${site.phone}`}
+            class="inline-flex items-center gap-2 font-semibold px-5 py-2.5 rounded-full text-sm bg-white text-primary hover:bg-white/90 transition-colors whitespace-nowrap"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 7V5z" />
             </svg>
-            <div class="flex gap-1 text-yellow-400 mb-3">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <p class="text-text/80 leading-relaxed mb-4 flex-1">"{r.text}"</p>
-            <div class="flex items-center justify-between text-sm mt-auto">
-              <span class="font-semibold">{r.name}</span>
-              <span class="text-text/40">{r.date}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div class="text-center mt-10">
-        <a href="https://www.google.com/maps/place/%D0%9F%D1%80%D0%BE%D0%B4%D0%B0%D0%B6%D0%B1%D0%B0+%D0%B8+%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D0%B7+%D0%BD%D0%B0+%D0%BA%D0%B0%D1%84%D0%B5+%D0%BC%D0%B0%D1%88%D0%B8%D0%BD%D0%B8+%D0%B2%D1%82%D0%BE%D1%80%D0%B0+%D1%80%D1%8A%D0%BA%D0%B0/@42.7086601,23.3051406,17z/data=!3m1!4b1!4m6!3m5!1s0x40aa85574b94a6cf:0xdcf9df985d5e88bf!8m2!3d42.7086601!4d23.3077155!16s%2Fg%2F11clgpd823?entry=ttu&g_ep=EgoyMDI2MDMxMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-white font-semibold hover:underline">
-          Вижте всички отзиви в Google
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-          </svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 7: Service FAQ -->
-  <section class="bg-cream py-16">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6">
-      <p class="text-highlight font-medium mb-2 tracking-wide uppercase text-sm text-center">Въпроси и отговори</p>
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Често задавани въпроси</h2>
-      <div class="space-y-4">
-        {faqs.map(faq => (
-          <details class="bg-white rounded-2xl px-6 py-5 shadow-sm group">
-            <summary class="font-semibold cursor-pointer list-none flex justify-between items-center gap-4">
-              {faq.q}
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0 text-highlight transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-              </svg>
-            </summary>
-            <p class="mt-3 text-text/70 leading-relaxed">{faq.a}</p>
-          </details>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 8: CTA + Map -->
-  <section class="bg-primary py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-
-        <!-- Left column: copy + contact details -->
-        <div class="text-white">
-          <p class="text-white/60 font-medium mb-3 tracking-wide uppercase text-sm">Намерете ни</p>
-          <h2 class="text-3xl md:text-4xl font-bold text-white mb-5 leading-tight">
-            Донесете или изпратете кафемашината
-          </h2>
-          <p class="text-white/75 text-lg leading-relaxed mb-3">
-            Сервизът ни е в София, ж.к. Банишора — можете да дойдете лично или да изпратите машината с куриер. Обадете се предварително и ще ви насочим.
-          </p>
-          <p class="text-white/75 leading-relaxed mb-3">
-            Работим само с нови оригинални части и всяка машина получава пълна профилактика.
-          </p>
-          <p class="text-white/75 leading-relaxed mb-8">
-            Работим от понеделник до петък — обадете се и ще отговорим в рамките на деня.
-          </p>
-
-          <!-- Contact details -->
-          <div class="space-y-3 mb-8">
-            <div class="flex items-center gap-3 text-white/80">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0 text-btn" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span class="text-sm">{site.hours}</span>
-            </div>
-            <div class="flex items-center gap-3 text-white/80">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0 text-btn" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              <span class="text-sm">{site.address.city}, {site.address.district}, {site.address.street}, {site.address.detail}</span>
-            </div>
-          </div>
-
-          <!-- CTAs -->
-          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <a
-              href={`tel:${site.phone}`}
-              class="hero-btn hero-btn-inverted inline-flex items-center gap-3 font-bold px-8 py-4 rounded-full text-lg"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 7V5z" />
-              </svg>
-              {site.phoneDisplay}
-            </a>
-            <a
-              href="/contact.html"
-              class="inline-flex items-center gap-2 text-white/80 font-semibold hover:text-white transition-colors underline underline-offset-4 text-sm"
-            >
-              Или пишете ни
-            </a>
-          </div>
+            {site.phoneDisplay}
+          </a>
+          <a
+            href={site.viber}
+            class="inline-flex items-center gap-2 font-semibold px-5 py-2.5 rounded-full text-sm bg-[#7360F2] text-white hover:bg-[#5a4bc7] transition-colors whitespace-nowrap"
+          >
+            <ViberIcon class="h-4 w-4" />
+            Viber
+          </a>
         </div>
-
-        <!-- Right column: Google Maps embed -->
-        <div>
-          <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl" style="height: 420px;">
-            <iframe
-              src="https://maps.google.com/maps?q=ул.+Сливен+23,+ж.к.+Банишора,+София,+България&output=embed&hl=bg&z=16"
-              width="100%"
-              height="100%"
-              style="border: 0;"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              title="Местоположение на Swiss Coffee — ул. Сливен 23, ж.к. Банишора, София"
-            ></iframe>
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
@@ -356,18 +257,28 @@ const stats = [
     }
   })} />
 
-  <!-- Schema: FAQPage -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqs.map(faq => ({
-      "@type": "Question",
-      "name": faq.q,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.a
-      }
-    }))
-  })} />
+  <!-- Scroll animations via IntersectionObserver -->
+  <script>
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          sectionObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
+
+    document.querySelectorAll('.gsap-fade-up').forEach(el => fadeObserver.observe(el));
+    document.querySelectorAll('.gsap-section').forEach(el => sectionObserver.observe(el));
+  </script>
 
 </BaseLayout>

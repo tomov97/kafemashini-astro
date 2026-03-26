@@ -4,15 +4,12 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import PriceDisplay from '../../components/PriceDisplay.astro';
 import ProductSpecs from '../../components/ProductSpecs.astro';
 import ProductDescription from '../../components/ProductDescription.astro';
-import ProductCondition from '../../components/ProductCondition.astro';
 import ProductHighlights from '../../components/ProductHighlights.astro';
 import ProductCTA from '../../components/ProductCTA.astro';
 import RelatedProducts from '../../components/RelatedProducts.astro';
 import BrandNav from '../../components/BrandNav.astro';
 import TrustStrip from '../../components/TrustStrip.astro';
-import ReviewsSnippet from '../../components/ReviewsSnippet.astro';
 import ProductFAQ from '../../components/ProductFAQ.astro';
-import StickyPhoneCTA from '../../components/StickyPhoneCTA.astro';
 import { products, getProductBySlug, getRelatedProducts, getBrandBySlug, site } from '../../utils/products';
 import { formatEUR } from '../../utils/currency';
 
@@ -91,6 +88,7 @@ const productSchema = {
   bodyClass="!bg-cream"
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+    <div class="max-w-5xl mx-auto">
     <Breadcrumbs items={breadcrumbs} />
     <BrandNav currentBrand={product.brand} />
 
@@ -117,44 +115,30 @@ const productSchema = {
       </div>
 
       <div class="md:w-1/2">
-        <h1 class="font-heading text-3xl md:text-4xl font-bold mb-2">{product.name}</h1>
+        <h1 class="font-heading text-3xl md:text-4xl font-bold mb-1">{product.name}</h1>
         {brand ? (
-          <a href={`/kafe-mashini/${brand.slug}`} class="text-muted hover:text-primary transition-colors">
+          <a href={`/kafe-mashini/${brand.slug}`} class="text-muted hover:text-primary transition-colors text-sm">
             {product.brandDisplayName}
           </a>
         ) : (
-          <p class="text-muted">{product.brandDisplayName}</p>
+          <p class="text-muted text-sm">{product.brandDisplayName}</p>
         )}
 
-        <div class="mt-4 mb-1">
+        <div class="mt-4 mb-5">
           <PriceDisplay priceEur={product.priceEur} size="lg" />
         </div>
-        <p class="text-xs text-muted mb-4">Цената включва пълна профилактика и 12 месеца гаранция</p>
 
-        <div class="flex flex-wrap gap-2.5 mb-4">
+        <div class="mb-5">
           <span class={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium ${
             product.inStock ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'
           }`}>
             <span class={`w-2 h-2 rounded-full ${product.inStock ? 'bg-green-500' : 'bg-red-500'}`}></span>
             {product.inStock ? 'В наличност' : 'Изчерпано'}
           </span>
-          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium bg-primary/5 text-primary">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-            </svg>
-            {product.warranty} гаранция
-          </span>
-          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium bg-primary/5 text-primary">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M4.083 9h1.946c.089-1.546.383-2.97.837-4.118A6.004 6.004 0 004.083 9zM10 2a8 8 0 100 16 8 8 0 000-16zm0 2c-.076 0-.232.032-.465.262-.238.234-.497.623-.737 1.182-.389.907-.706 2.142-.766 3.556h3.936c-.06-1.414-.377-2.649-.766-3.556-.24-.56-.5-.948-.737-1.182C10.232 4.032 10.076 4 10 4zm3.971 5c-.089-1.546-.383-2.97-.837-4.118A6.004 6.004 0 0115.917 9h-1.946zm-2.003 2H8.032c.06 1.414.377 2.649.766 3.556.24.56.5.948.737 1.182.233.23.389.262.465.262.076 0 .232-.032.465-.262.238-.234.497-.623.737-1.182.389-.907.706-2.142.766-3.556zm1.166 4.118c.454-1.147.748-2.572.837-4.118h1.946a6.004 6.004 0 01-2.783 4.118zm-6.268 0C6.412 13.97 6.118 12.546 6.029 11H4.083a6.004 6.004 0 002.783 4.118z" clip-rule="evenodd" />
-            </svg>
-            Внос от Швейцария
-          </span>
         </div>
 
         <ProductHighlights specs={product.specs} milkSystem={product.milkSystem} />
 
-        <ProductCondition />
         <ProductCTA />
       </div>
     </div>
@@ -166,15 +150,16 @@ const productSchema = {
     />
 
     <ProductSpecs specs={product.specs} />
+    </div>
 
     <RelatedProducts products={related} brandName={product.brandDisplayName} brandSlug={product.brand} />
 
+    <div class="max-w-5xl mx-auto">
     <TrustStrip />
-    <ReviewsSnippet />
-    <ProductFAQ brand={product.brand} brandName={product.brandDisplayName} />
+    <ProductFAQ />
+    </div>
   </div>
 
-  <StickyPhoneCTA priceEur={product.priceEur} />
 
   <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
 </BaseLayout>

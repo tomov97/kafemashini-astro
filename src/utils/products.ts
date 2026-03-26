@@ -50,6 +50,7 @@ export interface SiteConfig {
   phone: string;
   phoneDisplay: string;
   email: string;
+  viber: string;
   address: {
     city: string;
     district: string;

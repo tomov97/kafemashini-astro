@@ -13,7 +13,10 @@
       "Bash(node tools/merge-enriched-specs.mjs --dry-run)",
       "Bash(node tools/merge-enriched-specs.mjs)",
       "Bash(node -e \":*)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_take_screenshot",
+      "mcp__playwright__browser_resize"
     ]
   }
 }

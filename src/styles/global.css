@@ -60,9 +60,9 @@ h1, h2, h3, h4, h5, h6 {
 /* Shared nav pill styles — used by Header, BrandNav, and homepage */
 .nav-pill-container {
   box-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.08),
-    0 1px 2px rgba(0, 0, 0, 0.04),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    0 4px 16px rgba(0, 0, 0, 0.10),
+    0 1px 4px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .nav-pill-active {
@@ -72,11 +72,6 @@ h1, h2, h3, h4, h5, h6 {
     #284d47 60%,
     #1f3d38 100%
   );
-  box-shadow:
-    0 3px 8px rgba(40, 77, 71, 0.45),
-    0 1px 3px rgba(40, 77, 71, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
 }
 
 .nav-pill-hover:hover {
@@ -86,9 +81,143 @@ h1, h2, h3, h4, h5, h6 {
     #589e94 60%,
     #457e76 100%
   );
+}
+
+/* Fade-up animation — used on homepage and service page */
+.gsap-fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.1s ease, transform 1.1s ease;
+  transition-delay: var(--delay, 0s);
+  will-change: transform, opacity;
+}
+.gsap-fade-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.gsap-section {
+  opacity: 0.4;
+  transition: opacity 0.9s ease;
+}
+.gsap-section.is-visible {
+  opacity: 1;
+}
+
+/* Hero CTA buttons — 3D glossy effect — used on homepage and service page */
+.hero-btn {
+  transition: all 0.2s ease;
+}
+.hero-btn-primary {
+  background: linear-gradient(180deg, #356b63 0%, #284d47 60%, #1f3d38 100%);
   box-shadow:
-    0 3px 8px rgba(88, 158, 148, 0.4),
-    0 1px 3px rgba(88, 158, 148, 0.25),
+    0 3px 10px rgba(40, 77, 71, 0.4),
+    0 1px 3px rgba(40, 77, 71, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+}
+.hero-btn-primary:hover {
+  background: linear-gradient(180deg, #6db5ab 0%, #589e94 60%, #457e76 100%);
+  box-shadow:
+    0 5px 14px rgba(88, 158, 148, 0.45),
+    0 2px 5px rgba(88, 158, 148, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.2),
     inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+.hero-btn-inverted {
+  background: linear-gradient(180deg, #356b63 0%, #284d47 60%, #1f3d38 100%);
+  color: white;
+  box-shadow:
+    0 3px 10px rgba(40, 77, 71, 0.4),
+    0 1px 3px rgba(40, 77, 71, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+}
+.hero-btn-inverted:hover {
+  background: linear-gradient(180deg, #6db5ab 0%, #589e94 60%, #457e76 100%);
+  color: white;
+  box-shadow:
+    0 5px 14px rgba(88, 158, 148, 0.45),
+    0 2px 5px rgba(88, 158, 148, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+.hero-btn-secondary {
+  background: linear-gradient(180deg, #356b63 0%, #284d47 60%, #1f3d38 100%);
+  color: white !important;
+  border: none;
+  box-shadow:
+    0 3px 10px rgba(40, 77, 71, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+}
+.hero-btn-secondary:hover {
+  background: linear-gradient(180deg, #6db5ab 0%, #589e94 60%, #457e76 100%);
+  color: white !important;
+  transform: translateY(-1px);
+}
+
+/* Trust shield badges — used on homepage and service page */
+.trust-badge-wrap {
+  position: relative;
+  width: 120px;
+  height: 140px;
+  flex-shrink: 0;
+}
+.trust-badge-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.trust-badge-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 88%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+.trust-badge-stat {
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #fefbf0;
+  letter-spacing: -0.02em;
+}
+.trust-badge-label {
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: #fefbf0;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 4px;
+  line-height: 1.3;
+}
+.trust-badge-sub {
+  font-size: 0.52rem;
+  font-weight: 400;
+  color: rgba(254, 251, 240, 0.6);
+  margin-top: 3px;
+  line-height: 1.2;
+}
+@media (max-width: 639px) {
+  .trust-badge-wrap { width: 90px; height: 105px; }
+  .trust-badge-stat { font-size: 1.1rem; }
+  .trust-badge-label { font-size: 0.52rem; }
+  .trust-badge-sub { font-size: 0.46rem; }
+}
+@media (min-width: 1024px) {
+  .trust-badge-wrap { width: 140px; height: 163px; }
+  .trust-badge-stat { font-size: 1.75rem; }
+  .trust-badge-label { font-size: 0.65rem; }
+  .trust-badge-sub { font-size: 0.55rem; }
 }
