@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductCard from '../components/ProductCard.astro';
 import { site, brands, products, getProductsByBrand } from '../utils/products';
+import { eurToBgn } from '../utils/currency';
 
 const featured = products.filter(p => p.inStock && p.price).slice(0, 8);
 // build.format:'file' makes Astro.url.pathname return '/index' for the homepage, not '/'.
@@ -296,8 +297,8 @@ const defaultProducts = brandProductsMap[defaultBrand] ?? [];
                 <h3 class="font-semibold text-xs sm:text-base text-text group-hover:text-primary transition-colors line-clamp-2 leading-tight mb-0 sm:mb-0.5">{product.name.replace(new RegExp('^' + product.brandDisplayName + '\\s*', 'i'), '')}</h3>
                 <p class="text-[10px] sm:text-sm text-muted mb-1.5 sm:mb-2">{product.brandDisplayName}</p>
                 <div class="mt-auto">
-                  {product.price ? (
-                    <p class="text-xs sm:text-sm text-text mb-1.5 sm:mb-2">{product.priceEur ? <><span class="font-bold">{product.priceEur.toFixed(0)} €</span> <span class="text-muted font-normal">/ {product.price} лв.</span></> : <span class="font-bold">{product.price} лв.</span>}</p>
+                  {product.priceEur ? (
+                    <p class="text-xs sm:text-sm text-text mb-1.5 sm:mb-2"><span class="font-bold">€{product.priceEur.toFixed(2)}</span> <span class="text-muted font-normal">/ {eurToBgn(product.priceEur).toFixed(2)} лв.</span></p>
                   ) : (
                     <p class="text-[10px] sm:text-sm text-muted italic mb-1.5 sm:mb-2">По запитване</p>
                   )}
@@ -662,10 +663,11 @@ const defaultProducts = brandProductsMap[defaultBrand] ?? [];
     const grid = document.getElementById('brand-products');
     const pills = document.querySelectorAll('.brand-pill[data-brand]');
 
+    const EUR_TO_BGN = 1.95583;
     function formatPrice(price, priceEur) {
-      if (!price) return '<p class="text-[10px] sm:text-sm text-muted italic mb-1.5 sm:mb-2">По запитване</p>';
-      if (priceEur) return `<p class="text-xs sm:text-sm text-text mb-1.5 sm:mb-2"><span class="font-bold">${Math.round(priceEur)} €</span> <span class="text-muted font-normal">/ ${price} лв.</span></p>`;
-      return `<p class="text-xs sm:text-sm text-text font-bold mb-1.5 sm:mb-2">${price} лв.</p>`;
+      if (!priceEur) return '<p class="text-[10px] sm:text-sm text-muted italic mb-1.5 sm:mb-2">По запитване</p>';
+      const bgn = (Math.round(priceEur * EUR_TO_BGN * 100) / 100).toFixed(2);
+      return `<p class="text-xs sm:text-sm text-text mb-1.5 sm:mb-2"><span class="font-bold">€${priceEur.toFixed(2)}</span> <span class="text-muted font-normal">/ ${bgn} лв.</span></p>`;
     }
 
     function stripBrand(name, brand) {
