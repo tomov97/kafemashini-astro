@@ -145,16 +145,22 @@ const helpCards = [
 
         <!-- Right: Google Maps embed -->
         <div>
-          <div class="rounded-2xl overflow-hidden border border-border shadow-lg" style="height: 420px;">
+          <div class="rounded-2xl overflow-hidden border border-border shadow-lg relative" style="height: 420px;">
+            <!-- Skeleton loader -->
+            <div id="map-skeleton" class="absolute inset-0 bg-white/10 animate-pulse flex flex-col gap-3 p-6" aria-hidden="true">
+              <div class="h-full rounded-xl bg-white/15"></div>
+            </div>
             <iframe
+              id="map-iframe"
               src="https://maps.google.com/maps?q=ул.+Сливен+23,+ж.к.+Банишора,+София,+България&output=embed&hl=bg&z=16"
               width="100%"
               height="100%"
-              style="border: 0;"
+              style="border: 0; opacity: 0; transition: opacity 0.3s ease;"
               allowfullscreen=""
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
               title="Местоположение на Swiss Coffee — ул. Сливен 23, ж.к. Банишора, София"
+              onload="this.style.opacity='1'; document.getElementById('map-skeleton').style.display='none';"
             ></iframe>
           </div>
         </div>
@@ -216,44 +222,6 @@ const helpCards = [
             </div>
           </a>
         ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 4: Final CTA -->
-  <section class="bg-primary py-8">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6">
-      <div class="flex flex-col items-center justify-center gap-4">
-        <p class="text-white/70 text-sm">Готови сме да помогнем — обадете се или пишете.</p>
-        <div class="flex flex-col gap-2 w-full max-w-xs">
-          <a
-            href={`tel:${site.phone}`}
-            class="inline-flex items-center justify-center gap-2 font-semibold px-5 py-2.5 rounded-full text-sm bg-white text-primary hover:bg-white/90 transition-colors whitespace-nowrap"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 7V5z" />
-            </svg>
-            {site.phoneDisplay}
-          </a>
-          <div class="flex gap-2">
-            <a
-              href={site.viber}
-              class="flex-1 inline-flex items-center justify-center gap-2 font-semibold px-5 py-2.5 rounded-full text-sm bg-[#7360F2] text-white hover:bg-[#5a4bc7] transition-colors whitespace-nowrap"
-            >
-              <ViberIcon class="h-4 w-4" />
-              Viber
-            </a>
-            <a
-              href={site.whatsapp}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex-1 inline-flex items-center justify-center gap-2 font-semibold px-5 py-2.5 rounded-full text-sm bg-[#25D366] text-white hover:bg-[#1ebe5d] transition-colors whitespace-nowrap"
-            >
-              <WhatsAppIcon class="h-4 w-4" />
-              WhatsApp
-            </a>
-          </div>
-        </div>
       </div>
     </div>
   </section>
