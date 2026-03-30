@@ -9,8 +9,10 @@ interface Props {
 }
 
 const { title, description = '', canonical, ogImage, ogType = 'website', noindex = false } = Astro.props;
-const canonicalUrl = canonical || new URL(Astro.url.pathname, Astro.site).href;
-const siteUrl = Astro.site?.href || 'https://kafemashini.ch';
+const rawCanonical = canonical || new URL(Astro.url.pathname, Astro.site).href;
+// Normalize homepage canonical: /index.html or /.html → just the root
+const canonicalUrl = rawCanonical.replace(/\/(index)?\.html$/, '/');
+const siteUrl = (Astro.site?.href || 'https://kafemashini.ch').replace(/\/$/, '');
 ---
 
 <title>{title}</title>
