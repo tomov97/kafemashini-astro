@@ -17,8 +17,9 @@ interface Props {
   bodyClass?: string;
 }
 
-const props = Astro.props;
-const { hideHeader = false, bodyClass } = props;
+const { ogImage = '/images/logo.png', ...restProps } = Astro.props;
+const props = { ogImage, ...restProps };
+const { hideHeader = false, bodyClass } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -26,7 +27,8 @@ const { hideHeader = false, bodyClass } = props;
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/webp" href="/favicon.webp" />
+  <link rel="apple-touch-icon" href="/favicon.webp" />
   <link rel="preload" href="/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/inter-cyrillic-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
   <SEOHead {...props} />
