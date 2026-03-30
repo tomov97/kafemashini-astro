@@ -51,6 +51,7 @@ export interface SiteConfig {
   phoneDisplay: string;
   email: string;
   viber: string;
+  whatsapp: string;
   address: {
     city: string;
     district: string;

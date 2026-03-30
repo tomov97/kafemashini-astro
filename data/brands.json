@@ -77,18 +77,32 @@
     "slug": "jura",
     "displayName": "Jura",
     "description": "",
-    "metaTitle": "Кафе машини Jura – втора употреба от Швейцария",
-    "metaDescription": "Кафе машини втора употреба Jura, внос от Швейцария. Швейцарско качество с 12 месеца гаранция.",
-    "productCount": 0,
-    "productSlugs": []
+    "metaTitle": "Кафе машини Jura – ENA, Impressa F, J серия | Кафемашини",
+    "metaDescription": "6 модела Jura кафеавтомати – ENA Micro 9, Impressa F50, J5, J7, J9. Швейцарско качество, 12 месеца гаранция и пълен сервиз.",
+    "productCount": 6,
+    "productSlugs": [
+      "jura-ena-micro-9",
+      "jura-impressa-f50",
+      "jura-impressa-j5",
+      "jura-impressa-j7",
+      "jura-impressa-j9",
+      "jura-impressa-j9-tft"
+    ]
   },
   {
     "slug": "philips",
     "displayName": "Philips",
     "description": "",
-    "metaTitle": "Кафе машини Philips – втора употреба от Швейцария",
-    "metaDescription": "Кафе машини втора употреба Philips, внос от Швейцария. 12 месеца гаранция и пълен сервиз.",
-    "productCount": 0,
-    "productSlugs": []
+    "metaTitle": "Кафе машини Philips – Series 2200 до 5000 | Кафемашини",
+    "metaDescription": "6 модела Philips кафеавтомати – Series 2200, 2300, 3100, 3300, 4400 и 5000. LatteGO, SilentBrew, AquaClean. 12 месеца гаранция и пълен сервиз.",
+    "productCount": 6,
+    "productSlugs": [
+      "philips-ep2221-40",
+      "philips-ep2330-10",
+      "philips-ep3510-00",
+      "philips-ep3349-70",
+      "philips-ep4446-70",
+      "philips-ep5335-10"
+    ]
   }
 ]

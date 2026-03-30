@@ -53,7 +53,7 @@ Build uses `format: 'file'` so `.astro` -> `.html`. Cloudflare auto-serves
 - ESM imports only (no require)
 - TypeScript for utils, .astro for components/pages
 - Product data loaded from `data/products.json` via `src/utils/products.ts`
-- Dual currency display: BGN primary, EUR secondary
+- Dual currency display: EUR primary, BGN secondary
 - Component props typed with Astro.props interface
 
 ## Gotchas

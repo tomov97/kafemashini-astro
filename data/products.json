@@ -1,66 +1,5 @@
 [
   {
-    "slug": "saeco-idea",
-    "name": "IDEA",
-    "brand": "saeco",
-    "brandDisplayName": "SAECO",
-    "price": 350,
-    "priceEur": 178.95,
-    "currency": "BGN",
-    "inStock": true,
-    "warranty": "12 месеца",
-    "description": "Saeco Idea е идеалната кафе машина за всеки офис или работно място.\nТя е напълно автоматична и с уникален дизайн.\nНейната интелигентна капучино система изтегля млякото директно от контейнера си и го превръща в кремообразна пяна за да може да изпитате пълното удоволствие от перфектното капучино.\nТехнически характеристики:\n»Захранване с вода от водопровода.\n»400 чаши топла вода по 150 мл. за час.\n»150 кафета по 150 мл. за час.\n»Дигитален дисплей.\n»Тегло: 63 кг.\n»Мощност: 3250 W\n»Размери (ш/д/в): 523x540x673 мм\n»Автоматичен капучинатор.\n»Гаранция\nНе е налична",
-    "specs": {
-      "Мощност": "3250 W",
-      "Тегло": "63 кг",
-      "Налягане": "15 бара",
-      "Воден резервоар": "Водопровод",
-      "Размери (ШxДxВ)": "523 x 540 x 673 мм",
-      "Дисплей": "Дигитален",
-      "Двойно кафе": "Да"
-    },
-    "images": [
-      {
-        "src": "/images/products/saeco-idea.webp",
-        "alt": "SAECO IDEA кафе машина",
-        "isMain": true,
-        "originalSrc": "https://kafemashini.ch/wp-content/uploads/2017/02/SAECO-IDEA.jpg"
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2020/12/20201214_120632-e1607942617376.webp",
-        "alt": "SAECO IDEA кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/SAECO-ROYAL-OFFICE.webp",
-        "alt": "SAECO IDEA кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2020/12/20201118_140835-e1639740436328.webp",
-        "alt": "SAECO IDEA кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/06/saeco-2.webp",
-        "alt": "SAECO IDEA кафе машина",
-        "isMain": false
-      }
-    ],
-    "manualUrl": null,
-    "relatedSlugs": [
-      "saeco-odea-go",
-      "saeco-royal-office",
-      "saeco-talea-ring",
-      "saeco-royal-digital"
-    ],
-    "metaTitle": "SAECO IDEA | Кафемашини",
-    "metaDescription": "SAECO IDEA – автоматична кафе машина втора употреба от Швейцария. Цена: €178.95. 12 месеца гаранция. Поръчай на 0894 807 755.",
-    "series": "Idea",
-    "modelNumber": "RI9525",
-    "milkSystem": "auto"
-  },
-  {
     "slug": "delonghi-magnifica-rapid",
     "name": "Magnifica Rapid",
     "brand": "delonghi",
@@ -321,70 +260,6 @@
     "milkSystem": "auto"
   },
   {
-    "slug": "saeco-primea-cappuccino-touch",
-    "name": "PRIMEA CAPPUCCINO TOUCH",
-    "brand": "saeco",
-    "brandDisplayName": "SAECO",
-    "price": 350,
-    "priceEur": 178.95,
-    "currency": "BGN",
-    "inStock": true,
-    "warranty": "12 месеца",
-    "description": "Напълно автоматична кафе машина за хора с фантазия, обичащи експерименти.\nВграденият сензорен дисплей е с програмируеми менюта, позволяващи да създадете нови и вълнуващи напитки, със собствени съотношения кафе:мляко:вода. Удобен бутон регулира тавата нагоре и надолу, за различните по размер чаши.\nС помощта на армиран тъчскрийн може да си направите шантави експерименти за правене на напитки с кафе. Интерфейсът е интуитивен и няма как да се объркате. Голямо разнообразие от предварително зададени видове кафе за по-сериозни (и претенциозни) ценители на кафето.\nХарактеристики:\n» ЦВЕТЕН СЕНЗОРЕН ДИСПЛЕЙ !!!.\n» Капацитет на контейнера за кафе: 350 гр.\n» Капацитет на контейнера за мляко: 150 мл.\n» Подвижен воден резервоар с обем: 2 литра\n» Капацитет на контейнера за отпадъчно кафе: 24 дози\n» Налягане на помпата: 15 бара\n» Мощност: 1500 W\n» Размери ( ШxДxВ ): 355х460х380 мм\n» Тегло : 14 кг\n» Гаранция",
-    "specs": {
-      "Мощност": "1300 W",
-      "Налягане": "15 бара",
-      "Тегло": "11 кг",
-      "Контейнер за кафе": "350 гр",
-      "Воден резервоар": "1.7 л",
-      "Размери (ШxДxВ)": "295 x 420 x 365 мм",
-      "Тип мелачка": "Керамична",
-      "Дисплей": "Сензорен",
-      "Работа с мляно кафе": "Да",
-      "Двойно кафе": "Да"
-    },
-    "images": [
-      {
-        "src": "/images/products/saeco-primea-cappuccino-touch.webp",
-        "alt": "SAECO PRIMEA CAPPUCCINO TOUCH кафе машина",
-        "isMain": true,
-        "originalSrc": "https://kafemashini.ch/wp-content/uploads/2017/02/SAECO-PRIMEA-CAPPUCCINO-TOUCH.jpg"
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/HD8954_47-IMS-en_US.webp",
-        "alt": "SAECO PRIMEA CAPPUCCINO TOUCH кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/odea.webp",
-        "alt": "SAECO PRIMEA CAPPUCCINO TOUCH кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/saeco_intelia.webp",
-        "alt": "SAECO PRIMEA CAPPUCCINO TOUCH кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/SAECO-INCANTO-DIGITAL.webp",
-        "alt": "SAECO PRIMEA CAPPUCCINO TOUCH кафе машина",
-        "isMain": false
-      }
-    ],
-    "manualUrl": null,
-    "relatedSlugs": [
-      "saeco-xelsis",
-      "saeco-odea-giro-plus",
-      "saeco-intelia",
-      "saeco-incanto-digital"
-    ],
-    "metaTitle": "SAECO PRIMEA CAPPUCCINO TOUCH | Кафемашини",
-    "metaDescription": "SAECO PRIMEA CAPPUCCINO TOUCH – автоматична кафе машина втора употреба от Швейцария. Цена: €178.95. 12 месеца гаранция. Поръчай на 0894 807 755.",
-    "series": "Primea",
-    "modelNumber": "RI9828",
-    "milkSystem": "auto"
-  },
-  {
     "slug": "saeco-minuto-hd8761",
     "name": "Minuto",
     "brand": "saeco",
@@ -447,132 +322,6 @@
     "metaDescription": "SAECO Minuto – автоматична кафе машина втора употреба от Швейцария. Цена: €199.40. 12 месеца гаранция. Поръчай на 0894 807 755.",
     "series": "Minuto",
     "modelNumber": "HD8761/01",
-    "milkSystem": "panarello"
-  },
-  {
-    "slug": "saeco-magic",
-    "name": "MAGIC",
-    "brand": "saeco",
-    "brandDisplayName": "SAECO",
-    "price": 450,
-    "priceEur": 200,
-    "currency": "BGN",
-    "inStock": true,
-    "warranty": "12 месеца",
-    "description": "»Разбиване на мляко система „Panarello“\n»Дигитален дисплей с брояч\n»Кафемелачка с метални ножове и регулиране на едрината на смилане\n»Опция за работа със смляно кафе\n»Плоча с нагревател за подгряване на чаши\n»“Energy saving“ режим\n»Характеристики:\n»Контейнер за кафе на зърна с вместимост 300 г\n»Обем на водния резервоар: 2,4 л\n»Мощност: 1250 W\n»Контейнер за отработено кафе: 30 дози\n»Налягане на помпата: 15 bar.\n»Размери (ш / д / в): 340 / 395 / 410 мм\n»Тегло: 12,5 кг\n»Гаранция\nНе е налична",
-    "specs": {
-      "Мощност": "1250 W",
-      "Налягане": "15 бара",
-      "Контейнер за кафе": "300 гр",
-      "Тегло": "10.5 кг",
-      "Воден резервоар": "2.2 л",
-      "Размери (ШxДxВ)": "260 x 405 x 370 мм",
-      "Тип мелачка": "Керамична",
-      "Работа с мляно кафе": "Да",
-      "Двойно кафе": "Не"
-    },
-    "images": [
-      {
-        "src": "/images/products/saeco-magic.webp",
-        "alt": "SAECO MAGIC кафе машина",
-        "isMain": true,
-        "originalSrc": "https://kafemashini.ch/wp-content/uploads/2017/02/SAECO-MAGIC.jpg"
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/SAECO-INCANTO-S-CLASS-CLASSIC.webp",
-        "alt": "SAECO MAGIC кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/admin-ajax.webp",
-        "alt": "SAECO MAGIC кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/saeco-syntia.webp",
-        "alt": "SAECO MAGIC кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/SAECO-ROYAL-OFFICE.webp",
-        "alt": "SAECO MAGIC кафе машина",
-        "isMain": false
-      }
-    ],
-    "manualUrl": null,
-    "relatedSlugs": [
-      "saeco-incanto-s-class-classic",
-      "saeco-xsmall",
-      "saeco-syntia",
-      "saeco-royal-office"
-    ],
-    "metaTitle": "SAECO MAGIC | Кафемашини",
-    "metaDescription": "SAECO MAGIC – автоматична кафе машина втора употреба от Швейцария. Цена: €230.08. 12 месеца гаранция. Поръчай на 0894 807 755.",
-    "series": "Magic",
-    "modelNumber": "RI9347",
-    "milkSystem": "panarello"
-  },
-  {
-    "slug": "saeco-incanto-sirius",
-    "name": "INCANTO SIRIUS",
-    "brand": "saeco",
-    "brandDisplayName": "SAECO",
-    "price": 420,
-    "priceEur": 200,
-    "currency": "BGN",
-    "inStock": true,
-    "warranty": "12 месеца",
-    "description": "Можете да усетите италианската страст в перфектната чаша кафе, която ви предоставя Saeco Incanto Sirius.\nС безупречния си дизайн и лесна употреба, тя ще спечели сърцата ви и ще бъде ваш най-добър птиятел в кухнята.\n»Технически характеристики:\n»Сензорен Дисплей\n»Мощност: 1250 W\n»Керамична кафемелачка\n»Налягане на помпата: 15 бара\n»Система: Rapid-Steam®\n»Нгревател за чаши\n»Капацитет на контейнера за вода: 1.7 л.\n»Кпацитет на контейнера за кафе: 300 гр.\n»Тегло: 11 кг.\n»Гаранция 12 месеца\nИнструкция за употреба",
-    "specs": {
-      "Мощност": "1300 W",
-      "Налягане": "15 бара",
-      "Тегло": "10.5 кг",
-      "Воден резервоар": "1.7 л",
-      "Контейнер за кафе": "300 гр",
-      "Размери (ШxДxВ)": "295 x 420 x 365 мм",
-      "Тип мелачка": "Керамична",
-      "Работа с мляно кафе": "Да",
-      "Двойно кафе": "Не"
-    },
-    "images": [
-      {
-        "src": "/images/products/saeco-incanto-sirius.webp",
-        "alt": "SAECO INCANTO SIRIUS кафе машина",
-        "isMain": true,
-        "originalSrc": "https://kafemashini.ch/wp-content/uploads/2017/02/SAECO-INCANTO-SIRIUS.jpg"
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/SAECO-PRIMEA-RING-PLUS.webp",
-        "alt": "SAECO INCANTO SIRIUS кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/saeco_intelia.webp",
-        "alt": "SAECO INCANTO SIRIUS кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/saeco-syntia.webp",
-        "alt": "SAECO INCANTO SIRIUS кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/SAECO-INCANTO-S-CLASS-RONDO.webp",
-        "alt": "SAECO INCANTO SIRIUS кафе машина",
-        "isMain": false
-      }
-    ],
-    "manualUrl": null,
-    "relatedSlugs": [
-      "saeco-primea-ring-plus",
-      "saeco-intelia",
-      "saeco-syntia",
-      "saeco-incanto-s-class-rondo"
-    ],
-    "metaTitle": "SAECO INCANTO SIRIUS | Кафемашини",
-    "metaDescription": "SAECO INCANTO SIRIUS – автоматична кафе машина втора употреба от Швейцария. Цена: €214.74. 12 месеца гаранция. Поръчай на 0894 807 755.",
-    "series": "Incanto",
-    "modelNumber": "RI9724",
     "milkSystem": "panarello"
   },
   {
@@ -769,69 +518,6 @@
     "milkSystem": "panarello"
   },
   {
-    "slug": "saeco-incanto-s-class-classic",
-    "name": "INCANTO S-CLASS CLASSIC",
-    "brand": "saeco",
-    "brandDisplayName": "SAECO",
-    "price": 400,
-    "priceEur": 204.52,
-    "currency": "BGN",
-    "inStock": true,
-    "warranty": "12 месеца",
-    "description": "Напълно автоматичната еспресо кафе машина saeco incanto s-class classic.\nНасладете се на Saeco Rapid- Steam® технология за бързо приготвяне на кафе Latte и капучино. Може да контролирате размера на смляното кафе, кафето и неговата сила, а кафемашината ще свърши останалото.\nПерфектно еспресо всеки път, гарнирано със златен каймак, омайва на сетивата с богат топъл аромат на истинско кафе и всичко това след 30 секунди.\nЛюбимата ви напитка – кафето е само един бутон разстояние!\nХарактеристики:\n» Капацитет на контейнера за кафе: 300 гр.\n» Подвижен воден резервоар с обем: 2 литра\n» Капацитет на контейнера за отпадъчно кафе: 15 дози\n» Налягане на помпата: 15 бара\n» Мощност: 1200 W\n» Размери ( ШxВxД ): 265x400x375 mm\n» Тегло : 11 кг\n» Гаранция",
-    "specs": {
-      "Мощност": "1300 W",
-      "Налягане": "15 бара",
-      "Тегло": "10 кг",
-      "Контейнер за кафе": "300 гр",
-      "Воден резервоар": "1.7 л",
-      "Размери (ШxДxВ)": "295 x 420 x 365 мм",
-      "Тип мелачка": "Керамична",
-      "Работа с мляно кафе": "Да",
-      "Двойно кафе": "Не"
-    },
-    "images": [
-      {
-        "src": "/images/products/saeco-incanto-s-class-classic.webp",
-        "alt": "SAECO INCANTO S-CLASS CLASSIC кафе машина",
-        "isMain": true,
-        "originalSrc": "https://kafemashini.ch/wp-content/uploads/2017/02/SAECO-INCANTO-S-CLASS-CLASSIC.jpg"
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/SAECO-Talea-Touch-300x300-1.webp",
-        "alt": "SAECO INCANTO S-CLASS CLASSIC кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/saeco_intelia.webp",
-        "alt": "SAECO INCANTO S-CLASS CLASSIC кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/SAECO-INCANTO-CLASSIC.webp",
-        "alt": "SAECO INCANTO S-CLASS CLASSIC кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2020/12/20201214_120632-e1607942617376.webp",
-        "alt": "SAECO INCANTO S-CLASS CLASSIC кафе машина",
-        "isMain": false
-      }
-    ],
-    "manualUrl": null,
-    "relatedSlugs": [
-      "saeco-talea-touch",
-      "saeco-intelia",
-      "saeco-incanto-classic",
-      "saeco-odea-go"
-    ],
-    "metaTitle": "SAECO INCANTO S-CLASS CLASSIC | Кафемашини",
-    "metaDescription": "SAECO INCANTO S-CLASS CLASSIC – автоматична кафе машина втора употреба от Швейцария. Цена: €204.52. 12 месеца гаранция. Поръчай на 0894 807 755.",
-    "series": "Incanto",
-    "modelNumber": "RI9724",
-    "milkSystem": "panarello"
-  },
-  {
     "slug": "delonghi-esam-4400",
     "name": "ESAM 4400",
     "brand": "delonghi",
@@ -959,71 +645,6 @@
     "series": "Perfecta",
     "modelNumber": "ESAM 5600",
     "milkSystem": "auto"
-  },
-  {
-    "slug": "saeco-incanto-digital",
-    "name": "INCANTO DIGITAL",
-    "brand": "saeco",
-    "brandDisplayName": "SAECO",
-    "price": 350,
-    "priceEur": 200,
-    "currency": "BGN",
-    "inStock": true,
-    "warranty": "12 месеца",
-    "description": "Saeco Incanto Digital е прекрасна машина за дома.\nЛесна за използване и компактна тя ще ви доставя перфектно кафе всеки ден с минимални усилия.\nТехнически характеристики:\n» Мощност: 15 W\n» Тегло: 11 кг.\n» Капацитет на контейнера за вода: 2 л.\n» Налягане на помпата: 15 бара\n» Бойлер от неръждаема стомана\n» Капацитет на контейнера за кафе: 300 г.\n» Размери (Ш/В/Д): 285 x 375 x 400\n» Капацитет на контейнера за отпадъци: 13 дози\n» Керамична мелачка\n» Гаранция\n ДОСТАВКА на 30.03.2017-Възможна предварителна заявка",
-    "specs": {
-      "Мощност": "1300 W",
-      "Налягане": "15 бара",
-      "Тегло": "10 кг",
-      "Воден резервоар": "2 л",
-      "Контейнер за отпадъци": "13 дози",
-      "Контейнер за кафе": "300 гр",
-      "Размери (ШxДxВ)": "295 x 420 x 365 мм",
-      "Тип мелачка": "Керамична",
-      "Дисплей": "LCD",
-      "Работа с мляно кафе": "Да",
-      "Двойно кафе": "Да"
-    },
-    "images": [
-      {
-        "src": "/images/products/saeco-incanto-digital.webp",
-        "alt": "SAECO INCANTO DIGITAL кафе машина",
-        "isMain": true,
-        "originalSrc": "https://kafemashini.ch/wp-content/uploads/2017/02/SAECO-INCANTO-DIGITAL.jpg"
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/SAECO-PRIMEA-CAPPUCCINO-TOUCH.webp",
-        "alt": "SAECO INCANTO DIGITAL кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/SAECO-Talea-Giro.webp",
-        "alt": "SAECO INCANTO DIGITAL кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/saeco-syntia.webp",
-        "alt": "SAECO INCANTO DIGITAL кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/06/saeco-2.webp",
-        "alt": "SAECO INCANTO DIGITAL кафе машина",
-        "isMain": false
-      }
-    ],
-    "manualUrl": null,
-    "relatedSlugs": [
-      "saeco-primea-cappuccino-touch",
-      "saeco-talea-giro",
-      "saeco-syntia",
-      "saeco-royal-digital"
-    ],
-    "metaTitle": "SAECO INCANTO DIGITAL | Кафемашини",
-    "metaDescription": "SAECO INCANTO DIGITAL – автоматична кафе машина втора употреба от Швейцария. Цена: €178.95. 12 месеца гаранция. Поръчай на 0894 807 755.",
-    "series": "Incanto",
-    "modelNumber": "RI9347",
-    "milkSystem": "panarello"
   },
   {
     "slug": "saeco-minuto-hd8661",
@@ -1215,132 +836,6 @@
     "metaDescription": "SAECO INCANTO S-CLASS RONDO – автоматична кафе машина втора употреба от Швейцария. Цена: €230.08. 12 месеца гаранция. Поръчай на 0894 807 755.",
     "series": "Incanto",
     "modelNumber": "RI9723",
-    "milkSystem": "panarello"
-  },
-  {
-    "slug": "saeco-incanto-classic",
-    "name": "INCANTO CLASSIC",
-    "brand": "saeco",
-    "brandDisplayName": "SAECO",
-    "price": 450,
-    "priceEur": 200,
-    "currency": "BGN",
-    "inStock": true,
-    "warranty": "12 месеца",
-    "description": "Saeco Incanto Classic разполага с\nФункция бърза пара за по-добро разбиване на млякото за приготвяне на изящното капучино\nФункция гореща вода за приготвяне на прекрасен чай\nКафемелачка с метални ножове и регулиране на едрината на смилане\nРегулиране на количеството смляно кафе от кафе-мелачката\nОпределяне на твърдоста наводата от 1 до 4 в зависимост региона\n»Характеристики:\n»Мощност: 1250 W\n»Датчик за вода\n»Подсещане за почистване на отпадъците\n»Функция промивка при първоначално включване сутрин\n»Програмиране на дължината на кафето\n»Опция за работа със смляно кафе\n»Плоча с нагревател за подгряване на чаши\n»Контейнер за кафе на зърна с вместимост 300 г\n»Обем на водния резервоар: 2,0 л\n»Контейнер за отработено кафе: 15 дози\n»Налягане на помпата: 15 bar.\n»Размери (ш / д / в): 285 x 375 x 400 мм\n»Тегло: 11,0 кг\n»Гаранция\n ДОСТАВКА на 30.03.2017-Възможна предварителна заявка",
-    "specs": {
-      "Мощност": "1300 W",
-      "Налягане": "15 бара",
-      "Контейнер за кафе": "300 гр",
-      "Тегло": "10 кг",
-      "Воден резервоар": "1.7 л",
-      "Размери (ШxДxВ)": "295 x 420 x 365 мм",
-      "Тип мелачка": "Керамична",
-      "Работа с мляно кафе": "Да",
-      "Двойно кафе": "Не"
-    },
-    "images": [
-      {
-        "src": "/images/products/saeco-incanto-classic.webp",
-        "alt": "SAECO INCANTO CLASSIC кафе машина",
-        "isMain": true,
-        "originalSrc": "https://kafemashini.ch/wp-content/uploads/2017/02/SAECO-INCANTO-CLASSIC.jpg"
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/SAECO-MAGIC.webp",
-        "alt": "SAECO INCANTO CLASSIC кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/SAECO-INCANTO-DELUXE.webp",
-        "alt": "SAECO INCANTO CLASSIC кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/SAECO-IDEA.webp",
-        "alt": "SAECO INCANTO CLASSIC кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/06/saeco-2.webp",
-        "alt": "SAECO INCANTO CLASSIC кафе машина",
-        "isMain": false
-      }
-    ],
-    "manualUrl": null,
-    "relatedSlugs": [
-      "saeco-magic",
-      "saeco-incanto-deluxe",
-      "saeco-idea",
-      "saeco-royal-digital"
-    ],
-    "metaTitle": "SAECO INCANTO CLASSIC | Кафемашини",
-    "metaDescription": "SAECO INCANTO CLASSIC – автоматична кафе машина втора употреба от Швейцария. Цена: €230.08. 12 месеца гаранция. Поръчай на 0894 807 755.",
-    "series": "Incanto",
-    "modelNumber": "RI9347",
-    "milkSystem": "panarello"
-  },
-  {
-    "slug": "saeco-talea-giro",
-    "name": "Talea Giro",
-    "brand": "saeco",
-    "brandDisplayName": "SAECO",
-    "price": 350,
-    "priceEur": 200,
-    "currency": "BGN",
-    "inStock": true,
-    "warranty": "12 месеца",
-    "description": "Ако търсите кафе машина, която да прави безупречно кафе само с натискането на един бутон, тогава Saeco Talea Giro е перфектната опция за Вас.\nСъс системата си за допълнително разпенване на кафето перфектният каймак е гарантиран за всяка напитка.\n» 1250 W, 50 Hz, 220 V\n» Стоманизиран бойлер\n» Aqua Prima Filter за водата\n» Автоматична Функция бърза пара за по-добро разбиване на млякото за приготвяне на прекрасно капучино\n» Функция гореща вода за приготвяне на ароматен чай\n» Подвижна поставка за чаши даваща възможност за поставяне на високи чаши за кафе\n» Допълнителна дюза за по-добро еспресиране на кафето с възможност за регулиране\n» Кафемелачка с керамични ножове и регулиране на едрината на смилане\n» Датчик за вода\n» Подсещане за почистване на отпадъците\n» Функция промивка при първоначално включване сутрин\n» Контейнер за кафе на зърна с вместимост 300 г.\n» Обем на водния резервоар: 2.0 л\n» Контейнер за отработено кафе: 17 дози\n» Налягане на помпата: 15 bar.\n» Тегло: 9,0 кг\n» Гаранция",
-    "specs": {
-      "Налягане": "15 бара",
-      "Контейнер за кафе": "300 гр",
-      "Тегло": "9.7 кг",
-      "Мощност": "1400 W",
-      "Воден резервоар": "1.7 л",
-      "Размери (ШxДxВ)": "295 x 395 x 365 мм",
-      "Тип мелачка": "Керамична",
-      "Работа с мляно кафе": "Да",
-      "Двойно кафе": "Да"
-    },
-    "images": [
-      {
-        "src": "/images/products/saeco-talea-giro.webp",
-        "alt": "SAECO Talea Giro кафе машина",
-        "isMain": true,
-        "originalSrc": "https://kafemashini.ch/wp-content/uploads/2017/02/SAECO-Talea-Giro.jpg"
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/saeco-syntia.webp",
-        "alt": "SAECO Talea Giro кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/SAECO-INCANTO-SIRIUS.webp",
-        "alt": "SAECO Talea Giro кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/SAECO-PRIMEA-RING-PLUS.webp",
-        "alt": "SAECO Talea Giro кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/SAECO-INCANTO-DELUXE.webp",
-        "alt": "SAECO Talea Giro кафе машина",
-        "isMain": false
-      }
-    ],
-    "manualUrl": null,
-    "relatedSlugs": [
-      "saeco-syntia",
-      "saeco-incanto-sirius",
-      "saeco-primea-ring-plus",
-      "saeco-incanto-deluxe"
-    ],
-    "metaTitle": "SAECO Talea Giro | Кафемашини",
-    "metaDescription": "SAECO Talea Giro – автоматична кафе машина втора употреба от Швейцария. Цена: €178.95. 12 месеца гаранция. Поръчай на 0894 807 755.",
-    "series": "Talea",
-    "modelNumber": "RI9822",
     "milkSystem": "panarello"
   },
   {
@@ -1743,70 +1238,6 @@
     "milkSystem": "auto"
   },
   {
-    "slug": "saeco-talea-touch-plus",
-    "name": "Talea Touch plus",
-    "brand": "saeco",
-    "brandDisplayName": "SAECO",
-    "price": 400,
-    "priceEur": 200,
-    "currency": "BGN",
-    "inStock": true,
-    "warranty": "12 месеца",
-    "description": "Saeco talea touch plus който приготвя кафето, както Вие го желаете.\nКакто при всички модели на SAECO и при тази кафе машина имате възможност за регулиране на едрината и количеството на смляното кафе, три възможности за програмирано количество кафе в чашата.\nМощна пара с едно завъртане на крана за приготвяне на изящните напитки наречени ‘Капучино’.\nЕлектрически подвижна поставка за чаши, която се придвижва нагоре и надолу само с едно докосване на сензорните прилежно скрити бутони. Прекрасният ‘Touch screen’ дисплей е осветен в приятна лунна светлина и дава възможност с едно докосване да получите желаното кафе.\nКафемашината дава възможност да се приготви кафе и от предварително смляно кафе.\nПростотата за обслужване идва от там, че за всичко има датчици, за кафе, отпадъци и вода, които се визуализират на дисплея на кафе машината.\nГаранция 12 месеца",
-    "specs": {
-      "Мощност": "1400 W",
-      "Налягане": "15 бара",
-      "Воден резервоар": "1.7 л",
-      "Контейнер за кафе": "300 гр",
-      "Размери (ШxДxВ)": "295 x 395 x 375 мм",
-      "Тегло": "10 кг",
-      "Тип мелачка": "Керамична",
-      "Дисплей": "Сензорен",
-      "Работа с мляно кафе": "Да",
-      "Двойно кафе": "Да"
-    },
-    "images": [
-      {
-        "src": "/images/products/saeco-talea-touch-plus.webp",
-        "alt": "SAECO Talea Touch plus кафе машина",
-        "isMain": true,
-        "originalSrc": "https://kafemashini.ch/wp-content/uploads/2017/09/touch-plus.jpg"
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/SAECO-INCANTO-DIGITAL.webp",
-        "alt": "SAECO Talea Touch plus кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/SAECO-Talea-Touch-300x300-1.webp",
-        "alt": "SAECO Talea Touch plus кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/SAECO-PRIMEA-RING-PLUS.webp",
-        "alt": "SAECO Talea Touch plus кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/SAECO-ROYAL-OFFICE.webp",
-        "alt": "SAECO Talea Touch plus кафе машина",
-        "isMain": false
-      }
-    ],
-    "manualUrl": null,
-    "relatedSlugs": [
-      "saeco-incanto-digital",
-      "saeco-talea-touch",
-      "saeco-primea-ring-plus",
-      "saeco-royal-office"
-    ],
-    "metaTitle": "SAECO Talea Touch plus | Кафемашини",
-    "metaDescription": "SAECO Talea Touch plus – автоматична кафе машина втора употреба от Швейцария. Цена: €204.52. 12 месеца гаранция. Поръчай на 0894 807 755.",
-    "series": "Talea",
-    "modelNumber": "RI9828",
-    "milkSystem": "panarello"
-  },
-  {
     "slug": "delonghi-esam-04-110-b",
     "name": "ESAM 04.110.B",
     "brand": "delonghi",
@@ -2069,70 +1500,6 @@
     "series": "Magnifica",
     "modelNumber": "ESAM 3500",
     "milkSystem": "auto"
-  },
-  {
-    "slug": "saeco-talea-touch",
-    "name": "Talea Touch",
-    "brand": "saeco",
-    "brandDisplayName": "SAECO",
-    "price": 400,
-    "priceEur": 200,
-    "currency": "BGN",
-    "inStock": true,
-    "warranty": "12 месеца",
-    "description": "Един продукт на Saeco, който умее да приготвя кафето, както Вие го желаете.\nКакто при всички модели на SAECO и при тази кафе машина имате възможност за регулиране на едрината и количеството на смляното кафе, три възможности за програмирано количество кафе в чашата.\nМощна пара с едно завъртане на крана за приготвяне на изящните напитки наречени ‘Капучино’.\nПрекрасният ‘Touch screen’ дисплей е осветен в приятна лунна светлина и дава възможност с едно докосване да получите желаното кафе.\nКафемашината дава възможност да се приготви кафе и от предварително смляно кафе.\nПростотата за обслужване идва от там, че за всичко има датчици, за кафе, отпадъци и вода, които се визуализират на дисплея на кафе машината.",
-    "specs": {
-      "Мощност": "1400 W",
-      "Налягане": "15 бара",
-      "Воден резервоар": "1.7 л",
-      "Контейнер за кафе": "300 гр",
-      "Размери (ШxДxВ)": "295 x 395 x 375 мм",
-      "Тегло": "10 кг",
-      "Тип мелачка": "Керамична",
-      "Дисплей": "Сензорен",
-      "Работа с мляно кафе": "Да",
-      "Двойно кафе": "Да"
-    },
-    "images": [
-      {
-        "src": "/images/products/saeco-talea-touch.webp",
-        "alt": "SAECO Talea Touch кафе машина",
-        "isMain": true,
-        "originalSrc": "https://kafemashini.ch/wp-content/uploads/2017/02/SAECO-Talea-Touch-300x300-1.jpg"
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/HD8954_47-IMS-en_US.webp",
-        "alt": "SAECO Talea Touch кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/saeco_intelia.webp",
-        "alt": "SAECO Talea Touch кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2020/12/20201214_120632-e1607942617376.webp",
-        "alt": "SAECO Talea Touch кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/SAECO-PRIMEA-CAPPUCCINO-TOUCH.webp",
-        "alt": "SAECO Talea Touch кафе машина",
-        "isMain": false
-      }
-    ],
-    "manualUrl": null,
-    "relatedSlugs": [
-      "saeco-xelsis",
-      "saeco-intelia",
-      "saeco-odea-go",
-      "saeco-primea-cappuccino-touch"
-    ],
-    "metaTitle": "SAECO Talea Touch | Кафемашини",
-    "metaDescription": "SAECO Talea Touch – автоматична кафе машина втора употреба от Швейцария. Цена: €204.52. 12 месеца гаранция. Поръчай на 0894 807 755.",
-    "series": "Talea",
-    "modelNumber": "RI9826",
-    "milkSystem": "panarello"
   },
   {
     "slug": "delonghi-primadonna",
@@ -2978,69 +2345,6 @@
     "milkSystem": "auto"
   },
   {
-    "slug": "saeco-talea-ring",
-    "name": "TALEA RING",
-    "brand": "saeco",
-    "brandDisplayName": "SAECO",
-    "price": 380,
-    "priceEur": 200,
-    "currency": "BGN",
-    "inStock": true,
-    "warranty": "12 месеца",
-    "description": "Напълно автоматична еспресо кафе машина.\nTalea Ring едно бижу направено, за да прави хората щастливи по всяко време\n» 1300 W, 50 Hz, 220 V\n» Стоманизиран бойлер\n» Aqua Prima Filter за водата\n» Сензорнен контролен панел даващ възможност с едно докосване да се получи желаната напитка „Кафе“\n» Три предварително програмирани дължини на кафето\n» Брояч на приготвените напитки\n» Възможност за работа със смляно кафе\n» автоматична Функция бърза пара за по-добро разбиване на млякото за приготвяне на капучино\n» Функция гореща вода за приготвяне на прекрасен чай\n» Електрическа подвижна поставка за чаши даваща възможност за поставяне на високи чаши за кафе с едно докосване\n» Опция за приготвяне на две кафета едновременно\n» Допълнителна дюза за по-добро еспресиране на кафето с възможност за регулиране\n» Кафемелачка с керамични ножове и регулиране на едрината на смилане\n» Датчик за вода\n» Подсещане за почистване на отпадъците\n» Функция промивка при първоначално включване сутрин\n» Контейнер за кафе на зърна с вместимост 300 г\n» Обем на водния резервоар: 2,0 л\n» Контейнер за отработено кафе: 17 дози\n» Налягане на помпата: 15 bar.\n» Размери (ш / д / в): 290 x 380 x 400 mm.\n» Тегло: 11,0 кг\n» Гаранция",
-    "specs": {
-      "Налягане": "15 бара",
-      "Контейнер за кафе": "300 гр",
-      "Тегло": "9.7 кг",
-      "Мощност": "1400 W",
-      "Воден резервоар": "1.7 л",
-      "Размери (ШxДxВ)": "295 x 395 x 365 мм",
-      "Тип мелачка": "Керамична",
-      "Работа с мляно кафе": "Да",
-      "Двойно кафе": "Да"
-    },
-    "images": [
-      {
-        "src": "/images/products/saeco-talea-ring.webp",
-        "alt": "SAECO TALEA RING кафе машина",
-        "isMain": true,
-        "originalSrc": "https://kafemashini.ch/wp-content/uploads/2020/12/20201118_140835-e1639740436328.jpg"
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/SAECO-INCANTO-S-CLASS-RONDO.webp",
-        "alt": "SAECO TALEA RING кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/SAECO-Talea-Touch-300x300-1.webp",
-        "alt": "SAECO TALEA RING кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/saeco-odea-black.webp",
-        "alt": "SAECO TALEA RING кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/SAECO-ROYAL-GRAN-CREMA.webp",
-        "alt": "SAECO TALEA RING кафе машина",
-        "isMain": false
-      }
-    ],
-    "manualUrl": null,
-    "relatedSlugs": [
-      "saeco-incanto-s-class-rondo",
-      "saeco-talea-touch",
-      "saeco-odea-go-black-edition",
-      "saeco-royal-gran-crema"
-    ],
-    "metaTitle": "SAECO TALEA RING | Кафемашини",
-    "metaDescription": "SAECO TALEA RING – автоматична кафе машина втора употреба от Швейцария. Цена: €194.29. 12 месеца гаранция. Поръчай на 0894 807 755.",
-    "series": "Talea",
-    "modelNumber": "RI9825",
-    "milkSystem": "panarello"
-  },
-  {
     "slug": "delonghi-intensa-ecam-23210",
     "name": "Intensa ECAM 23210",
     "brand": "delonghi",
@@ -3167,70 +2471,6 @@
     "metaDescription": "SAECO INCANTO DELUXE – автоматична кафе машина втора употреба от Швейцария. Цена: €230.08. 12 месеца гаранция. Поръчай на 0894 807 755.",
     "series": "Incanto",
     "modelNumber": "RI9724",
-    "milkSystem": "panarello"
-  },
-  {
-    "slug": "saeco-primea-ring-plus",
-    "name": "PRIMEA RING PLUS",
-    "brand": "saeco",
-    "brandDisplayName": "SAECO",
-    "price": 350,
-    "priceEur": 300,
-    "currency": "BGN",
-    "inStock": true,
-    "warranty": "12 месеца",
-    "description": "Лесната за употреба кафемашина Saeco Primea Ring Plus ще завладее сърцата ви с уникалния си дизайн и прекрасното си еспресо.\nХарактеристики:\n»Размери: (ш / д / в): 355 x 460 x 380 мм\n»Тегло: 14 кг\n»Капацитет на контейнера за кафе: 350 гр.\n»Капацитет на контейнера за вода: 2 л.\n»Налягане на помпата: 15 бара\n»Мощност: 1500 W.\n»Бойлер от неръждаема стомана\n»Система: Saeco Aroma\n»Система: Rapid Steam®\n»Плоча с нагревател за подгряване на чаши\n»Гаранция",
-    "specs": {
-      "Мощност": "1300 W",
-      "Налягане": "15 бара",
-      "Тегло": "11 кг",
-      "Воден резервоар": "2 л",
-      "Контейнер за кафе": "350 гр",
-      "Размери (ШxДxВ)": "295 x 420 x 365 мм",
-      "Тип мелачка": "Керамична",
-      "Дисплей": "LCD",
-      "Работа с мляно кафе": "Да",
-      "Двойно кафе": "Да"
-    },
-    "images": [
-      {
-        "src": "/images/products/saeco-primea-ring-plus.webp",
-        "alt": "SAECO PRIMEA RING PLUS кафе машина",
-        "isMain": true,
-        "originalSrc": "https://kafemashini.ch/wp-content/uploads/2017/02/SAECO-PRIMEA-RING-PLUS.jpg"
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2020/12/20201214_120632-e1607942617376.webp",
-        "alt": "SAECO PRIMEA RING PLUS кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/SAECO-Talea-Giro.webp",
-        "alt": "SAECO PRIMEA RING PLUS кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/SAECO-ROYAL-OFFICE.webp",
-        "alt": "SAECO PRIMEA RING PLUS кафе машина",
-        "isMain": false
-      },
-      {
-        "src": "//kafemashini.ch/wp-content/uploads/2017/02/HD8954_47-IMS-en_US.webp",
-        "alt": "SAECO PRIMEA RING PLUS кафе машина",
-        "isMain": false
-      }
-    ],
-    "manualUrl": null,
-    "relatedSlugs": [
-      "saeco-odea-go",
-      "saeco-talea-giro",
-      "saeco-royal-office",
-      "saeco-xelsis"
-    ],
-    "metaTitle": "SAECO PRIMEA RING PLUS | Кафемашини",
-    "metaDescription": "SAECO PRIMEA RING PLUS – автоматична кафе машина втора употреба от Швейцария. Цена: €178.95. 12 месеца гаранция. Поръчай на 0894 807 755.",
-    "series": "Primea",
-    "modelNumber": "RI9830",
     "milkSystem": "panarello"
   },
   {
@@ -3492,5 +2732,507 @@
     "series": "Intelia",
     "modelNumber": "HD8751/01",
     "milkSystem": "panarello"
+  },
+  {
+    "slug": "philips-ep2221-40",
+    "name": "Series 2200 EP2221/40",
+    "brand": "philips",
+    "brandDisplayName": "Philips",
+    "price": 719,
+    "priceEur": 367.67,
+    "currency": "BGN",
+    "inStock": true,
+    "warranty": "12 месеца",
+    "description": "Series 2200 е идеалното начало в света на автоматичното кафе. С едно докосване приготвя еспресо и черно кафе от пресни зърна, а класическата система за разпенване на мляко ви дава пълен контрол върху пяната. Сензорният дисплей е интуитивен, а 100% керамичната мелничка с 12 степени на смилане запазва пълния аромат без прегряване. Компактна и лесна за поддръжка – перфектен избор за ежедневно кафе у дома.",
+    "specs": {
+      "Мощност": "1500 W",
+      "Налягане на помпата": "15 бара",
+      "Воден резервоар": "1.8 л",
+      "Кафе на зърна": "275 г",
+      "Мелничка": "100% керамична, 12 степени",
+      "Дисплей": "Сензорен",
+      "Система за мляко": "Класическа (ръчна)",
+      "Размери (ШxДxВ)": "246 x 371 x 433 мм",
+      "Тегло": "7.5 кг"
+    },
+    "images": [
+      {
+        "src": "/images/products/philips-ep2221-40.webp",
+        "alt": "Philips Series 2200 EP2221/40 кафеавтомат",
+        "isMain": true
+      }
+    ],
+    "manualUrl": null,
+    "relatedSlugs": [
+      "philips-ep2330-10",
+      "philips-ep3510-00",
+      "philips-ep3349-70"
+    ],
+    "metaTitle": "Philips Series 2200 EP2221/40 | Кафемашини",
+    "metaDescription": "Philips Series 2200 EP2221/40 – автоматичен кафеавтомат, 1500W, 15 бара, керамична мелничка: 719 лв. Поръчай на 0894 807 755.",
+    "series": "Series 2200",
+    "modelNumber": "EP2221/40",
+    "milkSystem": "panarello"
+  },
+  {
+    "slug": "philips-ep2330-10",
+    "name": "Series 2300 LatteGO EP2330/10",
+    "brand": "philips",
+    "brandDisplayName": "Philips",
+    "price": 561,
+    "priceEur": 287,
+    "currency": "BGN",
+    "inStock": true,
+    "warranty": "12 месеца",
+    "description": "Series 2300 LatteGO предлага 4 любими напитки с едно докосване – еспресо, черно кафе, капучино и топла вода за чай. Системата LatteGO е революционна: само 2 части, без тръби, почиства се за 10 секунди под чешмата или в съдомиялна машина. Технологията SilentBrew осигурява тихо смилане и приготвяне, идеално за ранни сутрини.",
+    "specs": {
+      "Мощност": "1500 W",
+      "Налягане на помпата": "15 бара",
+      "Воден резервоар": "1.8 л",
+      "Кафе на зърна": "275 г",
+      "Контейнер за мляко": "0.26 л",
+      "Мелничка": "100% керамична, 12 степени",
+      "Дисплей": "Сензорен с цветни икони",
+      "Система за мляко": "LatteGO",
+      "Размери (ШxДxВ)": "246 x 371 x 433 мм",
+      "Тегло": "8 кг",
+      "Кабел": "100 см"
+    },
+    "images": [
+      {
+        "src": "/images/products/philips-ep2330-10.webp",
+        "alt": "Philips Series 2300 LatteGO EP2330/10 кафеавтомат",
+        "isMain": true
+      }
+    ],
+    "manualUrl": null,
+    "relatedSlugs": [
+      "philips-ep2221-40",
+      "philips-ep3349-70",
+      "philips-ep3510-00"
+    ],
+    "metaTitle": "Philips Series 2300 LatteGO EP2330/10 | Кафемашини",
+    "metaDescription": "Philips Series 2300 LatteGO EP2330/10 – 4 напитки, SilentBrew керамична мелничка. Цена: 561 лв. Поръчай на 0894 807 755.",
+    "series": "Series 2300",
+    "modelNumber": "EP2330/10",
+    "milkSystem": "auto"
+  },
+  {
+    "slug": "philips-ep3510-00",
+    "name": "Series 3100 EP3510/00",
+    "brand": "philips",
+    "brandDisplayName": "Philips",
+    "price": 799,
+    "priceEur": 408.69,
+    "currency": "BGN",
+    "inStock": true,
+    "warranty": "12 месеца",
+    "description": "Series 3100 е машина за ценители, които искат повече контрол над кафето си. Приготвя еспресо, черно кафе и напитки с мляко с едно докосване, а 5-степенното регулиране на силата и температурата ви дава пълна свобода. Функцията My Coffee запазва вашите любими профили. Класическата система за разпенване на мляко е лесна за ползване. Компактен корпус с надеждна 100% керамична мелничка – отличен баланс между цена и функционалност.",
+    "specs": {
+      "Мощност": "1500 W",
+      "Налягане на помпата": "15 бара",
+      "Воден резервоар": "1.8 л",
+      "Кафе на зърна": "250 г",
+      "Мелничка": "100% керамична, 5 степени",
+      "Сила на кафето": "5 нива",
+      "Температура": "3 нива",
+      "Система за мляко": "Класическа (ръчна)",
+      "Размери (ШxДxВ)": "215 x 330 x 429 мм",
+      "Тегло": "7.2 кг"
+    },
+    "images": [
+      {
+        "src": "/images/products/philips-ep3510-00.webp",
+        "alt": "Philips Series 3100 EP3510/00 кафеавтомат",
+        "isMain": true
+      }
+    ],
+    "manualUrl": null,
+    "relatedSlugs": [
+      "philips-ep2330-10",
+      "philips-ep3349-70",
+      "philips-ep2221-40"
+    ],
+    "metaTitle": "Philips Series 3100 EP3510/00 | Кафемашини",
+    "metaDescription": "Philips Series 3100 EP3510/00 – автоматичен кафеавтомат, керамична мелничка My Coffee профили. Цена: 799 лв. Поръчай на 0894 807 755.",
+    "series": "Series 3100",
+    "modelNumber": "EP3510/00",
+    "milkSystem": "panarello"
+  },
+  {
+    "slug": "philips-ep3349-70",
+    "name": "Series 3300 LatteGO EP3349/70",
+    "brand": "philips",
+    "brandDisplayName": "Philips",
+    "price": 802,
+    "priceEur": 410,
+    "currency": "BGN",
+    "inStock": true,
+    "warranty": "12 месеца",
+    "description": "Series 3300 LatteGO е следващото ниво – 6 напитки с едно докосване, включително ристрето, еспресо, лунго, черно кафе, капучино и латте макиато. Системата LatteGO приготвя коприненогладка млечна пяна и се почиства само за секунди. SilentBrew работи с до 40% по-малко шум от стандартните машини. Идеална за домове, в които всеки обича различна напитка.",
+    "specs": {
+      "Мощност": "1500 W",
+      "Налягане на помпата": "15 бара",
+      "Воден резервоар": "1.8 л",
+      "Кафе на зърна": "275 г",
+      "Контейнер за мляко": "0.26 л",
+      "Мелничка": "100% керамична, 12 степени",
+      "Дисплей": "Сензорен с цветни икони",
+      "Система за мляко": "LatteGO",
+      "Брой напитки": "6",
+      "Размери (ШxДxВ)": "246 x 371 x 433 мм",
+      "Тегло": "8 кг"
+    },
+    "images": [
+      {
+        "src": "/images/products/philips-ep3349-70.webp",
+        "alt": "Philips Series 3300 LatteGO EP3349/70 кафеавтомат",
+        "isMain": true
+      }
+    ],
+    "manualUrl": null,
+    "relatedSlugs": [
+      "philips-ep2330-10",
+      "philips-ep4446-70",
+      "philips-ep3510-00"
+    ],
+    "metaTitle": "Philips Series 3300 LatteGO EP3349/70 | Кафемашини",
+    "metaDescription": "Philips Series 3300 LatteGO EP3349/70 – 6 напитки, SilentBrew, HomeID приложение: 802 лв. Поръчай на 0894 807 755.",
+    "series": "Series 3300",
+    "modelNumber": "EP3349/70",
+    "milkSystem": "auto"
+  },
+  {
+    "slug": "philips-ep4446-70",
+    "name": "Series 4400 LatteGO EP4446/70",
+    "brand": "philips",
+    "brandDisplayName": "Philips",
+    "price": 978,
+    "priceEur": 499.99,
+    "currency": "BGN",
+    "inStock": true,
+    "warranty": "12 месеца",
+    "description": "Series 4400 LatteGO е за онези, които не правят компромис с кафето. 12 вида напитки с едно докосване – от класическо еспресо до студено кафе и специалти рецепти. TFT дисплеят с цветни икони прави избора интуитивен, а функцията My Coffee запазва вашите персонални предпочитания. LatteGO с мощна циклонна технология прави коприненогладка пяна дори от растителни млека. Керамичната мелничка с 12 степени разкрива пълния потенциал на зърната.",
+    "specs": {
+      "Мощност": "1500 W",
+      "Налягане на помпата": "15 бара",
+      "Воден резервоар": "1.8 л",
+      "Кафе на зърна": "280 г",
+      "Контейнер за мляко": "0.26 л",
+      "Мелничка": "100% керамична, 12 степени",
+      "Дисплей": "TFT цветен дисплей",
+      "Система за мляко": "LatteGO",
+      "Брой напитки": "12",
+      "Размери (ШxДxВ)": "250 x 430 x 370 мм",
+      "Тегло": "8 кг"
+    },
+    "images": [
+      {
+        "src": "/images/products/philips-ep4446-70.webp",
+        "alt": "Philips Series 4400 LatteGO EP4446/70 кафеавтомат",
+        "isMain": true
+      }
+    ],
+    "manualUrl": null,
+    "relatedSlugs": [
+      "philips-ep3349-70",
+      "philips-ep5335-10",
+      "philips-ep2330-10"
+    ],
+    "metaTitle": "Philips Series 4400 LatteGO EP4446/70 | Кафемашини",
+    "metaDescription": "Philips Series 4400 LatteGO EP4446/70 – 12 напитки, TFT дисплей, студено кафе: 978 лв. Поръчай на 0894 807 755.",
+    "series": "Series 4400",
+    "modelNumber": "EP4446/70",
+    "milkSystem": "auto"
+  },
+  {
+    "slug": "philips-ep5335-10",
+    "name": "Series 5000 LatteGO EP5335/10",
+    "brand": "philips",
+    "brandDisplayName": "Philips",
+    "price": 999,
+    "priceEur": 510.82,
+    "currency": "BGN",
+    "inStock": true,
+    "warranty": "12 месеца",
+    "description": "Series 5000 е върхът на линията – машина от неръждаема стомана с 6 перфектни напитки с едно докосване. Системата LatteGO използва вихрова технология, разпенваща млякото с 394 м/сек за коприненогладка пяна всеки път. SilentBrew осигурява тихо приготвяне дори в ранните сутрешни часове. Корпусът от неръждаема стомана придава премиален вид и дълготрайност.",
+    "specs": {
+      "Мощност": "1500 W",
+      "Налягане на помпата": "15 бара",
+      "Воден резервоар": "1.8 л",
+      "Кафе на зърна": "250 г",
+      "Контейнер за мляко": "0.26 л",
+      "Мелничка": "100% керамична, 5 степени",
+      "Система за мляко": "LatteGO",
+      "Материал на корпуса": "Неръждаема стомана",
+      "Брой напитки": "6",
+      "Размери (ШxДxВ)": "221 x 340 x 430 мм",
+      "Тегло": "7.2 кг"
+    },
+    "images": [
+      {
+        "src": "/images/products/philips-ep5335-10.webp",
+        "alt": "Philips Series 5000 LatteGO EP5335/10 кафеавтомат",
+        "isMain": true
+      }
+    ],
+    "manualUrl": null,
+    "relatedSlugs": [
+      "philips-ep4446-70",
+      "philips-ep3349-70",
+      "philips-ep3510-00"
+    ],
+    "metaTitle": "Philips Series 5000 LatteGO EP5335/10 | Кафемашини",
+    "metaDescription": "Philips Series 5000 LatteGO EP5335/10 – неръждаема стомана, 6 напитки, SilentBrew: 999 лв. Поръчай на 0894 807 755.",
+    "series": "Series 5000",
+    "modelNumber": "EP5335/10",
+    "milkSystem": "auto"
+  },
+  {
+    "slug": "jura-ena-micro-9",
+    "name": "ENA Micro 9",
+    "brand": "jura",
+    "brandDisplayName": "Jura",
+    "price": 799,
+    "priceEur": 408.69,
+    "currency": "BGN",
+    "inStock": true,
+    "warranty": "12 месеца",
+    "description": "ENA Micro 9 е компактен швейцарски кафеавтомат – малък по размер, но без компромис с качеството на кафето. Приготвя еспресо и черно кафе от пресни зърна с едно докосване чрез системата One Touch. Интегрираната Aroma+ мелачка смила зърната непосредствено преди всяка чаша за максимален аромат. Системата One Touch Cappuccino приготвя капучино автоматично с едно докосване. Интуитивният ротационен превключвател прави управлението бързо и лесно. Машината поддържа и смляно кафе – удобно за еспресо блендове или декофеинирани смеси.",
+    "specs": {
+      "Мощност": "1450 W",
+      "Налягане на помпата": "15 бара",
+      "Воден резервоар": "1.1 л",
+      "Контейнер за кафе": "125 г",
+      "Смляно кафе": "Да (1 доза)",
+      "Капучино система": "One Touch Cappuccino",
+      "Размери (ШxДxВ)": "230 x 445 x 323 мм",
+      "Тегло": "9.4 кг"
+    },
+    "images": [
+      {
+        "src": "/images/products/jura-ena-micro-9.webp",
+        "alt": "Jura ENA Micro 9 кафеавтомат",
+        "isMain": true
+      }
+    ],
+    "manualUrl": null,
+    "relatedSlugs": [
+      "jura-impressa-f50",
+      "jura-impressa-j5",
+      "jura-impressa-j7"
+    ],
+    "metaTitle": "Jura ENA Micro 9 | Кафемашини",
+    "metaDescription": "Jura ENA Micro 9 – компактен швейцарски кафеавтомат, 1450W, 15 бара, One Touch Cappuccino, Aroma+ мелачка. Цена: 799 лв. Поръчай на 0894 807 755.",
+    "series": "ENA Micro",
+    "modelNumber": "ENA Micro 9",
+    "milkSystem": "auto"
+  },
+  {
+    "slug": "jura-impressa-j5",
+    "name": "Impressa J5",
+    "brand": "jura",
+    "brandDisplayName": "Jura",
+    "price": 899,
+    "priceEur": 459.69,
+    "currency": "BGN",
+    "inStock": true,
+    "warranty": "12 месеца",
+    "description": "Impressa J5 е универсален кафеавтомат от J серията на Jura, съчетаващ швейцарско качество с пълна функционалност. Приготвя еспресо и черно кафе от пресни зърна с едно докосване. Системата Dual Frother Plus разпенва млякото ръчно за капучино и латте с прецизен контрол. Интегрираната мелачка Aroma+ смила зърната непосредствено преди всяка чаша. Интуитивният дисплей и ротационен превключвател осигуряват лесно управление. Машината поддържа и смляно кафе за по-голяма гъвкавост.",
+    "specs": {
+      "Мощност": "1450 W",
+      "Налягане на помпата": "15 бара",
+      "Воден резервоар": "2.1 л",
+      "Контейнер за кафе": "250 г",
+      "Смляно кафе": "Да (1 доза)",
+      "Капучино система": "Dual Frother Plus",
+      "Размери (ШxДxВ)": "285 x 433 x 342 мм",
+      "Тегло": "10.75 кг",
+      "Кабел": "110 см"
+    },
+    "images": [
+      {
+        "src": "/images/products/jura-impressa-j5.webp",
+        "alt": "Jura Impressa J5 кафеавтомат",
+        "isMain": true
+      }
+    ],
+    "manualUrl": null,
+    "relatedSlugs": [
+      "jura-impressa-j7",
+      "jura-impressa-j9",
+      "jura-impressa-f50"
+    ],
+    "metaTitle": "Jura Impressa J5 | Кафемашини",
+    "metaDescription": "Jura Impressa J5 – швейцарски кафеавтомат, 1450W, 15 бара, 2.1л резервоар, Dual Frother Plus, Aroma+ мелачка. Цена: 899 лв. Поръчай на 0894 807 755.",
+    "series": "Impressa J",
+    "modelNumber": "Impressa J5",
+    "milkSystem": "panarello"
+  },
+  {
+    "slug": "jura-impressa-f50",
+    "name": "Impressa F50",
+    "brand": "jura",
+    "brandDisplayName": "Jura",
+    "price": 849,
+    "priceEur": 434.19,
+    "currency": "BGN",
+    "inStock": true,
+    "warranty": "12 месеца",
+    "description": "Impressa F50 е надежден модел от F серията на Jura – практичен и достъпен за ежедневна употреба. Приготвя еспресо и черно кафе от пресни зърна с едно натискане на бутон. Системата Professional Cappuccino Frother разпенва млякото ръчно за капучино и латте. Мелачката Aroma+ смила зърната директно преди всяка чаша. Функцията IPBA (Intelligent Pre-Brew Aroma) накисва зърната преди смилане за по-богат вкус. Машината поддържа и смляно кафе за допълнителна гъвкавост.",
+    "specs": {
+      "Мощност": "1450 W",
+      "Налягане на помпата": "15 бара",
+      "Воден резервоар": "1.9 л",
+      "Контейнер за кафе": "200 г",
+      "Смляно кафе": "Да (1 доза)",
+      "Капучино система": "Professional Cappuccino Frother",
+      "Размери (ШxДxВ)": "280 x 345 x 435 мм",
+      "Тегло": "9.1 кг"
+    },
+    "images": [
+      {
+        "src": "/images/products/jura-impressa-f50.webp",
+        "alt": "Jura Impressa F50 кафеавтомат",
+        "isMain": true
+      }
+    ],
+    "manualUrl": null,
+    "relatedSlugs": [
+      "jura-ena-micro-9",
+      "jura-impressa-j5",
+      "jura-impressa-j7"
+    ],
+    "metaTitle": "Jura Impressa F50 | Кафемашини",
+    "metaDescription": "Jura Impressa F50 – швейцарски кафеавтомат, 1450W, 15 бара, 1.9л резервоар, Professional Cappuccino Frother, IPBA. Цена: 849 лв. Поръчай на 0894 807 755.",
+    "series": "Impressa F",
+    "modelNumber": "Impressa F50",
+    "milkSystem": "panarello"
+  },
+  {
+    "slug": "jura-impressa-j7",
+    "name": "Impressa J7",
+    "brand": "jura",
+    "brandDisplayName": "Jura",
+    "price": 1099,
+    "priceEur": 562.0,
+    "currency": "BGN",
+    "inStock": true,
+    "warranty": "12 месеца",
+    "description": "Impressa J7 е премиален кафеавтомат от J серията на Jura с пълна гама напитки. Приготвя еспресо, черно кафе, капучино и латте с едно докосване. Системата Professional Cappuccino Frother разпенва млякото ръчно за прецизен резултат. Интегрираната мелачка Aroma+ и функцията IPBA осигуряват максимален аромат от всяко зърно. Машината поддържа и смляно кафе за допълнителна гъвкавост.",
+    "specs": {
+      "Мощност": "1450 W",
+      "Налягане на помпата": "15 бара",
+      "Воден резервоар": "2.1 л",
+      "Контейнер за кафе": "250 г",
+      "Смляно кафе": "Да (1 доза)",
+      "Капучино система": "Professional Cappuccino Frother",
+      "Размери (ШxДxВ)": "285 x 433 x 342 мм",
+      "Тегло": "10.75 кг",
+      "Кабел": "110 см"
+    },
+    "images": [
+      {
+        "src": "/images/products/jura-impressa-j7.webp",
+        "alt": "Jura Impressa J7 кафеавтомат",
+        "isMain": true
+      }
+    ],
+    "manualUrl": null,
+    "relatedSlugs": [
+      "jura-impressa-j9",
+      "jura-impressa-j5",
+      "jura-impressa-f50"
+    ],
+    "metaTitle": "Jura Impressa J7 | Кафемашини",
+    "metaDescription": "Jura Impressa J7 – швейцарски кафеавтомат, 1450W, 15 бара, Professional Cappuccino Frother, Aroma+ мелачка. Цена: 1099 лв. Поръчай на 0894 807 755.",
+    "series": "Impressa J",
+    "modelNumber": "Impressa J7",
+    "milkSystem": "panarello"
+  },
+  {
+    "slug": "jura-impressa-j9",
+    "name": "Impressa J9",
+    "brand": "jura",
+    "brandDisplayName": "Jura",
+    "price": 1399,
+    "priceEur": 715.26,
+    "currency": "BGN",
+    "inStock": true,
+    "warranty": "12 месеца",
+    "description": "Impressa J9 е флагманският модел на J серията – машина за хора, за които кафето е приоритет. Приготвя еспресо и черно кафе от пресни зърна с едно докосване. Системата Fine Foam Technology създава фина и кремообразна млечна пяна за капучино и латте. Двойната порция позволява едновременно приготвяне на две чаши. Функцията IPBA (Intelligent Pre-Brew Aroma) оптимизира екстракцията за максимален вкус и аромат. Машината поддържа и смляно кафе за по-голяма гъвкавост.",
+    "specs": {
+      "Мощност": "1450 W",
+      "Налягане на помпата": "15 бара",
+      "Воден резервоар": "2.1 л",
+      "Контейнер за кафе": "250 г",
+      "Смляно кафе": "Да (1 доза)",
+      "Капучино система": "Fine Foam Technology",
+      "Двойна порция": "Да",
+      "Размери (ШxДxВ)": "285 x 433 x 342 мм",
+      "Тегло": "10.9 кг",
+      "Кабел": "110 см"
+    },
+    "images": [
+      {
+        "src": "/images/products/jura-impressa-j9.webp",
+        "alt": "Jura Impressa J9 кафеавтомат",
+        "isMain": true
+      }
+    ],
+    "manualUrl": null,
+    "relatedSlugs": [
+      "jura-impressa-j9-tft",
+      "jura-impressa-j7",
+      "jura-impressa-j5"
+    ],
+    "metaTitle": "Jura Impressa J9 | Кафемашини",
+    "metaDescription": "Jura Impressa J9 – швейцарски флагман, Fine Foam Technology, двойна порция, Aroma+ мелачка. Цена: 1399 лв. Поръчай на 0894 807 755.",
+    "series": "Impressa J",
+    "modelNumber": "Impressa J9",
+    "milkSystem": "panarello"
+  },
+  {
+    "slug": "jura-impressa-j9-tft",
+    "name": "Impressa J9 One Touch",
+    "brand": "jura",
+    "brandDisplayName": "Jura",
+    "price": 1599,
+    "priceEur": 818.0,
+    "currency": "BGN",
+    "inStock": true,
+    "warranty": "12 месеца",
+    "description": "Impressa J9 One Touch е върхът на Impressa J серията – машина с 2.75-инчов TFT цветен дисплей, показващ напитки, статус и анимации в реално време. С едно завъртане на ротационния превключвател избирате от пълна гама напитки: еспресо, кафе, капучино, латте макиато, топла вода и разпенено мляко. Системата Fine Foam Technology създава изключително фина и кремообразна млечна пяна. Функцията IPBA накисва зърната преди смилане за максимален вкус. Регулируемият изход за напитки се адаптира към различни размери чаши.",
+    "specs": {
+      "Мощност": "1450 W",
+      "Налягане на помпата": "15 бара",
+      "Воден резервоар": "2.1 л",
+      "Контейнер за кафе": "250 г",
+      "Контейнер за мляко": "0.5 л (вакуумна кана)",
+      "Капучино система": "Fine Foam Technology",
+      "Дисплей": "TFT цветен 2.75\"",
+      "Подгревател за чашки": "Да",
+      "Размери (ШxДxВ)": "285 x 433 x 342 мм",
+      "Тегло": "10.9 кг",
+      "Кабел": "110 см"
+    },
+    "images": [
+      {
+        "src": "/images/products/jura-impressa-j9-display.webp",
+        "alt": "Jura Impressa J9.3 One Touch TFT дисплей",
+        "isMain": true
+      }
+    ],
+    "manualUrl": null,
+    "relatedSlugs": [
+      "jura-impressa-j9",
+      "jura-impressa-j7",
+      "jura-impressa-j5"
+    ],
+    "metaTitle": "Jura Impressa J9 One Touch | Кафемашини",
+    "metaDescription": "Jura Impressa J9 One Touch – TFT дисплей, Fine Foam Technology, Aroma+ мелачка, вакуумна млечна кана. Цена: 1599 лв. Поръчай на 0894 807 755.",
+    "series": "Impressa J",
+    "modelNumber": "Impressa J9 One Touch",
+    "milkSystem": "auto"
   }
 ]

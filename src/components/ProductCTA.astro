@@ -1,5 +1,7 @@
 ---
 import { site } from '../utils/products';
+import ViberIcon from './ViberIcon.astro';
+import WhatsAppIcon from './WhatsAppIcon.astro';
 ---
 
 <div class="mt-6" id="product-cta">
@@ -12,6 +14,24 @@ import { site } from '../utils/products';
         <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
       </svg>
       Поръчай: {site.phoneDisplay}
+    </a>
+  </div>
+  <div class="flex gap-3 mt-3">
+    <a
+      href={site.viber}
+      class="flex-1 inline-flex items-center justify-center gap-2 text-sm font-semibold px-4 py-2.5 rounded-full bg-[#7360F2]/10 text-[#7360F2] hover:bg-[#7360F2]/20 transition-colors"
+    >
+      <ViberIcon class="h-4 w-4 shrink-0" />
+      Viber
+    </a>
+    <a
+      href={site.whatsapp}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex-1 inline-flex items-center justify-center gap-2 text-sm font-semibold px-4 py-2.5 rounded-full bg-[#25D366]/10 text-[#1a9e4c] hover:bg-[#25D366]/20 transition-colors"
+    >
+      <WhatsAppIcon class="h-4 w-4 shrink-0" />
+      WhatsApp
     </a>
   </div>
   <div class="mt-3">

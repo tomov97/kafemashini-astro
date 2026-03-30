@@ -52,7 +52,7 @@ if (waterTank) {
 }
 
 // Bean hopper
-const beanHopper = specs['Контейнер за кафе'];
+const beanHopper = specs['Контейнер за кафе'] || specs['Кафе на зърна'];
 if (beanHopper) {
   highlights.push({
     icon: 'beans',
@@ -88,11 +88,9 @@ if (beanHopper) {
             </svg>
           )}
           {h.icon === 'beans' && (
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z" />
-              <path d="M8 14s1.5 2 4 2 4-2 4-2" />
-              <line x1="9" y1="9" x2="9.01" y2="9" />
-              <line x1="15" y1="9" x2="15.01" y2="9" />
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" viewBox="0 0 24 24">
+              <ellipse cx="12" cy="12" rx="6" ry="9.5" fill="currentColor" transform="rotate(35 12 12)" />
+              <path d="M9.5 5.5 C13 8.5 11 15.5 14.5 18.5" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" />
             </svg>
           )}
         </div>

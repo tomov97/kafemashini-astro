@@ -5,17 +5,21 @@
 /cart           /   301
 /checkout       /   301
 
-# Removed brand pages -> general brands page
-/kafe-mashini/bosch                /kafe_mashini.html  301
-/kafe-mashini/gaggia               /kafe_mashini.html  301
-/kafe-mashini/koenig               /kafe_mashini.html  301
-/kafe-mashini/krups                /kafe_mashini.html  301
-/kafe-mashini/rotel                /kafe_mashini.html  301
-/kafe-mashini/satrap               /kafe_mashini.html  301
-/kafe-mashini/siemens              /kafe_mashini.html  301
-/kafe-mashini/solis                /kafe_mashini.html  301
-/kafe-mashini/turmix               /kafe_mashini.html  301
-/kafe-mashini/drugi-kafe-mashini   /kafe_mashini.html  301
+# Removed brand pages -> general products page
+/kafe-mashini/bosch                /produkti.html  301
+/kafe-mashini/gaggia               /produkti.html  301
+/kafe-mashini/koenig               /produkti.html  301
+/kafe-mashini/krups                /produkti.html  301
+/kafe-mashini/rotel                /produkti.html  301
+/kafe-mashini/satrap               /produkti.html  301
+/kafe-mashini/siemens              /produkti.html  301
+/kafe-mashini/solis                /produkti.html  301
+/kafe-mashini/turmix               /produkti.html  301
+/kafe-mashini/drugi-kafe-mashini   /produkti.html  301
+
+# Deleted pages
+/kafe_mashini.html                 /produkti.html  301
+/istoria_na_kafe_mashinite.html    /  301
 
 # Removed product pages -> general products page
 /produkt/gaggia-platinum-swing-up       /produkti.html  301
@@ -36,3 +40,15 @@
 /produkt/produkt-bosch-benvenuto-b30   /produkti.html  301
 /produkt/gaggia-brera                  /produkti.html  301
 /produkt/gaggia-platinum               /produkti.html  301
+/produkt/saeco-idea                    /produkti.html  301
+/produkt/saeco-primea-cappuccino-touch /produkti.html  301
+/produkt/saeco-primea-ring-plus        /produkti.html  301
+/produkt/saeco-magic                   /produkti.html  301
+/produkt/saeco-incanto-sirius          /produkti.html  301
+/produkt/saeco-incanto-s-class-classic /produkti.html  301
+/produkt/saeco-incanto-digital         /produkti.html  301
+/produkt/saeco-incanto-classic         /produkti.html  301
+/produkt/saeco-talea-giro              /produkti.html  301
+/produkt/saeco-talea-touch-plus        /produkti.html  301
+/produkt/saeco-talea-touch             /produkti.html  301
+/produkt/saeco-talea-ring              /produkti.html  301

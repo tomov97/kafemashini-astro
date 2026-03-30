@@ -12,7 +12,7 @@ import { site } from '../utils/products';
   <p class="text-text/70 mb-8">Моля, прочетете внимателно условията за ползване и поръчка преди да направите своята поръчка.</p>
 
   <h2>Продукти и цени</h2>
-  <p>В сайта са публикувани кафе машини втора употреба, предназначени за закупуване от крайни клиенти. Характеристиките на всеки продукт са описани подробно. Обявените цени са в български лева за брой. Запазваме правото да променяме цените без предварително уведомление.</p>
+  <p>В сайта са публикувани кафе машини втора употреба, предназначени за закупуване от крайни клиенти. Характеристиките на всеки продукт са описани подробно. Обявените цени са в евро за брой.</p>
 
   <h2>Гаранция</h2>
   <p>Всяка закупена кафе машина се предава с <strong>12 (дванадесет) месеца гаранция</strong> и право на следгаранционен сервиз.</p>
@@ -20,7 +20,7 @@ import { site } from '../utils/products';
   <h2>Как да поръчате</h2>
   <ol>
     <li>Изберете марка и модел от нашия каталог.</li>
-    <li>Обадете се на <a href={`tel:${site.phone}`} class="text-highlight font-medium hover:underline">{site.phoneDisplay}</a> или пишете ни във Viber, за да потвърдите наличността.</li>
+    <li>Обадете се на <a href={`tel:${site.phone}`} class="text-highlight font-medium hover:underline">{site.phoneDisplay}</a> или пишете ни във Viber / WhatsApp, за да потвърдите наличността.</li>
     <li>Уточняваме начина на получаване — лично от магазина или с куриер.</li>
     <li>Потвърждаваме поръчката и я изпращаме в рамките на 3 работни дни.</li>
     <li>Плащате при получаване — наложен платеж в офис на куриера.</li>
@@ -46,6 +46,9 @@ import { site } from '../utils/products';
       </a>
       <a href={site.viber} class="inline-flex items-center gap-2 bg-[#7360F2] hover:bg-[#5a4bc7] text-white font-semibold text-sm px-4 py-2.5 rounded-lg transition-colors">
         Viber
+      </a>
+      <a href={site.whatsapp} class="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1ead52] text-white font-semibold text-sm px-4 py-2.5 rounded-lg transition-colors">
+        WhatsApp
       </a>
     </div>
   </div>
