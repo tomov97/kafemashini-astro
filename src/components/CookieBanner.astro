@@ -1,7 +1,17 @@
 ---
-// Cookie consent banner — GA4 loads only after user accepts
+// Cookie consent banner (cosmetic) + GA4 (loads unconditionally)
 ---
 
+<!-- GA4 — always loads regardless of consent banner -->
+<script is:inline src="https://www.googletagmanager.com/gtag/js?id=G-CY3K84H344" async></script>
+<script is:inline>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CY3K84H344');
+</script>
+
+<!-- Cookie banner — dismissible, does not gate GA -->
 <div
   id="cookie-banner"
   role="dialog"
@@ -32,36 +42,16 @@
 
 <script>
   const CONSENT_KEY = 'cookie_consent';
-  const GA_ID = 'G-CY3K84H344';
-
-  function loadGA() {
-    if (document.getElementById('ga-script')) return;
-    const s = document.createElement('script');
-    s.id = 'ga-script';
-    s.async = true;
-    s.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
-    document.head.appendChild(s);
-    s.onload = () => {
-      (window as any).dataLayer = (window as any).dataLayer || [];
-      function gtag(...args: any[]) { (window as any).dataLayer.push(args); }
-      gtag('js', new Date());
-      gtag('config', GA_ID, { anonymize_ip: true });
-    };
-  }
-
   const banner = document.getElementById('cookie-banner');
   const consent = localStorage.getItem(CONSENT_KEY);
 
-  if (consent === 'accepted') {
-    loadGA();
-  } else if (consent === null) {
+  if (consent === null) {
     banner?.classList.remove('hidden');
   }
 
   document.getElementById('cookie-accept')?.addEventListener('click', () => {
     localStorage.setItem(CONSENT_KEY, 'accepted');
     banner?.classList.add('hidden');
-    loadGA();
   });
 
   document.getElementById('cookie-reject')?.addEventListener('click', () => {
