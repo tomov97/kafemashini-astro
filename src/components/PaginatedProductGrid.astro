@@ -8,13 +8,14 @@ interface Props {
 }
 
 const { products, perPage = 6 } = Astro.props;
-const totalPages = Math.ceil(products.length / perPage);
+const sortedProducts = [...products].sort((a, b) => (b.inStock ? 1 : 0) - (a.inStock ? 1 : 0));
+const totalPages = Math.ceil(sortedProducts.length / perPage);
 const needsPagination = totalPages > 1;
 ---
 
 <div id="product-container">
   <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6" id="product-grid">
-    {products.map((product, i) => {
+    {sortedProducts.map((product, i) => {
       const img = product.images.find(img => img.isMain) || product.images[0];
       return (
         <div class="product-item" data-index={i} style={i >= perPage ? 'display:none' : ''}>
@@ -43,11 +44,16 @@ const needsPagination = totalPages > 1;
               <h3 class="font-semibold text-xs sm:text-base text-text group-hover:text-primary transition-colors line-clamp-2 leading-tight mb-0 sm:mb-0.5">{product.name.replace(new RegExp('^' + product.brandDisplayName + '\\s*', 'i'), '')}</h3>
               <p class="text-[10px] sm:text-sm text-muted mb-1.5 sm:mb-2">{product.brandDisplayName}</p>
               <div class="mt-auto">
-                {product.price ? (
-                  <p class="text-xs sm:text-sm text-text mb-1.5 sm:mb-2">{product.priceEur ? <><span class="font-bold">{product.priceEur.toFixed(0)} €</span> <span class="text-muted font-normal">/ {eurToBgn(product.priceEur).toFixed(0)} лв.</span></> : <span class="font-bold">По запитване</span>}</p>
-                ) : (
-                  <p class="text-[10px] sm:text-sm text-muted italic mb-1.5 sm:mb-2">По запитване</p>
-                )}
+                <div class="flex items-center justify-between mb-1.5 sm:mb-2">
+                  {product.price ? (
+                    <p class="text-xs sm:text-sm text-text">{product.priceEur ? <><span class="font-bold">{product.priceEur.toFixed(0)} €</span> <span class="text-muted font-normal">/ {eurToBgn(product.priceEur).toFixed(0)} лв.</span></> : <span class="font-bold">По запитване</span>}</p>
+                  ) : (
+                    <p class="text-[10px] sm:text-sm text-muted italic">По запитване</p>
+                  )}
+                  <span class={`text-[9px] sm:text-xs font-semibold px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-full ${product.inStock ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-600'}`}>
+                    {product.inStock ? 'Налична' : 'Неналична'}
+                  </span>
+                </div>
                 <span class="block bg-primary text-white text-[10px] sm:text-xs font-semibold px-3 py-1.5 sm:px-4 sm:py-2 rounded-full group-hover:bg-btn transition-colors duration-200 text-center">Разгледай</span>
               </div>
             </div>
@@ -58,16 +64,14 @@ const needsPagination = totalPages > 1;
   </div>
 
   {needsPagination && (
-    <nav class="flex items-center justify-center gap-3 mt-8" id="pagination" aria-label="Пагинация">
+    <nav class="flex items-center justify-center gap-1.5 mt-8" id="pagination" aria-label="Пагинация">
       <button id="prev-btn" class="pg-arrow" disabled aria-label="Предишна страница">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
         </svg>
-        <span class="hidden sm:inline">Назад</span>
       </button>
-      <div id="page-numbers" class="flex items-center gap-1.5"></div>
+      <div id="page-numbers" class="pg-numbers"></div>
       <button id="next-btn" class="pg-arrow" aria-label="Следваща страница">
-        <span class="hidden sm:inline">Напред</span>
         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
         </svg>
@@ -76,26 +80,29 @@ const needsPagination = totalPages > 1;
   )}
 </div>
 
-<style>
-  .pg-arrow {
+<style is:global>
+  .pg-arrow,
+  .pg-num,
+  .pg-dots {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
-    padding: 0.55rem 1.25rem;
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: #284d47;
-    background: #f3f4f6;
-    border: none;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
     border-radius: 9999px;
+    flex-shrink: 0;
+  }
+
+  .pg-arrow {
+    color: #374151;
+    background: #e5e7eb;
+    border: none;
     cursor: pointer;
-    transition: background 0.15s, color 0.15s;
-    white-space: nowrap;
+    transition: background 0.15s;
   }
 
   .pg-arrow:hover:not(:disabled) {
-    background: #284d47;
-    color: white;
+    background: #d1d5db;
   }
 
   .pg-arrow:disabled {
@@ -103,10 +110,37 @@ const needsPagination = totalPages > 1;
     cursor: not-allowed;
   }
 
-  @media (max-width: 639px) {
-    .pg-arrow {
-      padding: 0.45rem 0.6rem;
-    }
+  .pg-numbers {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+
+  .pg-num {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    background: #e5e7eb;
+    border: none;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .pg-num:hover:not(.active) {
+    background: #d1d5db;
+  }
+
+  .pg-num.active {
+    color: white;
+    background: #589e94;
+    font-weight: 600;
+  }
+
+  .pg-dots {
+    font-size: 0.875rem;
+    color: #6b7280;
+    background: #e5e7eb;
+    cursor: default;
   }
 </style>
 
@@ -146,45 +180,34 @@ const needsPagination = totalPages > 1;
       }
     }
 
-    const isNarrow = window.innerWidth < 640;
-    const btnSize = isNarrow ? '1.8rem' : '2.1rem';
-    const btnFont = isNarrow ? '0.7rem' : '0.8rem';
-    const baseStyle = `display:inline-flex;align-items:center;justify-content:center;width:${btnSize};height:${btnSize};font-size:${btnFont};font-weight:600;border-radius:9999px;border:2px solid #284d47;cursor:pointer;transition:background 0.15s,color 0.15s,border-color 0.15s;`;
-    const inactiveStyle = baseStyle + 'color:#284d47;background:transparent;';
-    const activeStyle = baseStyle + 'color:white;background:#284d47;border-color:#284d47;';
-    const dotsStyle = `display:inline-flex;align-items:center;justify-content:center;width:${btnSize};height:${btnSize};font-size:0.85rem;color:#6b7280;letter-spacing:0.05em;cursor:default;`;
-
+    // Always returns exactly 7 slots, all non-null.
+    // ≤7 pages: show all (padded with extra numbers if <7 — but products/6=~9 pages so rare).
+    // >7 pages: always [1, s2, s3, s4, s5, s6, last] where gaps become '…'.
+    // Near start: 1 2 3 4 5 … last  (no left ellipsis needed)
+    // Near end:   1 … n-4 n-3 n-2 n-1 last
+    // Middle:     1 … a b c … last
     function getPageRange(current, total) {
-      const delta = 1;
-      const range = new Set([1, total]);
-      for (let i = Math.max(2, current - delta); i <= Math.min(total - 1, current + delta); i++) {
-        range.add(i);
+      if (total <= 7) {
+        return Array.from({ length: total }, (_, i) => i + 1);
       }
-      const sorted = [...range].sort((a, b) => a - b);
 
-      const result = [];
-      let prev = 0;
-      for (const page of sorted) {
-        if (page - prev > 1) result.push('…');
-        result.push(page);
-        prev = page;
+      // Clamp the 3-wide window so slots 2-6 are always 5 distinct inner values
+      // slot2 through slot6, always exactly 5 values between 1 and last (exclusive)
+      let mid = Math.max(3, Math.min(current, total - 2));
+      let s2, s3, s4, s5, s6;
+
+      if (mid <= 4) {
+        // Near start: 1 [2 3 4 5] … last — no left ellipsis
+        [s2, s3, s4, s5, s6] = [2, 3, 4, 5, '…'];
+      } else if (mid >= total - 3) {
+        // Near end: 1 … [n-4 n-3 n-2 n-1] last — no right ellipsis
+        [s2, s3, s4, s5, s6] = ['…', total - 4, total - 3, total - 2, total - 1];
+      } else {
+        // Middle: 1 … [mid-1 mid mid+1] … last
+        [s2, s3, s4, s5, s6] = ['…', mid - 1, mid, mid + 1, '…'];
       }
-      return result;
-    }
 
-    function makeNumBtn(page) {
-      const btn = document.createElement('button');
-      btn.textContent = page;
-      const isActive = page === currentPage;
-      btn.setAttribute('style', isActive ? activeStyle : inactiveStyle);
-      btn.addEventListener('mouseenter', () => {
-        if (page !== currentPage) btn.setAttribute('style', baseStyle + 'color:white;background:#589e94;border-color:#589e94;');
-      });
-      btn.addEventListener('mouseleave', () => {
-        if (page !== currentPage) btn.setAttribute('style', inactiveStyle);
-      });
-      btn.addEventListener('click', () => showPage(page));
-      return btn;
+      return [1, s2, s3, s4, s5, s6, total];
     }
 
     function renderPageNumbers() {
@@ -193,10 +216,14 @@ const needsPagination = totalPages > 1;
         if (item === '…') {
           const dots = document.createElement('span');
           dots.textContent = '…';
-          dots.setAttribute('style', dotsStyle);
+          dots.className = 'pg-dots';
           pageNumbers.appendChild(dots);
         } else {
-          pageNumbers.appendChild(makeNumBtn(item));
+          const btn = document.createElement('button');
+          btn.textContent = item;
+          btn.className = 'pg-num' + (item === currentPage ? ' active' : '');
+          btn.addEventListener('click', () => showPage(item));
+          pageNumbers.appendChild(btn);
         }
       }
     }

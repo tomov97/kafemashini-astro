@@ -10,7 +10,7 @@ Source of truth for URL verification. Every URL below MUST return HTTP 200 on th
 |-----|------|
 | `/` | Homepage |
 
-## Product Pages (54)
+## Product Pages (63)
 
 | URL | Product Name |
 |-----|-------------|
@@ -68,6 +68,15 @@ Source of truth for URL verification. Every URL below MUST return HTTP 200 on th
 | `/produkt/delonghi-magnifica-s-ecam-22-110-sb` | DeLonghi Magnifica S ECAM 22.110.SB |
 | `/produkt/delonghi-ecam-25-120` | DeLonghi ECAM 25.120 |
 | `/produkt/saeco-intelia` | Saeco Intelia |
+| `/produkt/delonghi-dinamica-ecam-350-35` | DeLonghi Dinamica ECAM 350.35 |
+| `/produkt/delonghi-dinamica-cappuccino-ecam-350-55` | DeLonghi Dinamica Cappuccino ECAM 350.55 |
+| `/produkt/delonghi-dinamica-plus-ecam-370-95` | DeLonghi Dinamica Plus ECAM 370.95 |
+| `/produkt/delonghi-primadonna-xs-deluxe` | DeLonghi PrimaDonna XS Deluxe |
+| `/produkt/delonghi-eletta-cappuccino-top-ecam-45-760` | DeLonghi Eletta Cappuccino Top ECAM 45.760 |
+| `/produkt/delonghi-autentica-plus` | DeLonghi Autentica Plus |
+| `/produkt/delonghi-magnifica-evo-ecam-290-81` | DeLonghi Magnifica Evo ECAM 290.81 |
+| `/produkt/delonghi-primadonna-exclusive` | DeLonghi PrimaDonna Exclusive |
+| `/produkt/saeco-pico-baristo` | Saeco Pico Baristo |
 
 ## Brand Category Pages (4)
 
@@ -107,7 +116,7 @@ Source of truth for URL verification. Every URL below MUST return HTTP 200 on th
 
 ---
 
-**Total: 71 URLs** (1 homepage + 54 products + 4 categories + 7 .html info + 4 extensionless info + 1 nested)
+**Total: 80 URLs** (1 homepage + 63 products + 4 categories + 7 .html info + 4 extensionless info + 1 nested)
 
 Plus `404.html` custom error page (not in sitemap).
 

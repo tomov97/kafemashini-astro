@@ -20,13 +20,14 @@ const brandTabs = [
 // Pre-compute top 6 products per brand for client-side switching
 const brandProductsMap: Record<string, { slug: string; name: string; brandDisplayName: string; price: number | null; priceEur: number | null; images: { src: string; alt: string; isMain: boolean }[] }[]> = {};
 for (const tab of brandTabs) {
-  const all = getProductsByBrand(tab.slug).filter(p => p.inStock);
+  const all = [...getProductsByBrand(tab.slug)].sort((a, b) => (b.inStock ? 1 : 0) - (a.inStock ? 1 : 0));
   brandProductsMap[tab.slug] = all.slice(0, 6).map(p => ({
     slug: p.slug,
     name: p.name,
     brandDisplayName: p.brandDisplayName,
     price: p.price,
     priceEur: p.priceEur,
+    inStock: p.inStock,
     images: p.images.map(img => ({ src: img.src, alt: img.alt || '', isMain: img.isMain })),
   }));
 }
@@ -297,11 +298,16 @@ const defaultProducts = brandProductsMap[defaultBrand] ?? [];
                 <h3 class="font-semibold text-xs sm:text-base text-text group-hover:text-primary transition-colors line-clamp-2 leading-tight mb-0 sm:mb-0.5">{product.name.replace(new RegExp('^' + product.brandDisplayName + '\\s*', 'i'), '')}</h3>
                 <p class="text-[10px] sm:text-sm text-muted mb-1.5 sm:mb-2">{product.brandDisplayName}</p>
                 <div class="mt-auto">
-                  {product.priceEur ? (
-                    <p class="text-xs sm:text-sm text-text mb-1.5 sm:mb-2"><span class="font-bold">€{product.priceEur.toFixed(2)}</span> <span class="text-muted font-normal">/ {eurToBgn(product.priceEur).toFixed(2)} лв.</span></p>
-                  ) : (
-                    <p class="text-[10px] sm:text-sm text-muted italic mb-1.5 sm:mb-2">По запитване</p>
-                  )}
+                  <div class="flex items-center justify-between mb-1.5 sm:mb-2">
+                    {product.priceEur ? (
+                      <p class="text-xs sm:text-sm text-text"><span class="font-bold">€{product.priceEur.toFixed(2)}</span> <span class="text-muted font-normal">/ {eurToBgn(product.priceEur).toFixed(2)} лв.</span></p>
+                    ) : (
+                      <p class="text-[10px] sm:text-sm text-muted italic">По запитване</p>
+                    )}
+                    <span class={`text-[10px] sm:text-sm font-semibold px-2 sm:px-3 py-0.5 sm:py-1 rounded-full ${product.inStock ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-600'}`}>
+                      {product.inStock ? 'Налична' : 'Неналична'}
+                    </span>
+                  </div>
                   <span class="block bg-primary text-white text-[10px] sm:text-xs font-semibold px-3 py-1.5 sm:px-4 sm:py-2 rounded-full group-hover:bg-btn transition-colors duration-200 text-center">Разгледай</span>
                 </div>
               </div>
@@ -664,10 +670,14 @@ const defaultProducts = brandProductsMap[defaultBrand] ?? [];
     const pills = document.querySelectorAll('.brand-pill[data-brand]');
 
     const EUR_TO_BGN = 1.95583;
-    function formatPrice(price, priceEur) {
-      if (!priceEur) return '<p class="text-[10px] sm:text-sm text-muted italic mb-1.5 sm:mb-2">По запитване</p>';
-      const bgn = (Math.round(priceEur * EUR_TO_BGN * 100) / 100).toFixed(2);
-      return `<p class="text-xs sm:text-sm text-text mb-1.5 sm:mb-2"><span class="font-bold">€${priceEur.toFixed(2)}</span> <span class="text-muted font-normal">/ ${bgn} лв.</span></p>`;
+    function formatPriceRow(price, priceEur, inStock) {
+      const availBadge = inStock
+        ? `<span style="font-size:12px;font-weight:600;padding:3px 10px;border-radius:9999px;background:#dcfce7;color:#15803d;white-space:nowrap">Налична</span>`
+        : `<span style="font-size:12px;font-weight:600;padding:3px 10px;border-radius:9999px;background:#fee2e2;color:#dc2626;white-space:nowrap">Неналична</span>`;
+      const priceHtml = priceEur
+        ? `<p class="text-xs sm:text-sm text-text"><span class="font-bold">€${priceEur.toFixed(2)}</span> <span class="text-muted font-normal">/ ${(Math.round(priceEur * EUR_TO_BGN * 100) / 100).toFixed(2)} лв.</span></p>`
+        : `<p class="text-[10px] sm:text-sm text-muted italic">По запитване</p>`;
+      return `<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">${priceHtml}${availBadge}</div>`;
     }
 
     function stripBrand(name, brand) {
@@ -688,7 +698,7 @@ const defaultProducts = brandProductsMap[defaultBrand] ?? [];
             <h3 class="font-semibold text-xs sm:text-base text-text line-clamp-2 leading-tight mb-0 sm:mb-0.5">${stripBrand(p.name, p.brandDisplayName)}</h3>
             <p class="text-[10px] sm:text-sm text-muted mb-1.5 sm:mb-2">${p.brandDisplayName}</p>
             <div style="margin-top:auto">
-              ${formatPrice(p.price, p.priceEur)}
+              ${formatPriceRow(p.price, p.priceEur, p.inStock)}
               <span class="block bg-primary text-white text-[10px] sm:text-xs font-semibold px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-center" onmouseover="this.style.background='#589e94'" onmouseout="this.style.background='#284d47'">Разгледай</span>
             </div>
           </div>

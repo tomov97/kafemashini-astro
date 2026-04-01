@@ -38,10 +38,10 @@ const mainImage = product.images.find(img => img.isMain) || product.images[0];
     <p class="text-xs text-muted mb-2">{product.brandDisplayName}</p>
     <div class="flex items-center justify-between mt-auto">
       <PriceDisplay priceEur={product.priceEur} size="sm" />
-      <span class="bg-primary text-white text-xs font-semibold px-3 py-1.5 rounded-full group-hover:bg-btn transition-colors duration-200">Разгледай</span>
+      <span class={`text-xs font-semibold px-2.5 py-1 rounded-full ${product.inStock ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-600'}`}>
+        {product.inStock ? 'Налична' : 'Неналична'}
+      </span>
     </div>
-    {!product.inStock && (
-      <span class="inline-block mt-2 text-xs bg-muted/10 text-muted px-2 py-0.5 rounded">Изчерпано</span>
-    )}
+    <span class="block mt-2 bg-primary text-white text-xs font-semibold px-3 py-1.5 rounded-full group-hover:bg-btn transition-colors duration-200 text-center">Разгледай</span>
   </div>
 </a>

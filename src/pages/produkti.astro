@@ -18,7 +18,11 @@ const featuredSlugs = [
 const featuredSet = new Set(featuredSlugs);
 const featured = featuredSlugs.map(slug => products.find(p => p.slug === slug)!).filter(Boolean);
 const rest = products.filter(p => !featuredSet.has(p.slug));
-const sortedProducts = [...featured, ...rest];
+const allOrdered = [...featured, ...rest];
+const sortedProducts = [
+  ...allOrdered.filter(p => p.inStock),
+  ...allOrdered.filter(p => !p.inStock),
+];
 ---
 
 <BaseLayout

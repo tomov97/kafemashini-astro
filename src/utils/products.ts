@@ -74,8 +74,9 @@ export function getProductBySlug(slug: string): Product | undefined {
   return products.find(p => p.slug === slug);
 }
 
-// Explicit display order for Saeco products (first 6 are featured)
+// Explicit display order for Saeco products (first 6 are featured on page 1)
 const SAECO_ORDER = [
+  'saeco-pico-baristo',
   'saeco-syntia',
   'saeco-intelia-evo',
   'saeco-minuto-cappuccino-hd8763',
@@ -84,14 +85,20 @@ const SAECO_ORDER = [
   'saeco-moltio',
 ];
 
-// Explicit display order for DeLonghi products (first 6 are featured)
+// Explicit display order for DeLonghi products (first 6 are featured on page 1)
 const DELONGHI_ORDER = [
   'delonghi-primadonna-s',
+  'delonghi-primadonna-exclusive',
+  'delonghi-eletta-cappuccino-top-ecam-45-760',
+  'delonghi-dinamica-plus-ecam-370-95',
+  'delonghi-dinamica-cappuccino-ecam-350-55',
+  'delonghi-dinamica-ecam-350-35',
+  'delonghi-magnifica-evo-ecam-290-81',
+  'delonghi-autentica-plus',
+  'delonghi-primadonna-xs-deluxe',
   'delonghi-magnifica-s-ecam-22-110-sb',
   'primadonna-avant-6700',
   'delonghi-cappuccino-ecam-23-450',
-  'delonghi-intensa-esam-23420',
-  'delonghi-ecam-22-360-b',
 ];
 
 export function getProductsByBrand(brandSlug: string): Product[] {

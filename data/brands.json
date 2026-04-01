@@ -4,8 +4,8 @@
     "displayName": "DeLonghi",
     "description": "",
     "metaTitle": "Кафе машини DeLonghi – втора употреба от Швейцария | Кафемашини",
-    "metaDescription": "20 обслужени кафе машини DeLonghi от Швейцария. Magnifica, PrimaDonna, Perfecta и други. Пълна профилактика и 12 месеца гаранция.",
-    "productCount": 20,
+    "metaDescription": "28 обслужени кафе машини DeLonghi от Швейцария. Magnifica, PrimaDonna, Dinamica, Eletta и други. Пълна профилактика и 24 месеца гаранция.",
+    "productCount": 28,
     "productSlugs": [
       "delonghi-esam-4400",
       "delonghi-magnifica-esam-3300",
@@ -26,7 +26,15 @@
       "primadonna-avant-6700",
       "delonghi-primadonna-s",
       "delonghi-ecam-22-360-b",
-      "delonghi-esam-5500-cappuccino"
+      "delonghi-esam-5500-cappuccino",
+      "delonghi-dinamica-ecam-350-35",
+      "delonghi-dinamica-cappuccino-ecam-350-55",
+      "delonghi-dinamica-plus-ecam-370-95",
+      "delonghi-primadonna-xs-deluxe",
+      "delonghi-eletta-cappuccino-top-ecam-45-760",
+      "delonghi-autentica-plus",
+      "delonghi-magnifica-evo-ecam-290-81",
+      "delonghi-primadonna-exclusive"
     ]
   },
   {
@@ -34,8 +42,8 @@
     "displayName": "SAECO",
     "description": "",
     "metaTitle": "Кафе машини SAECO – втора употреба и сервиз | Кафемашини",
-    "metaDescription": "34 обслужени кафе машини SAECO от Швейцария. Внос, пълна профилактика и 12 месеца гаранция. Intelia, Royal, Odea, Minuto и други модели.",
-    "productCount": 34,
+    "metaDescription": "35 обслужени кафе машини SAECO от Швейцария. Внос, пълна профилактика и 24 месеца гаранция. Pico Baristo, Intelia, Royal, Odea, Minuto и други модели.",
+    "productCount": 35,
     "productSlugs": [
       "saeco-syntia",
       "saeco-incanto-classic",
@@ -70,7 +78,8 @@
       "saeco-exprelia",
       "saeco-granbaristo",
       "saeco-incanto-s-class-rondo",
-      "saeco-incanto-deluxe"
+      "saeco-incanto-deluxe",
+      "saeco-pico-baristo"
     ]
   },
   {
